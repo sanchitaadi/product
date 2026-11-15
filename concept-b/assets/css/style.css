@@ -1,0 +1,857 @@
+/* ==========================================================================
+   CONCEPT B — RETRO GEN-Z
+   Brand: Peachy Plate | "GOOD FOOD. CUTE MOODS."
+   Palette: Cherry red, butter yellow, cream, warm orange, ink black
+   Typography: Syne & Space Grotesk
+   Style: Neo-Brutalist Y2K Diner, Stickers, Hard Shadows, Pop Energy
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
+
+:root {
+    --gen-bg: #FFFDF4;
+    --gen-bg-alt: #FFF9DB;
+    --gen-card: #FFFFFF;
+    --gen-red: #E11D48;
+    --gen-red-dark: #BE123C;
+    --gen-yellow: #FDE047;
+    --gen-yellow-light: #FEF08A;
+    --gen-orange: #FB923C;
+    --gen-ink: #18181B;
+    --gen-muted: #52525B;
+    --gen-border: 2.5px solid #18181B;
+    --gen-shadow: 4px 4px 0px #18181B;
+    --gen-shadow-lg: 6px 6px 0px #18181B;
+    --gen-shadow-hover: 8px 8px 0px #18181B;
+    --gen-font-display: 'Syne', sans-serif;
+    --gen-font-body: 'Space Grotesk', -apple-system, sans-serif;
+    --gen-radius-sm: 8px;
+    --gen-radius-md: 16px;
+    --gen-radius-lg: 24px;
+    --gen-radius-full: 999px;
+    --transition-snappy: all 0.18s cubic-bezier(0.2, 0, 0, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--gen-bg);
+    color: var(--gen-ink);
+    font-family: var(--gen-font-body);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle Retro Grid pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-size: 32px 32px;
+    background-image: 
+        linear-gradient(to right, rgba(24, 24, 27, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(24, 24, 27, 0.04) 1px, transparent 1px);
+    z-index: -1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gen-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Retro Header */
+.gen-header {
+    position: sticky;
+    top: 36px;
+    z-index: 1000;
+    padding: 14px 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gen-header.scrolled {
+    top: 0;
+    padding: 8px 0;
+}
+.gen-header.scrolled .gen-nav-shell {
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(26, 26, 26, 0.15), 4px 4px 0px var(--gen-ink);
+}
+.gen-nav-shell {
+    background: #FFFFFF;
+    border: var(--gen-border);
+    box-shadow: var(--gen-shadow-lg);
+    border-radius: var(--gen-radius-full);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition-snappy);
+}
+.gen-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--gen-font-display);
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--gen-ink);
+    text-transform: uppercase;
+}
+.gen-logo-badge {
+    background: var(--gen-red);
+    color: #ffffff;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 2px solid var(--gen-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-6deg);
+}
+.gen-logo span.red {
+    color: var(--gen-red);
+}
+
+.gen-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+.gen-nav-menu a {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--gen-ink);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: var(--transition-snappy);
+    border: 2px solid transparent;
+}
+.gen-nav-menu a:hover {
+    background: var(--gen-yellow);
+    border: 2px solid var(--gen-ink);
+    transform: rotate(-1deg);
+}
+.gen-nav-menu a.active {
+    background: var(--gen-red);
+    color: #ffffff;
+    border: 2px solid var(--gen-ink);
+}
+
+.gen-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gen-red);
+    color: #ffffff;
+    border: var(--gen-border);
+    box-shadow: var(--gen-shadow);
+    padding: 12px 24px;
+    border-radius: var(--gen-radius-full);
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+    white-space: nowrap;
+}
+.gen-btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--gen-shadow-hover);
+    background: var(--gen-red-dark);
+}
+.gen-btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--gen-ink);
+}
+
+.gen-btn-yellow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gen-yellow);
+    color: var(--gen-ink);
+    border: var(--gen-border);
+    box-shadow: var(--gen-shadow);
+    padding: 12px 24px;
+    border-radius: var(--gen-radius-full);
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+}
+.gen-btn-yellow:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--gen-shadow-hover);
+    background: #FACC15;
+}
+.gen-btn-yellow:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--gen-ink);
+}
+
+.gen-mobile-toggle {
+    display: none;
+    background: #ffffff;
+    border: 2px solid var(--gen-ink);
+    box-shadow: 2px 2px 0px var(--gen-ink);
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--gen-ink);
+    transition: var(--transition-snappy);
+}
+.gen-mobile-toggle:hover {
+    background: var(--gen-yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--gen-ink);
+}
+
+/* Mobile Drawer */
+.gen-mobile-drawer {
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 86%;
+    max-width: 340px;
+    height: 100vh;
+    background: var(--gen-yellow-light);
+    border-left: 3px solid var(--gen-ink);
+    z-index: 100000;
+    padding: 26px 22px;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.2);
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+.gen-mobile-drawer.open {
+    right: 0;
+    visibility: visible;
+    pointer-events: auto;
+}
+.gen-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99999;
+}
+.gen-mobile-overlay.open { display: block; }
+
+/* Stickers & Retro Badges */
+.gen-sticker {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 2px solid var(--gen-ink);
+    border-radius: var(--gen-radius-full);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    box-shadow: 3px 3px 0px var(--gen-ink);
+}
+.sticker-yellow { background: var(--gen-yellow); color: var(--gen-ink); }
+.sticker-red { background: var(--gen-red); color: #ffffff; }
+.sticker-orange { background: var(--gen-orange); color: #ffffff; }
+.sticker-white { background: #ffffff; color: var(--gen-ink); }
+
+/* Hero Section */
+.gen-hero {
+    padding: 50px 0 80px;
+    position: relative;
+}
+.gen-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+.gen-hero-title {
+    font-family: var(--gen-font-display);
+    font-size: clamp(42px, 6vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--gen-ink);
+    margin-bottom: 24px;
+}
+.gen-hero-title .highlight-red {
+    color: #ffffff;
+    background: var(--gen-red);
+    padding: 2px 14px;
+    display: inline-block;
+    border: 3px solid var(--gen-ink);
+    box-shadow: 4px 4px 0px var(--gen-ink);
+    transform: rotate(-1.5deg);
+    margin: 4px 0;
+}
+.gen-hero-desc {
+    font-size: 18px;
+    color: var(--gen-muted);
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 500px;
+}
+.gen-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+/* Interactive Hero Visual Stack */
+.gen-hero-visual {
+    position: relative;
+}
+.gen-visual-box {
+    position: relative;
+    background: var(--gen-yellow);
+    border: 3px solid var(--gen-ink);
+    box-shadow: var(--gen-shadow-lg);
+    border-radius: var(--gen-radius-lg);
+    padding: 16px;
+    transform: rotate(2deg);
+    transition: transform 0.3s;
+}
+.gen-visual-box:hover {
+    transform: rotate(0deg);
+}
+.gen-visual-box img {
+    border-radius: var(--gen-radius-md);
+    border: 2px solid var(--gen-ink);
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+.gen-sticker-float-1 {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    transform: rotate(-12deg);
+    z-index: 10;
+}
+.gen-sticker-float-2 {
+    position: absolute;
+    bottom: -20px;
+    right: -15px;
+    transform: rotate(8deg);
+    z-index: 10;
+}
+
+/* Retro Caution / Marquee Strip */
+.gen-marquee {
+    background: var(--gen-yellow);
+    border-top: 3px solid var(--gen-ink);
+    border-bottom: 3px solid var(--gen-ink);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.gen-marquee-track {
+    display: inline-flex;
+    animation: genMarquee 26s linear infinite;
+}
+.gen-marquee-content {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-family: var(--gen-font-display);
+    font-size: 17px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--gen-ink);
+}
+@keyframes genMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Section Header Shared */
+.gen-section-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 50px;
+}
+.gen-section-title {
+    font-family: var(--gen-font-display);
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: var(--gen-ink);
+    margin-top: 12px;
+    line-height: 1.15;
+}
+.gen-section-desc {
+    font-size: 16px;
+    color: var(--gen-muted);
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+/* Retro Food Cards */
+.gen-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+.gen-dish-card {
+    background: #ffffff;
+    border: var(--gen-border);
+    box-shadow: var(--gen-shadow);
+    border-radius: var(--gen-radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-snappy);
+    position: relative;
+}
+.gen-dish-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--gen-shadow-hover);
+}
+.gen-dish-thumb-wrap {
+    position: relative;
+    border: 2px solid var(--gen-ink);
+    border-radius: calc(var(--gen-radius-md) - 4px);
+    overflow: hidden;
+    height: 220px;
+    margin-bottom: 14px;
+}
+.gen-dish-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.gen-dish-card:hover .gen-dish-thumb {
+    transform: scale(1.08);
+}
+.gen-dish-veg {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffffff;
+    border: 2px solid var(--gen-ink);
+    border-radius: 4px;
+    padding: 2px;
+    display: flex;
+}
+.gen-dish-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.gen-dish-name {
+    font-family: var(--gen-font-display);
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--gen-ink);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+.gen-dish-desc {
+    font-size: 13.5px;
+    color: var(--gen-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+}
+.gen-dish-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 2px dashed #e4e4e7;
+}
+.gen-dish-price {
+    font-family: var(--gen-font-display);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gen-red);
+}
+
+/* Horizontal Scroll Container */
+.gen-horiz-scroll-wrap {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 4px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gen-red) var(--gen-yellow);
+}
+.gen-horiz-scroll-wrap::-webkit-scrollbar {
+    height: 8px;
+}
+.gen-horiz-scroll-wrap::-webkit-scrollbar-thumb {
+    background: var(--gen-red);
+    border-radius: 4px;
+}
+
+/* Retro Filter Bar */
+.gen-filter-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+.gen-filter-btn {
+    background: #ffffff;
+    border: var(--gen-border);
+    box-shadow: 3px 3px 0px var(--gen-ink);
+    padding: 10px 20px;
+    border-radius: var(--gen-radius-full);
+    font-family: var(--gen-font-body);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+}
+.gen-filter-btn:hover,
+.gen-filter-btn.active {
+    background: var(--gen-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--gen-ink);
+}
+
+/* Reservation & Form */
+.gen-form-box {
+    max-width: 760px;
+    margin: 0 auto 80px;
+    background: #ffffff;
+    border: 3px solid var(--gen-ink);
+    box-shadow: var(--gen-shadow-lg);
+    border-radius: var(--gen-radius-lg);
+    padding: 40px;
+}
+.gen-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.gen-form-group label {
+    font-family: var(--gen-font-display);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.gen-form-control {
+    background: #FAF8F2;
+    border: 2px solid var(--gen-ink);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 600;
+    outline: none;
+    transition: var(--transition-snappy);
+}
+.gen-form-control:focus {
+    background: #ffffff;
+    box-shadow: 3px 3px 0px var(--gen-red);
+}
+
+/* Footer */
+.gen-footer {
+    background: var(--gen-ink);
+    color: #ffffff;
+    border-top: 4px solid var(--gen-red);
+    padding: 70px 0 30px;
+}
+.gen-footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.gen-footer-title {
+    font-family: var(--gen-font-display);
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--gen-yellow);
+    margin-bottom: 20px;
+}
+.gen-footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.gen-footer-links a {
+    color: #d4d4d8;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+.gen-footer-links a:hover {
+    color: var(--gen-yellow);
+}
+
+/* Lightbox */
+.gen-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(24, 24, 27, 0.9);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.gen-lightbox.active { display: flex; }
+.gen-lightbox-card {
+    background: #ffffff;
+    border: 3px solid var(--gen-ink);
+    box-shadow: 10px 10px 0px var(--gen-red);
+    border-radius: var(--gen-radius-md);
+    max-width: 820px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.gen-lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--gen-yellow);
+    border: 2px solid var(--gen-ink);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .gen-nav-menu {
+        display: none;
+    }
+    .gen-mobile-toggle {
+        display: inline-flex;
+    }
+}
+@media (max-width: 992px) {
+    .gen-hero-grid { grid-template-columns: 1fr; }
+    .gen-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .gen-nav-shell .gen-btn-primary { display: none; }
+    .gen-footer-grid { grid-template-columns: 1fr; }
+    .gen-form-box { padding: 24px; }
+}
+@media (max-width: 480px) {
+    .gen-header {
+        padding: 8px 0;
+    }
+    .gen-nav-shell {
+        padding: 8px 12px;
+    }
+    .gen-logo {
+        font-size: 18px;
+        gap: 6px;
+    }
+    .gen-logo-badge {
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
+    }
+    .gen-icon-btn,
+    .gen-mobile-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
+
+/* ----------------------------------------------------
+   CONCEPT B: RETRO GEN-Z E-COMMERCE STYLES
+   ---------------------------------------------------- */
+.gen-icon-btn {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid var(--gen-ink);
+    box-shadow: 2px 2px 0px var(--gen-ink);
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gen-ink);
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition-snappy);
+}
+.gen-icon-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--gen-ink);
+    background: var(--gen-yellow);
+}
+
+.gen-badge-counter {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--gen-red);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 900;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gen-ink);
+    box-shadow: 1px 1px 0px var(--gen-ink);
+}
+
+.gen-btn-custom {
+    background: #ffffff;
+    border: 2px solid var(--gen-ink);
+    box-shadow: 2px 2px 0px var(--gen-ink);
+    padding: 7px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+}
+.gen-btn-custom:hover {
+    background: var(--gen-yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--gen-ink);
+}
+
+.gen-dish-fav-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffffff;
+    border: 2px solid var(--gen-ink);
+    box-shadow: 2px 2px 0px var(--gen-ink);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--gen-ink);
+    cursor: pointer;
+    transition: var(--transition-snappy);
+    z-index: 2;
+}
+.gen-dish-fav-btn:hover {
+    transform: scale(1.15) rotate(5deg);
+    background: var(--gen-yellow);
+}
+
+.gen-timeline-wrap {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 36px 0;
+}
+.gen-timeline-wrap::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 40px;
+    right: 40px;
+    height: 4px;
+    background: var(--gen-ink);
+    z-index: 1;
+}
+.gen-timeline-step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex: 1;
+}
+.gen-timeline-dot {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 3px solid var(--gen-ink);
+    box-shadow: 3px 3px 0px var(--gen-ink);
+    color: var(--gen-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 17px;
+    font-weight: 900;
+    transition: var(--transition-snappy);
+}
+.gen-timeline-step.active .gen-timeline-dot {
+    background: var(--gen-yellow);
+    box-shadow: 4px 4px 0px var(--gen-red);
+    transform: scale(1.1);
+}
+.gen-timeline-step.completed .gen-timeline-dot {
+    background: #10B981;
+    color: #ffffff;
+}
+.gen-timeline-label {
+    font-family: var(--gen-font-display);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--gen-muted);
+}
+.gen-timeline-step.active .gen-timeline-label {
+    color: var(--gen-red);
+}
+

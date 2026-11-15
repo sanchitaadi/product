@@ -1,0 +1,110 @@
+/**
+ * CONCEPT B — RETRO GEN-Z JAVASCRIPT
+ */
+
+// Global Mobile Drawer Functions
+function openMobileDrawer() {
+    const mobileDrawer = document.getElementById('genMobileDrawer');
+    const mobileOverlay = document.getElementById('genMobileOverlay');
+    if (mobileDrawer) mobileDrawer.classList.add('open');
+    if (mobileOverlay) mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileDrawer() {
+    const mobileDrawer = document.getElementById('genMobileDrawer');
+    const mobileOverlay = document.getElementById('genMobileOverlay');
+    if (mobileDrawer) mobileDrawer.classList.remove('open');
+    if (mobileOverlay) mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+window.openMobileDrawer = openMobileDrawer;
+window.closeMobileDrawer = closeMobileDrawer;
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Sticky header scroll behavior
+    const header = document.querySelector('.gen-header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    }
+
+    // Escape key closes mobile drawer
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeMobileDrawer();
+        }
+    });
+
+    // Auto close drawer when clicking any link inside
+    const drawerLinks = document.querySelectorAll('.gen-mobile-drawer a');
+    drawerLinks.forEach(link => {
+        link.addEventListener('click', closeMobileDrawer);
+    });
+
+    // Menu Filter
+    const filterButtons = document.querySelectorAll('.gen-filter-btn');
+    const menuCards = document.querySelectorAll('.gen-menu-item');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+            menuCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Gallery Lightbox
+    const lightbox = document.getElementById('genLightbox');
+    const lightboxImg = document.getElementById('genLightboxImg');
+    const lightboxCaption = document.getElementById('genLightboxCaption');
+    const lightboxClose = document.getElementById('genLightboxClose');
+    const triggers = document.querySelectorAll('.gen-gallery-trigger');
+
+    triggers.forEach(trig => {
+        trig.addEventListener('click', function (e) {
+            e.preventDefault();
+            const src = this.getAttribute('data-img') || this.querySelector('img')?.src;
+            const title = this.getAttribute('data-caption') || this.querySelector('.gen-dish-name')?.textContent || 'Peachy Plate Drop';
+
+            if (lightbox && lightboxImg && src) {
+                lightboxImg.src = src;
+                if (lightboxCaption) lightboxCaption.textContent = title;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', function () {
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});

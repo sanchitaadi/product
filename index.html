@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peachy Plate — Three Design Concepts Presentation | Agency Showcase</title>
+    <meta name="description" content="Official client presentation for Peachy Plate. Compare three distinct restaurant website concepts: Coquette Pinterest, Retro Gen-Z, and Luxury Cute.">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍑</text></svg>">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #09090b;
+            --bg-card: #18181b;
+            --border-dark: rgba(255, 255, 255, 0.1);
+            --text-light: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent-pink: #f43f5e;
+            --accent-yellow: #facc15;
+            --accent-gold: #c5a880;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .hub-container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Ambient Glow Backgrounds */
+        .ambient-glow-1 {
+            position: absolute;
+            top: 0;
+            left: 20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.18) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .ambient-glow-2 {
+            position: absolute;
+            top: 250px;
+            right: 15%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.12) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Top Presenter Bar */
+        .hub-topbar {
+            border-bottom: 1px solid var(--border-dark);
+            padding: 16px 0;
+            position: relative;
+            z-index: 10;
+        }
+        .hub-topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hub-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .hub-tag {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fb7185;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .hub-admin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #27272a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #ffffff;
+            transition: var(--transition);
+        }
+        .hub-admin-link:hover {
+            background: #f43f5e;
+            border-color: #f43f5e;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Showcase Section */
+        .hub-hero {
+            padding: 70px 0 60px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .hub-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(244, 63, 94, 0.12);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            color: #fb7185;
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+        .hub-hero-title {
+            font-size: clamp(38px, 6vw, 68px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        .hub-hero-title span.gradient-text {
+            background: linear-gradient(135deg, #fb7185, #facc15);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hub-hero-desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 760px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+        .hub-meta-strip {
+            display: inline-flex;
+            align-items: center;
+            gap: 24px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-dark);
+            border-radius: 999px;
+            padding: 10px 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hub-meta-strip strong { color: #ffffff; }
+
+        /* Concept Cards Showcase Grid */
+        .hub-concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 10;
+        }
+        .hub-concept-card {
+            background: #18181b;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+        }
+        .hub-concept-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Card Header Previews */
+        .hub-card-thumb-wrap {
+            position: relative;
+            height: 270px;
+            overflow: hidden;
+            background: #27272a;
+        }
+        .hub-card-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .hub-concept-card:hover .hub-card-thumb {
+            transform: scale(1.08);
+        }
+        .hub-card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .badge-a { background: #ffe4e8; color: #be123c; }
+        .badge-b { background: #facc15; color: #18181b; }
+        .badge-c { background: #FAF8F5; color: #1E1714; }
+
+        .hub-card-body {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .hub-card-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+        .hub-card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        /* Visual Tags */
+        .hub-tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+        .hub-tag-pill {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: #d4d4d8;
+            font-weight: 500;
+        }
+
+        /* Launch Button */
+        .hub-launch-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transition: var(--transition);
+        }
+        .btn-launch-a {
+            background: linear-gradient(135deg, #fb7185, #e11d48);
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
+        }
+        .btn-launch-a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(225, 29, 72, 0.5);
+        }
+
+        .btn-launch-b {
+            background: #facc15;
+            color: #18181b;
+            box-shadow: 0 8px 24px rgba(250, 204, 21, 0.35);
+        }
+        .btn-launch-b:hover {
+            background: #fde047;
+            transform: translateY(-2px);
+        }
+
+        .btn-launch-c {
+            background: #ffffff;
+            color: #18181b;
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+        .btn-launch-c:hover {
+            background: #f4f4f5;
+            transform: translateY(-2px);
+        }
+
+        /* Quick Page Links List */
+        .hub-quick-pages {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+            font-size: 11px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+        .hub-quick-pages a {
+            color: #a1a1aa;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+        .hub-quick-pages a:hover {
+            color: #ffffff;
+        }
+
+        /* Comparison Matrix */
+        .hub-matrix-section {
+            background: #18181b;
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 10;
+        }
+        .hub-matrix-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .hub-matrix-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .hub-matrix-table-wrap {
+            overflow-x: auto;
+        }
+        .hub-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .hub-matrix-table th {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+        }
+        .hub-matrix-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: #d4d4d8;
+        }
+        .hub-matrix-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Features & Deliverables Strip */
+        .hub-deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 10;
+        }
+        .hub-deliv-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-md);
+            padding: 26px;
+        }
+        .hub-deliv-icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+        .hub-deliv-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .hub-deliv-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .hub-footer {
+            border-top: 1px solid var(--border-dark);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 1080px) {
+            .hub-concepts-grid {
+                grid-template-columns: 1fr;
+                max-width: 580px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ambient-glow-1"></div>
+<div class="ambient-glow-2"></div>
+
+<!-- Top Bar -->
+<header class="hub-topbar">
+    <div class="hub-container">
+        <div class="hub-topbar-inner">
+            <div class="hub-brand">
+                <span>🍑</span>
+                <span>PEACHY PLATE</span>
+                <span class="hub-tag">Client Presentation Portal</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <a href="admin/login.php" class="hub-admin-link">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <span>Admin Dashboard &bull; Live CMS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Header -->
+    <section class="hub-hero">
+        <div class="hub-container">
+            <div class="hub-hero-badge">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>THREE INDEPENDENT DESIGN DIRECTIONS &bull; FULL-STACK E-COMMERCE SUITE</span>
+            </div>
+            <h1 class="hub-hero-title">
+                One Brand. Three Visions.<br>
+                <span class="gradient-text">Complete Restaurant E-Commerce &amp; Ordering.</span>
+            </h1>
+            <p class="hub-hero-desc">
+                Welcome to the complete restaurant e-commerce &amp; digital dining suite for <strong>Peachy Plate</strong> (Garden Avenue, New Delhi). We upgraded all three distinct design directions into fully functional online ordering platforms powered by a single shared MySQL database and PHP 8+ backend.
+            </p>
+            <div class="hub-meta-strip">
+                <div><span>Restaurant:</span> <strong>Peachy Plate</strong></div>
+                <div>&bull;</div>
+                <div><span>Tagline:</span> <strong>GOOD FOOD. CUTE MOODS.</strong></div>
+                <div>&bull;</div>
+                <div><span>Location:</span> <strong>New Delhi, India</strong></div>
+                <div>&bull;</div>
+                <div><span>Total Pages Built:</span> <strong>36 Fully Functional Pages + Admin CMS</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Large Interactive Concept Preview Cards -->
+    <section>
+        <div class="hub-container">
+            <div class="hub-concepts-grid">
+                
+                <!-- CONCEPT A -->
+                <article class="hub-concept-card">
+                    <div class="hub-card-thumb-wrap">
+                        <img src="shared/assets/images/hero-coquette.webp" alt="Concept A Preview" class="hub-card-thumb" onerror="this.onerror=null;this.src='shared/assets/images/fallback-food.svg';">
+                        <span class="hub-card-badge badge-a">🌸 Concept A &bull; Coquette</span>
+                    </div>
+                    <div class="hub-card-body">
+                        <h3 class="hub-card-title">Coquette Pinterest</h3>
+                        <p class="hub-card-desc">
+                            Dreamy, feminine, and pastel-infused. Features delicate floral bows, blush pink &amp; cream palettes, Playfair serif typography, animated marquees, and Pinterest-style polaroid editorial layouts with live food ordering.
+                        </p>
+                        <div class="hub-tags-cloud">
+                            <span class="hub-tag-pill">Blush Pink</span>
+                            <span class="hub-tag-pill">Slide-out Cart</span>
+                            <span class="hub-tag-pill">Dishes Customizer</span>
+                            <span class="hub-tag-pill">Order Tracking</span>
+                            <span class="hub-tag-pill">Patron Portal</span>
+                            <span class="hub-tag-pill">Coupons Ready</span>
+                        </div>
+                        <a href="concept-a/index.php" class="hub-launch-btn btn-launch-a">
+                            <span>Explore Concept A</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <div class="hub-quick-pages">
+                            <a href="concept-a/index.php">Home</a> &bull;
+                            <a href="concept-a/menu.php"><strong>Menu / Order</strong></a> &bull;
+                            <a href="concept-a/cart.php">Cart</a> &bull;
+                            <a href="concept-a/checkout.php">Checkout</a> &bull;
+                            <a href="concept-a/order-tracking.php">Track Order</a> &bull;
+                            <a href="concept-a/account.php">Account</a> &bull;
+                            <a href="concept-a/wishlist.php">Wishlist</a> &bull;
+                            <a href="concept-a/reviews.php">Reviews</a> &bull;
+                            <a href="concept-a/reservation.php">Reservations</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CONCEPT B -->
+                <article class="hub-concept-card">
+                    <div class="hub-card-thumb-wrap">
+                        <img src="shared/assets/images/hero-retro.webp" alt="Concept B Preview" class="hub-card-thumb" onerror="this.onerror=null;this.src='shared/assets/images/fallback-food.svg';">
+                        <span class="hub-card-badge badge-b">⚡ Concept B &bull; Retro Gen-Z</span>
+                    </div>
+                    <div class="hub-card-body">
+                        <h3 class="hub-card-title">Retro Gen-Z</h3>
+                        <p class="hub-card-desc">
+                            High-energy, punchy, and TikTok-ready. Engineered with cherry red, butter yellow, neo-brutalist 4px hard drop shadows, playful sticker badges, bold chunky borders, and interactive horizontal scroll tracks.
+                        </p>
+                        <div class="hub-tags-cloud">
+                            <span class="hub-tag-pill">Cherry Red</span>
+                            <span class="hub-tag-pill">Butter Yellow</span>
+                            <span class="hub-tag-pill">Neo-Brutalism</span>
+                            <span class="hub-tag-pill">Sticker Badges</span>
+                            <span class="hub-tag-pill">Fast Stash Drawer</span>
+                            <span class="hub-tag-pill">Radar Tracking</span>
+                        </div>
+                        <a href="concept-b/index.php" class="hub-launch-btn btn-launch-b">
+                            <span>Explore Concept B</span>
+                            <i class="fa-solid fa-bolt"></i>
+                        </a>
+                        <div class="hub-quick-pages">
+                            <a href="concept-b/index.php">Home</a> &bull;
+                            <a href="concept-b/menu.php"><strong>Menu / Order</strong></a> &bull;
+                            <a href="concept-b/cart.php">Cart</a> &bull;
+                            <a href="concept-b/checkout.php">Checkout</a> &bull;
+                            <a href="concept-b/order-tracking.php">Track Order</a> &bull;
+                            <a href="concept-b/account.php">Account</a> &bull;
+                            <a href="concept-b/wishlist.php">Wishlist</a> &bull;
+                            <a href="concept-b/reviews.php">Vibe Wall</a> &bull;
+                            <a href="concept-b/reservation.php">Reservations</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CONCEPT C -->
+                <article class="hub-concept-card">
+                    <div class="hub-card-thumb-wrap">
+                        <img src="shared/assets/images/hero-luxury.webp" alt="Concept C Preview" class="hub-card-thumb" onerror="this.onerror=null;this.src='shared/assets/images/fallback-food.svg';">
+                        <span class="hub-card-badge badge-c">🍸 Concept C &bull; Luxury Cute</span>
+                    </div>
+                    <div class="hub-card-body">
+                        <h3 class="hub-card-title">Luxury Cute</h3>
+                        <p class="hub-card-desc">
+                            Quiet luxury, minimalist restraint, and boutique editorial poise. Warm beige, espresso brown, and champagne accents combined with Cormorant Garamond typography and bespoke salon reservations.
+                        </p>
+                        <div class="hub-tags-cloud">
+                            <span class="hub-tag-pill">Warm Beige</span>
+                            <span class="hub-tag-pill">Espresso Brown</span>
+                            <span class="hub-tag-pill">Concierge Drawer</span>
+                            <span class="hub-tag-pill">Tailored Dishes</span>
+                            <span class="hub-tag-pill">Private Tracking</span>
+                            <span class="hub-tag-pill">Patron Sanctuary</span>
+                        </div>
+                        <a href="concept-c/index.php" class="hub-launch-btn btn-launch-c">
+                            <span>Explore Concept C</span>
+                            <i class="fa-solid fa-gem"></i>
+                        </a>
+                        <div class="hub-quick-pages">
+                            <a href="concept-c/index.php">Home</a> &bull;
+                            <a href="concept-c/menu.php"><strong>Carte du Jour</strong></a> &bull;
+                            <a href="concept-c/cart.php">Hamper</a> &bull;
+                            <a href="concept-c/checkout.php">Checkout</a> &bull;
+                            <a href="concept-c/order-tracking.php">Tracking</a> &bull;
+                            <a href="concept-c/account.php">Sanctuary</a> &bull;
+                            <a href="concept-c/wishlist.php">Portfolio</a> &bull;
+                            <a href="concept-c/reviews.php">Accolades</a> &bull;
+                            <a href="concept-c/reservation.php">Reservations</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Side-by-Side Concept Comparison Matrix -->
+    <section>
+        <div class="hub-container">
+            <div class="hub-matrix-section">
+                <h2 class="hub-matrix-title">Concept Comparison Matrix</h2>
+                <p class="hub-matrix-subtitle">
+                    How each creative direction maps against target customer psychographics and branding objectives.
+                </p>
+
+                <div class="hub-matrix-table-wrap">
+                    <table class="hub-matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>🌸 Concept A: Coquette</th>
+                                <th>⚡ Concept B: Retro Gen-Z</th>
+                                <th>🍸 Concept C: Luxury Cute</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Brand Mood</strong></td>
+                                <td>Dreamy, romantic, gentle, Pinterest-editorial</td>
+                                <td>Energetic, bold, high-dopamine, Y2K diner</td>
+                                <td>Quiet luxury, refined restraint, boutique atelier</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Color Palette</strong></td>
+                                <td>Blush Pink (#FFE0E6), Peach (#FFE7DB), Rose (#E27993)</td>
+                                <td>Cherry Red (#E11D48), Butter Yellow (#FDE047), Warm Orange</td>
+                                <td>Warm Beige (#F7F4EE), Espresso (#1E1714), Champagne Gold</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Typography</strong></td>
+                                <td>Playfair Display + Outfit + Italiana</td>
+                                <td>Syne + Space Grotesk</td>
+                                <td>Cormorant Garamond + Montserrat</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Card &amp; Shadow Style</strong></td>
+                                <td>Rounded cards (28px) + soft glowing rose shadows</td>
+                                <td>2.5px solid black outlines + 4px hard offset shadows</td>
+                                <td>1px hairline borders + subtle diffuse warm shadows</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Target Audience</strong></td>
+                                <td>Aesthetic brunchers, content creators, birthday gatherings</td>
+                                <td>College students, youth squads, trend-driven foodies</td>
+                                <td>Couples, culinary purists, corporate &amp; intimate dinners</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Signature UX Touch</strong></td>
+                                <td>Animated loading bow &amp; floating floral badges</td>
+                                <td>Horizontal scrolling dish track &amp; sticker labels</td>
+                                <td>Minimalist editorial layouts &amp; salon seating choices</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Infrastructure & Admin Section -->
+    <section>
+        <div class="hub-container">
+            <div style="background: linear-gradient(135deg, #18181b, #27272a); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 48px; margin-bottom: 80px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center;">
+                <div>
+                    <span class="hub-tag" style="color: #facc15; margin-bottom: 12px; display: inline-block;">CENTRAL MANAGEMENT</span>
+                    <h3 style="font-size: 30px; font-weight: 800; color: #ffffff; margin-bottom: 14px;">
+                        Unified PHP / MySQL Admin Dashboard
+                    </h3>
+                    <p style="color: var(--text-muted); font-size: 15px; line-height: 1.7; margin-bottom: 24px;">
+                        Whichever visual concept the client chooses, the backend infrastructure is fully operational. Manage table reservations, approve booking requests, track contact inquiries, and perform live menu CRUD updates with real-time propagation across all concepts.
+                    </p>
+                    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                        <a href="admin/login.php" class="hub-admin-link" style="padding: 12px 24px; font-size: 14px; background: #f43f5e; border-color: #f43f5e;">
+                            <i class="fa-solid fa-lock"></i> Open Admin Portal
+                        </a>
+                        <div style="background: rgba(255, 255, 255, 0.08); border: 1px dashed rgba(255, 255, 255, 0.2); padding: 10px 16px; border-radius: 8px; font-size: 12px; color: #d4d4d8;">
+                            Demo Login: <strong>admin</strong> &bull; Password: <strong>admin123</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #09090b; border: 1px solid var(--border-dark); border-radius: var(--radius-md); padding: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #f43f5e; margin-bottom: 12px;">
+                        💳 PAYMENT GATEWAY INTEGRATION
+                    </div>
+                    <h4 style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 8px;">
+                        Marked "Coming Soon" (Razorpay Ready)
+                    </h4>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                        As required, no fake payment gateways or simulated card charges are run. All order/pre-pay triggers display an authentic Coming Soon interface detailing future UPI / Card support, while table reservations are 100% complimentary.
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #10b981; font-weight: 600;">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Zero Advance Charges &bull; Safe for Client Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Technical Deliverables -->
+    <section>
+        <div class="hub-container">
+            <div class="hub-deliverables-grid">
+                <div class="hub-deliv-card">
+                    <div class="hub-deliv-icon">📦</div>
+                    <h4>18 Independent Pages</h4>
+                    <p>Every concept contains 6 comprehensive pages (Home, Menu, About Us, Gallery, Reservations, Contact). No incomplete placeholder links.</p>
+                </div>
+                <div class="hub-deliv-card">
+                    <div class="hub-deliv-icon">⚡</div>
+                    <h4>Vanilla JS &amp; CSS3</h4>
+                    <p>Zero heavy node builds, React, or Supabase. Lightweight, blazing fast, and 100% compatible with conventional shared cPanel hosting.</p>
+                </div>
+                <div class="hub-deliv-card">
+                    <div class="hub-deliv-icon">🗄️</div>
+                    <h4>MySQL Database Ready</h4>
+                    <p>Complete SQL schema with sample dishes, reservations, and contacts included in <code>database/database.sql</code> with instant 1-click migration.</p>
+                </div>
+                <div class="hub-deliv-card">
+                    <div class="hub-deliv-icon">📱</div>
+                    <h4>Responsive Across Devices</h4>
+                    <p>Engineered and tested for mobile, tablet, laptop, and ultra-wide screens with smooth touch navigation and responsive tables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="hub-footer">
+    <div class="hub-container">
+        <p>&copy; 2026 Peachy Plate Website Concepts Presentation. Created for Client Review.</p>
+        <p style="margin-top: 6px; font-size: 12px; color: #71717a;">Temporary Restaurant Details: 24, Garden Avenue, New Delhi &bull; +91 98765 43210 &bull; hello@peachyplate.example</p>
+    </div>
+</footer>
+
+</body>
+</html>
