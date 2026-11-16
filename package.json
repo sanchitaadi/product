@@ -1,0 +1,21 @@
+{
+  "name": "peachy-plate-packaged-food-ecosystem",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Peachy Plate — Packaged Food & D2C Brand Ecosystem (Next.js 16 on Port 3001)",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend run start",
+    "lint": "npm --prefix frontend run lint"
+  },
+  "keywords": [
+    "packaged-food",
+    "d2c",
+    "nextjs",
+    "react19",
+    "ecommerce"
+  ],
+  "author": "Peachy Plate",
+  "license": "UNLICENSED"
+}
