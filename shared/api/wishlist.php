@@ -30,6 +30,9 @@ if ($action === 'toggle') {
 } elseif ($action === 'count') {
     echo json_encode(['success' => true, 'count' => getWishlistCount()]);
     exit;
+} elseif ($action === 'get' || $action === 'list') {
+    echo json_encode(['success' => true, 'items' => getWishlistItems(), 'count' => getWishlistCount()]);
+    exit;
 }
 
 echo json_encode(['success' => false, 'error' => 'Invalid action.']);

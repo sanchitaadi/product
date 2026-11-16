@@ -4,12 +4,14 @@
  */
 
 export const API_BASE_URL =
-  typeof window !== 'undefined' && window.location.hostname === 'localhost' && window.location.port === '3000'
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8000/shared/api'
     : '/shared/api';
 
 export const ASSET_BASE_URL =
-  typeof window !== 'undefined' && window.location.hostname === 'localhost' && window.location.port === '3000'
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8000/'
     : '/';
 
@@ -35,17 +37,23 @@ export async function apiFetch<T = any>(endpoint: string, options: RequestInit =
     headers.set('Content-Type', 'application/json');
   }
 
-  const response = await fetch(url, {
-    ...options,
-    headers,
-    credentials: 'include', // Ensures PHP session cookies are transmitted
-  });
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers,
+      credentials: 'include', // Ensures PHP session cookies are transmitted
+    });
 
-  if (!response.ok) {
-    throw new Error(`API error: ${response.status} ${response.statusText}`);
+    if (!response.ok) {
+      console.warn(`[apiFetch] API returned ${response.status} ${response.statusText} for ${url}`);
+      return { success: false, error: `API error: ${response.status} ${response.statusText}` } as unknown as T;
+    }
+
+    return await response.json();
+  } catch (err: any) {
+    console.warn(`[apiFetch] Request failed for ${url}:`, err);
+    return { success: false, error: err?.message || 'Network request failed' } as unknown as T;
   }
-
-  return response.json();
 }
 
 // ----------------------------------------------------
