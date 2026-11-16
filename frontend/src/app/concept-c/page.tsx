@@ -8,17 +8,18 @@ import ConceptCHeader from "@/components/concept-c/Header";
 import ConceptCFooter from "@/components/concept-c/Footer";
 import ConceptCFoodCard from "@/components/concept-c/FoodCard";
 import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
+import { CONCEPT_C_BRAND } from "@/lib/concept-catalogs";
 import * as api from "@/lib/api";
 import { useToast } from "@/context/ToastContext";
 
 export default function ConceptCHomePage() {
   const { showToast } = useToast();
-  const [signatureDishes, setSignatureDishes] = useState<any[]>([]);
+  const [signatureDishes, setSignatureDishes] = useState<any[]>(CONCEPT_C_BRAND.products);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
-  // VIP Booth Reservation State
+  // VIP Wholesale Reservation State
   const [resForm, setResForm] = useState({
     name: "",
     phone: "",
@@ -26,23 +27,19 @@ export default function ConceptCHomePage() {
     reservation_date: new Date().toISOString().split("T")[0],
     reservation_time: "19:30",
     guests: 2,
-    seating_area: "Pop Art Neon Booth",
+    seating_area: "Pop Art Retail Partner",
     special_requests: "",
   });
   const [resSubmitting, setResSubmitting] = useState(false);
   const [resSuccess, setResSuccess] = useState(false);
 
   useEffect(() => {
-    Promise.all([api.getMenu({ bestseller: "1" }), api.getReviews(6)])
-      .then(([menuRes, revRes]) => {
-        if (menuRes.success && Array.isArray(menuRes.items)) {
-          setSignatureDishes(menuRes.items.slice(0, 6));
-        }
-        if (revRes.success && Array.isArray(revRes.reviews)) {
-          setReviews(revRes.reviews);
-        }
-      })
-      .finally(() => setLoading(false));
+    setSignatureDishes(CONCEPT_C_BRAND.products);
+    api.getReviews(6).then((revRes) => {
+      if (revRes.success && Array.isArray(revRes.reviews)) {
+        setReviews(revRes.reviews);
+      }
+    });
   }, []);
 
   const handleReservationSubmit = async (e: React.FormEvent) => {
@@ -138,8 +135,8 @@ export default function ConceptCHomePage() {
               {/* Main Image Frame */}
               <div className="relative bg-[#FFFDF7] border-4 border-black p-3 shadow-2xl">
                 <img
-                  src="/images/hero-retro.webp"
-                  alt="Peachy Pop Art Dish"
+                  src={CONCEPT_C_BRAND.heroImage}
+                  alt="Pop Flavor Lab Hero"
                   className="w-full aspect-square object-cover border-2 border-black"
                 />
 

@@ -46,14 +46,14 @@ export default function ConceptAAboutPage() {
             </div>
 
             <div className="aspect-[4/3] rounded-3xl overflow-hidden border-4 border-white shadow-xl">
-              <img src="/images/restaurant-kitchen.webp" alt="Kitchen Crafting" className="w-full h-full object-cover" />
+              <img src="/images/heroes/coquette-pantry-hero.jpg" alt="Atelier Crafting" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {/* Story Block 2 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 aspect-[4/3] rounded-3xl overflow-hidden border-4 border-white shadow-xl">
-              <img src="/images/restaurant-garden.webp" alt="Garden Avenue Dining" className="w-full h-full object-cover" />
+              <img src="/images/products/cocoa-hazelnut-cookies.jpg" alt="Artisan Butter Sablés & Preserves" className="w-full h-full object-cover" />
             </div>
 
             <div className="order-1 lg:order-2 space-y-5">

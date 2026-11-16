@@ -11,15 +11,15 @@ export default function ConceptCGalleryPage() {
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   const images = [
-    { id: 1, src: "/images/hero-retro.webp", title: "Electric Pop Platter", tag: "dishes", span: "md:col-span-2 md:row-span-2" },
-    { id: 2, src: "/images/margherita-pizza.webp", title: "Charred Sourdough Margherita", tag: "dishes", span: "" },
-    { id: 3, src: "/images/strawberry-cheesecake.webp", title: "Neon Glazed Gateau", tag: "sweets", span: "" },
-    { id: 4, src: "/images/pink-sauce-pasta.webp", title: "Penne Rosa Supernova", tag: "dishes", span: "" },
-    { id: 5, src: "/images/espresso-tiramisu.webp", title: "High-Octane Tiramisu", tag: "sweets", span: "" },
-    { id: 6, src: "/images/burrata-bruschetta.webp", title: "Heirloom Peach Burrata", tag: "dishes", span: "md:col-span-2" },
-    { id: 7, src: "/images/restaurant-interior.webp", title: "Neon Pop Dining Room", tag: "ambiance", span: "" },
-    { id: 8, src: "/images/velvet-cold-coffee.webp", title: "Velvet Nitro Brew", tag: "drinks", span: "" },
-    { id: 9, src: "/images/citrus-salmon.webp", title: "Citrus Glazed Catch", tag: "dishes", span: "" },
+    { id: 1, src: "/images/heroes/pop-art-hero.jpg", title: "WARHOL FLAVOR DROP COLLECTION", tag: "sauces", span: "md:col-span-2 md:row-span-2" },
+    { id: 2, src: "/images/products/habanero-hot-sauce.jpg", title: "ELECTRIC HABANERO POP GLAZE", tag: "sauces", span: "" },
+    { id: 3, src: "/images/products/chili-crunch-jar.jpg", title: "SICHUAN UMAMI CHILI CRUNCH", tag: "sauces", span: "" },
+    { id: 4, src: "/images/products/blood-orange-ginger-nectar.jpg", title: "SMOKED CHIPOTLE FIG FINISH", tag: "sauces", span: "" },
+    { id: 5, src: "/images/products/prebiotic-white-peach-soda.jpg", title: "CITRUS YUZU BOTANICAL TONIC", tag: "drinks", span: "" },
+    { id: 6, src: "/images/products/tomato-tapenade.jpg", title: "HEIRLOOM SUN-DRIED TAPENADE", tag: "sauces", span: "md:col-span-2" },
+    { id: 7, src: "/images/products/spiced-millet-crackers.jpg", title: "ANCIENT MILLET POP CRACKERS", tag: "snacks", span: "" },
+    { id: 8, src: "/images/products/blood-orange-ginger-nectar.jpg", title: "BLOOD ORANGE BOTANICAL FIZZ", tag: "drinks", span: "" },
+    { id: 9, src: "/images/products/superfood-trail-mix.jpg", title: "FIERY SPICED SEED CRUNCH", tag: "snacks", span: "" },
   ];
 
   const filtered = filter === "all" ? images : images.filter((img) => img.tag === filter);
@@ -37,17 +37,16 @@ export default function ConceptCGalleryPage() {
           THE POP ART VAULT
         </h1>
         <p className="text-sm font-bold text-black/80 max-w-lg mx-auto">
-          A high-contrast visual archive of our experimental dishes, vibrant neon installations, and kitchen craft.
+          A high-contrast visual archive of our collectible hot sauces, chili crunch jars, and botanical drinks.
         </p>
 
         {/* Filters */}
         <div className="flex flex-wrap items-center justify-center gap-2 pt-6">
           {[
             { id: "all", label: "All Works" },
-            { id: "dishes", label: "Pop Dishes" },
-            { id: "sweets", label: "Dolce & Sweets" },
-            { id: "drinks", label: "Craft Drinks" },
-            { id: "ambiance", label: "Gallery Spaces" },
+            { id: "sauces", label: "Hot Sauces & Dips" },
+            { id: "snacks", label: "Street Snacks" },
+            { id: "drinks", label: "Botanical Tonics" },
           ].map((t) => (
             <button
               key={t.id}

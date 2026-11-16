@@ -14,16 +14,16 @@ function ConceptBGalleryContent() {
   const { playClick, playPop } = useRetroSound();
 
   const images = [
-    { src: "/images/hero-retro.webp", title: "THE PIZZA SPREAD", tag: "pizza", span: "md:col-span-2 md:row-span-2", desc: "Our signature feast of slow-fermented pizzas, cheese pasta and iced coolers." },
-    { src: "/images/lotus-biscoff-shake.webp", title: "THICK BISCOFF SHAKE", tag: "shakes", span: "", desc: "Creamy vanilla gelato blended with Belgian spiced cookie butter." },
-    { src: "/images/truffle-fries.webp", title: "PARMESAN TRUFFLE FRIES", tag: "bites", span: "", desc: "Golden Russet potatoes tossed in black truffle essence & Maldon salt." },
-    { src: "/images/margherita-pizza.webp", title: "NEAPOLITAN CRUST", tag: "pizza", span: "", desc: "48-hour cold fermentation dough with San Marzano reduction and fior di latte." },
-    { src: "/images/velvet-cold-coffee.webp", title: "VELVET COLD COFFEE", tag: "shakes", span: "", desc: "Single-origin Arabica shaken over ice with condensed milk crema." },
-    { src: "/images/pink-sauce-pasta.webp", title: "PINK SAUCE RIGATONI", tag: "bites", span: "md:col-span-2", desc: "Bronze-cut penne rigate enrobed in velvety tomato cream rosa sauce." },
-    { src: "/images/wild-mushroom-pizza.webp", title: "WILD MUSHROOM PIZZA", tag: "pizza", span: "", desc: "Porcini mushrooms, white sauce, smoked provolone and hot honey." },
-    { src: "/images/peach-hibiscus-cooler.webp", title: "SPARKLING COOLER", tag: "shakes", span: "", desc: "Cold-brewed organic Egyptian hibiscus tea with white peach purée." },
-    { src: "/images/restaurant-dining.webp", title: "RETRO DINING SCENE", tag: "vibe", span: "", desc: "Custom vinyl booths and warm neon glow inside our Delhi diner." },
-    { src: "/images/strawberry-cheesecake.webp", title: "BERRY CHEESECAKE", tag: "bites", span: "", desc: "Silky New York style baked cheesecake topped with fresh strawberry compote." },
+    { src: "/images/heroes/snackattack-hero.jpg", title: "THE BODEGA SNACK WALL", tag: "crisps", span: "md:col-span-2 md:row-span-2", desc: "Our signature mountain of air-popped sorghum puffs, kettle chips, and street snacks." },
+    { src: "/images/products/gourmet-sorghum-crisps.jpg", title: "TRUFFLE SORGHUM CRISPS", tag: "crisps", span: "", desc: "Ultra-light ancient Andean sorghum crisps dusted with Italian summer black truffle." },
+    { src: "/images/products/prebiotic-white-peach-soda.jpg", title: "PREBIOTIC WHITE PEACH SODA", tag: "sodas", span: "", desc: "Cold-pressed ripe white peach puree and chicory root prebiotic fiber on ice." },
+    { src: "/images/products/kettle-sea-salt-chips.jpg", title: "KETTLE SEA SALT CRISPS", tag: "crisps", span: "", desc: "Thick-cut golden farm potatoes kettle-fried in non-GMO sunflower oil." },
+    { src: "/images/products/blood-orange-ginger-nectar.jpg", title: "BLOOD ORANGE BOTANICAL NECTAR", tag: "sodas", span: "", desc: "Sicilian blood oranges cold-pressed with Himalayan fiery ginger and crisp mountain bubbles." },
+    { src: "/images/products/spiced-millet-crackers.jpg", title: "SPICED MILLET CRACKERS", tag: "crisps", span: "md:col-span-2", desc: "Sprouted foxtail and finger millets seasoned with garden rosemary and cracked pepper." },
+    { src: "/images/products/smoked-beef-jerky.jpg", title: "HICKORY HERB SMOKED JERKY", tag: "protein", span: "", desc: "Prime cured lean strips slow-smoked over hickory wood with 22g protein per pack." },
+    { src: "/images/products/cacao-energy-bites.jpg", title: "WILD CACAO ENERGY BITES", tag: "protein", span: "", desc: "Cold-pressed energy bites made with raw cacao nibs, dates, and sprouted pumpkin seeds." },
+    { src: "/images/heroes/retro-bodega-hero.jpg", title: "RETRO BODEGA DISPENSARY", tag: "vibe", span: "", desc: "Clean label, zero palm oil snacks ready for pan-India dispatch from our bodega warehouse." },
+    { src: "/images/products/cocoa-hazelnut-cookies.jpg", title: "COCOA CRUNCH DROPS", tag: "crisps", span: "", desc: "Crunchy double-baked cocoa drops with roasted Turkish hazelnut praline." },
   ];
 
   const filtered = filter === "all" ? images : images.filter((img) => img.tag === filter);
@@ -50,16 +50,16 @@ function ConceptBGalleryContent() {
             THE PHOTO FEED 📸
           </h1>
           <p className="text-xs sm:text-sm font-bold text-stone-900 max-w-md mx-auto">
-            Raw food snaps, blistered sourdough crusts, and neon booth vibes in New Delhi.
+            Raw snack snaps, nitrogen-flushed bags, and cold prebiotic cans ready to ship pan-India.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
             {[
               { id: "all", label: "ALL SNAPS" },
-              { id: "pizza", label: "PIZZAS" },
-              { id: "shakes", label: "SHAKES & SIPS" },
-              { id: "bites", label: "PASTAS & FRIES" },
-              { id: "vibe", label: "ATMOSPHERE" },
+              { id: "crisps", label: "POPPED CRISPS" },
+              { id: "sodas", label: "PREBIOTIC SODAS" },
+              { id: "protein", label: "PROTEIN & JERKY" },
+              { id: "vibe", label: "BODEGA VIBE" },
             ].map((t) => (
               <button
                 key={t.id}

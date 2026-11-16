@@ -6,12 +6,13 @@ import ConceptCHeader from "@/components/concept-c/Header";
 import ConceptCFooter from "@/components/concept-c/Footer";
 import ConceptCFoodCard from "@/components/concept-c/FoodCard";
 import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
+import { CONCEPT_C_BRAND } from "@/lib/concept-catalogs";
 import * as api from "@/lib/api";
 
 export default function ConceptCMenuPage() {
-  const [items, setItems] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(CONCEPT_C_BRAND.products);
+  const [categories, setCategories] = useState<any[]>(CONCEPT_C_BRAND.categories);
+  const [loading, setLoading] = useState(false);
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   // Filters
@@ -21,16 +22,8 @@ export default function ConceptCMenuPage() {
   const [sortBy, setSortBy] = useState("default");
 
   useEffect(() => {
-    setLoading(true);
-    api
-      .getMenu()
-      .then((res) => {
-        if (res.success) {
-          setItems(res.items || []);
-          setCategories(res.categories || []);
-        }
-      })
-      .finally(() => setLoading(false));
+    setItems(CONCEPT_C_BRAND.products);
+    setCategories(CONCEPT_C_BRAND.categories);
   }, []);
 
   const filteredItems = useMemo(() => {

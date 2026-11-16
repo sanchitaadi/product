@@ -90,8 +90,8 @@ export default function ConceptFHomePage() {
             <div className="relative border-4 border-black bg-white shadow-[12px_12px_0px_#000] overflow-hidden group">
               {/* Main Manga Food Illustration / Photography */}
               <img
-                src="/images/margherita-pizza.webp"
-                alt="Signature Manga Sourdough Hearth"
+                src="/images/products/spiced-millet-crackers.jpg"
+                alt="Signature Spiced Crunch"
                 className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
               />
 
@@ -102,7 +102,7 @@ export default function ConceptFHomePage() {
 
               {/* Japanese Watermark */}
               <div className="absolute bottom-4 left-4 bg-black text-white font-black text-xs px-3 py-1 border-2 border-white shadow-[3px_3px_0px_#D7263D]">
-                特製ピザ &bull; MARGHERITA SUPREME
+                特製スナック &bull; ARTISAN CRUNCH
               </div>
             </div>
 

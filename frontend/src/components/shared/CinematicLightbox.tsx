@@ -17,6 +17,8 @@ export interface LightboxItem {
   calories?: number | string;
   is_veg?: number | boolean;
   is_bestseller?: number | boolean;
+  net_weight?: string;
+  shelf_life?: string;
   conceptTheme?: "coquette" | "retro" | "popart" | "earth" | "metro" | "manga" | "circus" | "luxury";
 }
 
