@@ -5,13 +5,14 @@ import { Search, Sparkles, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import ConceptAHeader from "@/components/concept-a/Header";
 import ConceptAFooter from "@/components/concept-a/Footer";
 import ConceptAFoodCard from "@/components/concept-a/FoodCard";
+import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
 import * as api from "@/lib/api";
 import { CONCEPT_A_BRAND } from "@/lib/concept-catalogs";
 
 export default function ConceptAMenuPage() {
   const [items, setItems] = useState<any[]>(CONCEPT_A_BRAND.products);
   const [categories, setCategories] = useState<any[]>(CONCEPT_A_BRAND.categories);
-  const [loading, setLoading] = useState(false);
+  const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   // Filters
   const [search, setSearch] = useState("");
@@ -20,7 +21,6 @@ export default function ConceptAMenuPage() {
   const [sortBy, setSortBy] = useState("default");
 
   useEffect(() => {
-    // Keep Concept A's dedicated artisan preserves, biscuits & confections
     setItems(CONCEPT_A_BRAND.products);
     setCategories(CONCEPT_A_BRAND.categories);
   }, []);
@@ -59,26 +59,26 @@ export default function ConceptAMenuPage() {
   }, [items, search, selectedCategory, dietFilter, sortBy]);
 
   return (
-    <div className="bg-[#FFF8F9] min-h-screen text-[#3D2D2E] flex flex-col">
+    <div className="bg-[#0A0B0E] min-h-screen text-[#F7F5F0] flex flex-col selection:bg-[#C5A059] selection:text-[#0A0B0E]">
       <ConceptAHeader />
 
       {/* Page Hero */}
-      <section className="pt-12 pb-8 border-b border-rose-100 bg-[#FFF0F3]/40">
+      <section className="pt-16 pb-12 border-b border-[#C5A059]/20 bg-[#0E1015]">
         <div className="max-w-7xl mx-auto px-6 text-center space-y-3">
-          <span className="px-3 py-1 rounded-full bg-white border border-rose-200 text-[#E07A86] text-xs font-bold uppercase tracking-wider inline-block">
-            🎀 Boutique Pantry &amp; Confections Shop
+          <span className="px-3.5 py-1 rounded-full bg-[#16181F] border border-[#C5A059]/40 text-[#C5A059] text-xs font-mono font-bold uppercase tracking-widest inline-block">
+            ✦ Haute Cacao &bull; Reserve Pantry Vault
           </span>
-          <h1 className="font-coquette-serif font-black text-4xl sm:text-5xl text-[#3D2D2E]">
-            Artisanal Packaged Pantry
+          <h1 className="font-serif font-black text-4xl sm:text-5xl text-[#F7F5F0] tracking-tight">
+            Curated Reserve Catalog
           </h1>
-          <p className="text-xs sm:text-sm text-gray-600 max-w-lg mx-auto">
-            Small-batch fruit preserves, stone-milled biscuits, slow-simmered sauces, and bean-to-bar chocolates in collectible pastel jars.
+          <p className="text-xs sm:text-sm text-[#A89F91] max-w-lg mx-auto font-light">
+            Single-estate 85% bean-to-bar cacao blocks, wild honeycomb jars, 24K gold-dusted sablés, and cold-extracted coffee elixirs sealed in luxury packaging.
           </p>
         </div>
       </section>
 
       {/* Filter & Search Bar */}
-      <section className="py-6 border-b border-rose-100 bg-white sticky top-[68px] z-20 shadow-sm">
+      <section className="py-6 border-b border-[#C5A059]/20 bg-[#13151A] sticky top-[68px] z-20 shadow-xl">
         <div className="max-w-7xl mx-auto px-6 space-y-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Input */}
@@ -88,46 +88,42 @@ export default function ConceptAMenuPage() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search pantry jars, snacks, confections..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-full border border-rose-200 bg-rose-50/40 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
+                placeholder="Search dark cacao, honeycomb, sablés..."
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#C5A059]/30 bg-[#0A0B0E] text-[#F7F5F0] placeholder-gray-500 text-xs focus:outline-none focus:border-[#C5A059]"
               />
             </div>
 
             {/* Diet & Sort Controls */}
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
               {/* Diet Pills */}
-              <div className="flex items-center gap-1 bg-rose-50/70 p-1 rounded-full border border-rose-200">
+              <div className="flex items-center gap-1 bg-[#0A0B0E] p-1 rounded-xl border border-[#C5A059]/30">
                 <button
                   onClick={() => setDietFilter("all")}
-                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition ${
-                    dietFilter === "all" ? "bg-[#E07A86] text-white" : "text-gray-600"
+                  className={`px-3 py-1 rounded-lg text-xs font-mono transition ${
+                    dietFilter === "all"
+                      ? "bg-[#C5A059] text-[#0A0B0E] font-bold"
+                      : "text-gray-400 hover:text-white"
                   }`}
                 >
                   All
                 </button>
                 <button
                   onClick={() => setDietFilter("veg")}
-                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition ${
-                    dietFilter === "veg" ? "bg-emerald-600 text-white" : "text-emerald-800"
+                  className={`px-3 py-1 rounded-lg text-xs font-mono transition ${
+                    dietFilter === "veg"
+                      ? "bg-[#C5A059] text-[#0A0B0E] font-bold"
+                      : "text-gray-400 hover:text-white"
                   }`}
                 >
-                  Veg 🟢
-                </button>
-                <button
-                  onClick={() => setDietFilter("non-veg")}
-                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition ${
-                    dietFilter === "non-veg" ? "bg-rose-600 text-white" : "text-rose-800"
-                  }`}
-                >
-                  Non-Veg 🔴
+                  🌱 Vegan / Plant-Based
                 </button>
               </div>
 
-              {/* Sort Selector */}
+              {/* Sort Dropdown */}
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 rounded-full border border-rose-200 bg-white text-xs font-semibold text-gray-700 focus:outline-none"
+                className="bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs font-mono text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
               >
                 <option value="default">Sort: Recommended</option>
                 <option value="price-low">Price: Low to High</option>
@@ -140,71 +136,62 @@ export default function ConceptAMenuPage() {
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide whitespace-nowrap transition ${
+              className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider uppercase transition whitespace-nowrap ${
                 selectedCategory === "all"
-                  ? "bg-[#E07A86] text-white shadow-sm"
-                  : "bg-rose-50/60 text-[#3D2D2E] hover:bg-rose-100/60 border border-rose-200/60"
+                  ? "bg-[#C5A059] text-[#0A0B0E] font-bold shadow-md shadow-[#C5A059]/20"
+                  : "bg-[#0A0B0E] text-[#A89F91] border border-[#C5A059]/20 hover:text-white hover:border-[#C5A059]"
               }`}
             >
-              All Dishes ({items.length})
+              All Provisions ({items.length})
             </button>
-            {categories.map((cat) => (
+            {categories.map((c) => (
               <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.name)}
-                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide whitespace-nowrap transition ${
-                  selectedCategory.toLowerCase() === cat.name.toLowerCase()
-                    ? "bg-[#E07A86] text-white shadow-sm"
-                    : "bg-rose-50/60 text-[#3D2D2E] hover:bg-rose-100/60 border border-rose-200/60"
+                key={c.id}
+                onClick={() => setSelectedCategory(c.name)}
+                className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider uppercase transition whitespace-nowrap ${
+                  selectedCategory.toLowerCase() === c.name.toLowerCase()
+                    ? "bg-[#C5A059] text-[#0A0B0E] font-bold shadow-md shadow-[#C5A059]/20"
+                    : "bg-[#0A0B0E] text-[#A89F91] border border-[#C5A059]/20 hover:text-white hover:border-[#C5A059]"
                 }`}
               >
-                {cat.name}
+                {c.name}
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Menu Catalog Grid */}
-      <section className="py-12 flex-1">
-        <div className="max-w-7xl mx-auto px-6">
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <div key={n} className="h-80 bg-white rounded-3xl animate-pulse border border-rose-100" />
-              ))}
-            </div>
-          ) : filteredItems.length === 0 ? (
-            <div className="py-20 text-center space-y-4">
-              <span className="text-4xl">🧁</span>
-              <h3 className="font-coquette-serif font-bold text-xl text-gray-800">
-                No culinary matches found
-              </h3>
-              <p className="text-xs text-gray-500 max-w-sm mx-auto">
-                Try loosening your search keywords or reset category filters to view all fresh items.
-              </p>
-              <button
-                onClick={() => {
-                  setSearch("");
-                  setSelectedCategory("all");
-                  setDietFilter("all");
-                }}
-                className="px-6 py-2.5 rounded-full bg-[#E07A86] text-white text-xs font-bold"
-              >
-                Reset All Filters
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredItems.map((item) => (
-                <ConceptAFoodCard key={item.id} item={item} />
-              ))}
-            </div>
-          )}
-        </div>
+      {/* Products Grid */}
+      <section className="py-16 max-w-7xl mx-auto px-6 flex-1 w-full">
+        {filteredItems.length === 0 ? (
+          <div className="text-center py-20 bg-[#13151A] rounded-2xl border border-[#C5A059]/30">
+            <span className="text-3xl text-[#C5A059]">✦</span>
+            <h3 className="font-serif font-bold text-lg text-[#F7F5F0] mt-3">
+              No Reserve Provisions Found
+            </h3>
+            <p className="text-xs text-[#A89F91] mt-1">
+              Try adjusting your search terms or dietary filter.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredItems.map((item) => (
+              <ConceptAFoodCard
+                key={item.id}
+                item={item}
+                onOpenLightbox={(dish) => setActiveLightboxItem(dish)}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       <ConceptAFooter />
+
+      <CinematicLightbox
+        item={activeLightboxItem}
+        onClose={() => setActiveLightboxItem(null)}
+      />
     </div>
   );
 }

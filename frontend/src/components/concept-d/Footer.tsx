@@ -18,7 +18,6 @@ export default function ConceptDFooter() {
 
   return (
     <footer className="bg-[#1E3F20] text-[#FDFBF7] border-t border-[#5E6B4E]/30 relative overflow-hidden">
-      {/* Decorative Organic Wave / Curve */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Top Botanical Headline */}
         <div className="border-b border-[#5E6B4E]/40 pb-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -28,30 +27,30 @@ export default function ConceptDFooter() {
               <span>Grounded &bull; Pure &bull; Sustainable</span>
             </span>
             <h2 className="text-3xl sm:text-5xl font-serif font-normal text-[#FDFBF7] tracking-tight">
-              PEACHY EARTH <span className="text-[#C86D51] italic">Artisanal Table</span>
+              TERRA PURE <span className="text-[#C86D51] italic">Farmland Provisions</span>
             </h2>
           </div>
 
           <div className="text-xs font-serif text-[#A3B8A0] max-w-sm">
-            Rooted in regenerative farming and whole-grain sourdough traditions. Celebrating seasonal harvests from local estates.
+            Rooted in regenerative living soils, single-estate cold-pressed oils, and ancient stone-ground grain milling. Celebrating seasonal farmstead harvests.
           </div>
         </div>
 
         {/* 4 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
-          {/* Col 1: Seasonal Hours & Location */}
+          {/* Col 1: Seasonal Dispatch & Packaging Facility */}
           <div className="space-y-4">
             <h3 className="font-serif text-base text-[#FDFBF7] font-medium tracking-wide">
-              Conservatory Hours
+              Farmstead Dispatch Hours
             </h3>
             <p className="text-xs font-serif text-[#A3B8A0] leading-relaxed">
-              Tuesday &ndash; Sunday<br />
-              Midday Lunch: 12:00 PM &ndash; 3:30 PM<br />
-              Candlelit Dinner: 7:00 PM &ndash; 11:00 PM<br />
-              <span className="text-[#7B8E78]">Mondays reserved for garden harvesting.</span>
+              Monday &ndash; Saturday<br />
+              Dispatch Operations: 8:00 AM &ndash; 6:00 PM<br />
+              Direct Farm-to-Pantry Dispatch Across India.<br />
+              <span className="text-[#7B8E78]">Sundays reserved for farm resting &amp; soil compost cycles.</span>
             </p>
             <div className="pt-2">
-              <span className="text-[10px] font-serif uppercase tracking-widest text-[#7B8E78] block">Conservatory Grounds</span>
+              <span className="text-[10px] font-serif uppercase tracking-widest text-[#7B8E78] block">Central Mill &amp; Packaging</span>
               <p className="text-xs font-serif text-[#FDFBF7] mt-0.5">
                 8 Greenhouse Lane, Mehrauli Heritage Greens, New Delhi 110030
               </p>
@@ -61,12 +60,12 @@ export default function ConceptDFooter() {
           {/* Col 2: Navigation */}
           <div className="space-y-4">
             <h3 className="font-serif text-base text-[#FDFBF7] font-medium tracking-wide">
-              The Carte
+              The Provisions
             </h3>
             <ul className="space-y-2 text-xs font-serif text-[#A3B8A0]">
               <li>
                 <Link href="/concept-d/menu/" className="hover:text-white transition">
-                  Seasonal Harvest Carte
+                  Complete Harvest Provisions
                 </Link>
               </li>
               <li>
@@ -76,12 +75,12 @@ export default function ConceptDFooter() {
               </li>
               <li>
                 <Link href="/concept-d/gallery/" className="hover:text-white transition">
-                  Conservatory &amp; Gardens
+                  Estate Soils &amp; Harvest Archives
                 </Link>
               </li>
               <li>
                 <Link href="/concept-d/reservations/" className="hover:text-white transition">
-                  Table Reservations
+                  B2B Farm Share &amp; Bulk Co-op
                 </Link>
               </li>
             </ul>
@@ -93,11 +92,11 @@ export default function ConceptDFooter() {
               Estate Partners
             </h3>
             <ul className="space-y-2 text-xs font-serif text-[#A3B8A0]">
-              <li>Himachal Mountain Orchards</li>
-              <li>Coorg Single-Origin Arabica</li>
-              <li>Nilgiris Wild Botanical Teas</li>
-              <li>Rajasthan Cold-Pressed Mustard Oil</li>
-              <li>Punjab Organic Ancient Emmer Wheat</li>
+              <li>Himachal Mountain Wild Apiary</li>
+              <li>Coorg Shade-Grown Heritage Estate</li>
+              <li>Nilgiris Wild Botanical Herbalists</li>
+              <li>Rajasthan Cold-Pressed Mustard Oil Mills</li>
+              <li>Punjab Organic Ancient Khapli Emmer Wheat</li>
             </ul>
           </div>
 
@@ -107,7 +106,7 @@ export default function ConceptDFooter() {
               Harvest Letter
             </h3>
             <p className="text-xs font-serif text-[#A3B8A0] leading-relaxed">
-              Receive notes on seasonal crop changes, foraging dinners, and greenhouse tastings.
+              Receive notes on seasonal crop changes, direct harvest releases, and cold-pressed oil pressings.
             </p>
 
             {subscribed ? (
@@ -138,20 +137,13 @@ export default function ConceptDFooter() {
         {/* Bottom Credits & Copyright */}
         <div className="border-t border-[#5E6B4E]/30 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-serif text-[#7B8E78] gap-4">
           <p>
-            &copy; {new Date().getFullYear()} PEACHY EARTH BOTANICAL DINING. ALL CULINARY RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} TERRA PURE FARMLAND PROVISIONS. ALL REGENERATIVE SOIL RIGHTS RESERVED.
           </p>
           <div className="flex items-center gap-6 text-[11px]">
-            <Link href="/" className="text-[#C86D51] hover:underline">
-              Concept Hub
-            </Link>
-            <Link href="/concept-a/" className="hover:text-white">
-              Concept A (Coquette)
-            </Link>
-            <Link href="/concept-b/" className="hover:text-white">
-              Concept B (Retro)
-            </Link>
-            <Link href="/concept-c/" className="hover:text-white">
-              Concept C (Pop Art)
+            <span className="text-[#C86D51]">PACKAGED CPG SAMPLE 04</span>
+            <span>&bull;</span>
+            <Link href="/" className="hover:text-white underline">
+              Switch Concepts
             </Link>
           </div>
         </div>

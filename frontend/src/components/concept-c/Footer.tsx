@@ -34,7 +34,7 @@ export default function ConceptCFooter() {
               ★ TASTE THE ART REVOLUTION ★
             </span>
             <h2 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter leading-none text-white">
-              PEACHY <span className="text-[#FF007F]">POP</span> ATELIER
+              POP <span className="text-[#FF007F]">FLAVOR</span> LAB
             </h2>
           </div>
 
@@ -43,10 +43,10 @@ export default function ConceptCFooter() {
               HIGH FLAVOR
             </span>
             <span className="px-4 py-2 bg-[#0047FF] text-white font-black uppercase text-xs border-2 border-black rotate-2 shadow-[3px_3px_0px_#FFE600]">
-              LOUD DESIGN
+              LOUD PACKAGING
             </span>
             <span className="px-4 py-2 bg-[#FF6B00] text-white font-black uppercase text-xs border-2 border-black -rotate-1 shadow-[3px_3px_0px_#000]">
-              NEW DELHI
+              D2C CPG
             </span>
           </div>
         </div>
@@ -57,16 +57,16 @@ export default function ConceptCFooter() {
           <div className="space-y-4">
             <h3 className="text-lg font-black uppercase tracking-wider text-[#FFE600] flex items-center gap-2">
               <Zap className="w-4 h-4 fill-current" />
-              <span>Canteen Hours</span>
+              <span>Fulfillment &amp; Lab Hours</span>
             </h3>
-            <p className="text-sm font-medium text-gray-300 leading-relaxed">
-              Mon &ndash; Thu: 12:00 PM &ndash; 11:00 PM<br />
-              Fri &ndash; Sun: 11:30 AM &ndash; Midnight
+            <p className="text-sm font-medium text-gray-300 leading-relaxed font-mono">
+              Mon &ndash; Sat: 9:00 AM &ndash; 8:00 PM<br />
+              Sunday: Automated Packing Queue
             </p>
             <div className="pt-2">
-              <span className="text-xs uppercase font-bold text-gray-400 block mb-1">Location</span>
+              <span className="text-xs uppercase font-bold text-gray-400 block mb-1">Fulfillment Hub</span>
               <p className="text-sm text-gray-200 font-medium">
-                42 Art District Avenue, Hauz Khas, New Delhi 110016
+                42 Art District Avenue, Okhla Phase III, New Delhi 110020
               </p>
             </div>
           </div>
@@ -79,13 +79,13 @@ export default function ConceptCFooter() {
             <ul className="space-y-2 text-sm font-bold uppercase">
               <li>
                 <Link href="/concept-c/menu/" className="hover:text-[#FFE600] transition flex items-center gap-1">
-                  <span>Pop Art Menu</span>
+                  <span>Pop Packaged Catalog</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </li>
               <li>
                 <Link href="/concept-c/about/" className="hover:text-[#FFE600] transition flex items-center gap-1">
-                  <span>The Manifesto</span>
+                  <span>The Flavor Manifesto</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </li>
@@ -97,7 +97,7 @@ export default function ConceptCFooter() {
               </li>
               <li>
                 <Link href="/concept-c/reservations/" className="hover:text-[#FFE600] transition flex items-center gap-1">
-                  <span>Table Reservations</span>
+                  <span>Wholesale &amp; Stockist Portal</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </li>
@@ -112,22 +112,22 @@ export default function ConceptCFooter() {
             <ul className="space-y-2 text-sm font-bold uppercase">
               <li>
                 <Link href="/concept-c/cart/" className="hover:text-[#FFE600] transition">
-                  My Cart
+                  My Pack Cart
                 </Link>
               </li>
               <li>
                 <Link href="/concept-c/wishlist/" className="hover:text-[#FFE600] transition">
-                  Saved Favorites
+                  Saved Flavors
                 </Link>
               </li>
               <li>
                 <Link href="/concept-c/order-tracking/" className="hover:text-[#FFE600] transition">
-                  Live Food Tracking
+                  Track Package Dispatch
                 </Link>
               </li>
               <li>
                 <Link href="/concept-c/account/" className="hover:text-[#FFE600] transition">
-                  Account & History
+                  Account &amp; History
                 </Link>
               </li>
             </ul>
@@ -136,10 +136,10 @@ export default function ConceptCFooter() {
           {/* Col 4: Newsletter Box */}
           <div className="bg-[#1A1A1A] p-6 border-3 border-white/20 rounded-xl space-y-4">
             <h3 className="text-lg font-black uppercase tracking-wider text-[#FFE600]">
-              Pop News & Drops
+              Pop News &amp; Drops
             </h3>
             <p className="text-xs text-gray-400 font-medium leading-relaxed">
-              Subscribe for secret pop-up invitations, limited menu editions and chef drops.
+              Subscribe for secret flavor laboratory drops, chili crunch limited runs, and artist packaging editions.
             </p>
 
             {subscribed ? (
@@ -170,20 +170,13 @@ export default function ConceptCFooter() {
         {/* Bottom Credits & Copyright */}
         <div className="border-t-2 border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
           <p className="font-mono">
-            &copy; {new Date().getFullYear()} PEACHY POP RESTAURANT. ALL ART RESERVED.
+            &copy; {new Date().getFullYear()} POP FLAVOR LAB D2C. ALL ART RESERVED.
           </p>
           <div className="flex items-center gap-6 font-bold uppercase text-[11px]">
-            <Link href="/" className="text-[#FFE600] hover:underline">
-              Concept Hub
-            </Link>
-            <Link href="/concept-a/" className="hover:text-white">
-              Concept A (Coquette)
-            </Link>
-            <Link href="/concept-b/" className="hover:text-white">
-              Concept B (Retro)
-            </Link>
-            <Link href="/concept-d/" className="hover:text-white">
-              Concept D (Earth)
+            <span className="text-[#FFE600]">PACKAGED CPG SAMPLE 03</span>
+            <span>&bull;</span>
+            <Link href="/" className="hover:text-white underline">
+              Switch Concepts
             </Link>
           </div>
         </div>

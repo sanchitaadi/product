@@ -56,9 +56,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Peachy Plate 2.0 — Good Food. Cute Moods.",
+  title: "Peachy Plate — Packaged Food & D2C Brand Ecosystem",
   description:
-    "Three distinct, premium restaurant website concepts: Coquette Pinterest, Retro Gen-Z, and Luxury Cute. Handcrafted sourdough pizzas, pastas, desserts, and cocktails in New Delhi.",
+    "Explore 4 fully-realized packaged food brand sample designs: Maison Reserve Haute Cacao, Super Crunch Co. 90s Bodega, Pop Flavor Lab CPG, and Terra Pure Farmstead Provisions.",
 };
 
 export default function RootLayout({

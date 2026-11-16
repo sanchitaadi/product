@@ -25,7 +25,7 @@ export default function ConceptDHeader() {
     { label: "Our Story", href: "/concept-d/about/" },
     { label: "Conservatory", href: "/concept-d/gallery/" },
     { label: "Wholesale & Farm Share", href: "/concept-d/reservations/" },
-    { label: "Diner Notes", href: "/concept-d/reviews/" },
+    { label: "Harvest Reviews", href: "/concept-d/reviews/" },
     { label: "Contact", href: "/concept-d/contact/" },
   ];
 
@@ -66,7 +66,7 @@ export default function ConceptDHeader() {
                 PEACHY EARTH
               </span>
               <span className="text-[9px] font-serif uppercase tracking-widest text-[#7B8E78]">
-                Artisanal Table &bull; Est. 2026
+                Farmland Provisions &bull; Est. 2026
               </span>
             </div>
           </Link>

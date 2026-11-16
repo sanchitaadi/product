@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, Truck, Store, ArrowRight, Lock, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Truck, Store, ArrowRight, Lock, CheckCircle2, Package } from "lucide-react";
 import ConceptAHeader from "@/components/concept-a/Header";
 import ConceptAFooter from "@/components/concept-a/Footer";
 import { useCart } from "@/context/CartContext";
@@ -58,40 +58,39 @@ export default function ConceptACheckoutPage() {
       return;
     }
     if (phone.length < 8) {
-      setErrorMsg("Please provide a valid contact phone number.");
+      setErrorMsg("Please enter a valid phone number.");
       return;
     }
-    if (orderType === "delivery" && (!address.trim() || !pincode.trim())) {
-      setErrorMsg("Please provide complete delivery street address and pincode.");
+    if (orderType === "delivery" && (!address.trim() || !city.trim() || !pincode.trim())) {
+      setErrorMsg("Please complete your delivery address details.");
       return;
     }
 
     setSubmitting(true);
     try {
-      const payload = {
-        name,
-        phone,
-        email,
+      const res = await api.createOrder({
         order_type: orderType,
         payment_method: paymentMethod,
-        address,
+        customer_name: name,
+        customer_phone: phone,
+        customer_email: email,
+        delivery_address: address,
         city,
         pincode,
         landmark,
-        special_instructions: instructions,
-        concept_source: "Concept A — Coquette Pinterest",
-      };
+        cooking_instructions: instructions ? `[Cold-Chain Dispatch Note: ${instructions}]` : undefined,
+        concept_source: "Concept A — Maison Reserve Provisions",
+      });
 
-      const res = await api.createOrder(payload);
       if (res.success && res.order_number) {
+        showToast("Order placed successfully! ✦", "success");
         await refreshCart();
-        showToast("Feast confirmed! Ribbons are being tied 🎀", "success");
-        router.push(`/concept-a/order-confirmation/?order=${encodeURIComponent(res.order_number)}`);
+        router.push(`/concept-a/order-confirmation/?order_number=${res.order_number}`);
       } else {
-        setErrorMsg(res.error || "Order failed. Please verify your details.");
+        setErrorMsg(res.error || "Unable to process order. Please try again.");
       }
     } catch {
-      setErrorMsg("Connection issue with ordering backend. Please retry.");
+      setErrorMsg("Network error communicating with order server.");
     } finally {
       setSubmitting(false);
     }
@@ -99,21 +98,21 @@ export default function ConceptACheckoutPage() {
 
   if (cart.items.length === 0) {
     return (
-      <div className="bg-[#FFF8F9] min-h-screen text-[#3D2D2E] flex flex-col">
+      <div className="bg-[#0A0B0E] min-h-screen text-[#F7F5F0] flex flex-col selection:bg-[#C5A059] selection:text-[#0A0B0E]">
         <ConceptAHeader />
-        <div className="max-w-md mx-auto px-6 py-32 text-center space-y-4">
-          <span className="text-4xl">🧁</span>
-          <h2 className="font-coquette-serif font-bold text-2xl text-gray-800">
-            No dishes in feast box
+        <div className="py-24 text-center max-w-md mx-auto space-y-4 px-6 flex-1">
+          <span className="text-4xl text-[#C5A059]">✦</span>
+          <h2 className="font-serif font-bold text-2xl text-[#F7F5F0]">
+            Your Reserve Hamper is Empty
           </h2>
-          <p className="text-xs text-gray-500">
-            Please add dishes before heading to checkout.
+          <p className="text-xs text-[#A89F91]">
+            Please select reserve provisions before proceeding to checkout.
           </p>
           <Link
             href="/concept-a/menu/"
-            className="inline-block px-6 py-3 rounded-full bg-[#E07A86] text-white text-xs font-bold uppercase tracking-wider"
+            className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#D4AF37] text-[#0A0B0E] text-xs font-mono font-bold uppercase tracking-widest"
           >
-            Explore Menu
+            Explore Reserve Catalog
           </Link>
         </div>
         <ConceptAFooter />
@@ -122,58 +121,58 @@ export default function ConceptACheckoutPage() {
   }
 
   return (
-    <div className="bg-[#FFF8F9] min-h-screen text-[#3D2D2E] flex flex-col">
+    <div className="bg-[#0A0B0E] min-h-screen text-[#F7F5F0] flex flex-col selection:bg-[#C5A059] selection:text-[#0A0B0E]">
       <ConceptAHeader />
 
-      <section className="pt-10 pb-6 border-b border-rose-100 bg-[#FFF0F3]/40">
+      <section className="pt-16 pb-10 border-b border-[#C5A059]/20 bg-[#0E1015]">
         <div className="max-w-7xl mx-auto px-6">
-          <span className="text-xs font-bold text-[#E07A86] uppercase tracking-wider block mb-1">
-            🎀 Final Step &bull; Fresh to Order
+          <span className="text-xs font-mono font-bold text-[#C5A059] uppercase tracking-widest block mb-1">
+            ✦ Final Step &bull; Climate-Controlled Packaging
           </span>
-          <h1 className="font-coquette-serif font-black text-3xl sm:text-4xl text-[#3D2D2E]">
-            Finalize Your Peachy Order
+          <h1 className="font-serif font-black text-3xl sm:text-4xl text-[#F7F5F0]">
+            Finalize Cold-Chain Dispatch Order
           </h1>
         </div>
       </section>
 
-      <section className="py-12 flex-1">
+      <section className="py-16 flex-1">
         <div className="max-w-7xl mx-auto px-6">
           {errorMsg && (
-            <div className="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-900 flex items-center gap-2">
+            <div className="mb-6 p-4 rounded-xl bg-red-900/30 border border-red-500/50 text-xs font-semibold text-red-200 flex items-center gap-2">
               <span>⚠️</span>
               <span>{errorMsg}</span>
             </div>
           )}
 
           <form onSubmit={handleSubmitOrder} className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Form Steps (2 cols) */}
+            {/* Form Steps */}
             <div className="lg:col-span-2 space-y-8">
-              {/* Step 1: Order Type */}
-              <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-sm space-y-4">
-                <span className="text-xs uppercase font-bold text-[#E07A86] tracking-wider block">
-                  Step 1 &bull; Dining Preference
+              {/* Step 1: Dispatch Preference */}
+              <div className="p-6 rounded-2xl bg-[#13151A] border border-[#C5A059]/30 shadow-xl space-y-4">
+                <span className="text-xs font-mono uppercase font-bold text-[#C5A059] tracking-widest block">
+                  Step 1 &bull; Dispatch Method
                 </span>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <button
                     type="button"
                     onClick={() => {
                       setOrderType("delivery");
                       setPaymentMethod("cod");
                     }}
-                    className={`p-4 rounded-2xl border text-left flex items-center gap-3 transition ${
+                    className={`p-4 rounded-xl border text-left flex items-center gap-3 transition ${
                       orderType === "delivery"
-                        ? "bg-rose-50/70 border-[#E07A86] text-[#3D2D2E]"
-                        : "bg-white border-gray-200 text-gray-600 hover:border-gray-300"
+                        ? "bg-[#16181F] border-[#C5A059] text-[#F7F5F0] shadow-md shadow-[#C5A059]/10"
+                        : "bg-[#0A0B0E] border-[#C5A059]/20 text-[#A89F91] hover:border-[#C5A059]/50"
                     }`}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-lg shadow-sm">
-                      🛵
+                    <div className="w-10 h-10 rounded-xl bg-[#0A0B0E] border border-[#C5A059]/40 flex items-center justify-center text-lg text-[#C5A059]">
+                      ✈
                     </div>
                     <div>
-                      <span className="font-bold text-xs uppercase tracking-wide block">
-                        Home Delivery
+                      <span className="font-serif font-bold text-xs uppercase tracking-wide block text-[#F7F5F0]">
+                        Pan-India Express Dispatch
                       </span>
-                      <span className="text-[11px] text-gray-500">Delivered hot in 30-45 mins</span>
+                      <span className="text-[11px] text-[#A89F91]">Insulated cold-box with gel packs</span>
                     </div>
                   </button>
 
@@ -183,47 +182,47 @@ export default function ConceptACheckoutPage() {
                       setOrderType("takeaway");
                       setPaymentMethod("pay_at_pickup");
                     }}
-                    className={`p-4 rounded-2xl border text-left flex items-center gap-3 transition ${
+                    className={`p-4 rounded-xl border text-left flex items-center gap-3 transition ${
                       orderType === "takeaway"
-                        ? "bg-rose-50/70 border-[#E07A86] text-[#3D2D2E]"
-                        : "bg-white border-gray-200 text-gray-600 hover:border-gray-300"
+                        ? "bg-[#16181F] border-[#C5A059] text-[#F7F5F0] shadow-md shadow-[#C5A059]/10"
+                        : "bg-[#0A0B0E] border-[#C5A059]/20 text-[#A89F91] hover:border-[#C5A059]/50"
                     }`}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-lg shadow-sm">
-                      🛍️
+                    <div className="w-10 h-10 rounded-xl bg-[#0A0B0E] border border-[#C5A059]/40 flex items-center justify-center text-lg text-[#C5A059]">
+                      ✦
                     </div>
                     <div>
-                      <span className="font-bold text-xs uppercase tracking-wide block">
-                        Self Takeaway
+                      <span className="font-serif font-bold text-xs uppercase tracking-wide block text-[#F7F5F0]">
+                        Atelier Direct Collection
                       </span>
-                      <span className="text-[11px] text-gray-500">Ready at Garden Ave bistro</span>
+                      <span className="text-[11px] text-[#A89F91]">Pick up at Okhla Phase III Facility</span>
                     </div>
                   </button>
                 </div>
               </div>
 
-              {/* Step 2: Customer Contact */}
-              <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-sm space-y-4">
-                <span className="text-xs uppercase font-bold text-[#E07A86] tracking-wider block">
-                  Step 2 &bull; Customer Information
+              {/* Step 2: Recipient Details */}
+              <div className="p-6 rounded-2xl bg-[#13151A] border border-[#C5A059]/30 shadow-xl space-y-4">
+                <span className="text-xs font-mono uppercase font-bold text-[#C5A059] tracking-widest block">
+                  Step 2 &bull; Recipient &amp; Destination Details
                 </span>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold text-gray-700 block mb-1">
-                      Full Name *
+                    <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                      Recipient Name *
                     </label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Aanya Sharma"
-                      className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
+                      placeholder="e.g. Julian Sterling"
+                      className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
                     />
                   </div>
-
                   <div>
-                    <label className="text-xs font-bold text-gray-700 block mb-1">
+                    <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
                       Phone Number *
                     </label>
                     <input
@@ -231,223 +230,179 @@ export default function ConceptACheckoutPage() {
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 98112 34567"
-                      className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
-                    />
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label className="text-xs font-bold text-gray-700 block mb-1">
-                      Email Address (for Receipt & Order Confirmation) *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="aanya@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
+                      placeholder="+91 98765 43210"
+                      className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
                     />
                   </div>
                 </div>
-              </div>
 
-              {/* Step 3: Destination Address (if delivery) */}
-              {orderType === "delivery" && (
-                <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-sm space-y-4">
-                  <span className="text-xs uppercase font-bold text-[#E07A86] tracking-wider block">
-                    Step 3 &bull; Delivery Destination
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="sm:col-span-2">
-                      <label className="text-xs font-bold text-gray-700 block mb-1">
-                        Street Address / Apartment *
-                      </label>
-                      <textarea
-                        required
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        rows={2}
-                        placeholder="Flat 402, Garden Residences, 24 Garden Ave..."
-                        className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
-                      />
-                    </div>
+                <div>
+                  <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                    Email Address (for Dispatch Tracking)
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="julian@estate.com"
+                    className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
+                  />
+                </div>
 
+                {orderType === "delivery" && (
+                  <>
                     <div>
-                      <label className="text-xs font-bold text-gray-700 block mb-1">
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-xs font-bold text-gray-700 block mb-1">
-                        Postal Pincode *
+                      <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                        Shipping Address (Street, Building, Suite) *
                       </label>
                       <input
                         type="text"
                         required
-                        value={pincode}
-                        onChange={(e) => setPincode(e.target.value)}
-                        placeholder="110003"
-                        className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="House / Penthouse / Estate No., Street"
+                        className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
                       />
                     </div>
 
-                    <div className="sm:col-span-2">
-                      <label className="text-xs font-bold text-gray-700 block mb-1">
-                        Prominent Landmark (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        value={landmark}
-                        onChange={(e) => setLandmark(e.target.value)}
-                        placeholder="Near Lodhi Gardens Gate 2"
-                        className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Step 4: Payment Selection */}
-              <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-sm space-y-4">
-                <span className="text-xs uppercase font-bold text-[#E07A86] tracking-wider block">
-                  Step 4 &bull; Payment Mode
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {orderType === "delivery" ? (
-                    <div
-                      onClick={() => setPaymentMethod("cod")}
-                      className="p-4 rounded-2xl border bg-rose-50/70 border-[#E07A86] text-xs font-bold text-[#3D2D2E] flex items-center justify-between cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="text-xl">💵</span>
-                        <div>
-                          <span>Cash on Delivery (COD)</span>
-                          <span className="text-[10px] text-gray-500 font-normal block">
-                            Pay with cash or UPI on delivery
-                          </span>
-                        </div>
-                      </div>
-                      <CheckCircle2 className="w-5 h-5 text-[#E07A86]" />
-                    </div>
-                  ) : (
-                    <div
-                      onClick={() => setPaymentMethod("pay_at_pickup")}
-                      className="p-4 rounded-2xl border bg-rose-50/70 border-[#E07A86] text-xs font-bold text-[#3D2D2E] flex items-center justify-between cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="text-xl">🏪</span>
-                        <div>
-                          <span>Pay at Pickup Counter</span>
-                          <span className="text-[10px] text-gray-500 font-normal block">
-                            Cash / Cards accepted at bistro
-                          </span>
-                        </div>
-                      </div>
-                      <CheckCircle2 className="w-5 h-5 text-[#E07A86]" />
-                    </div>
-                  )}
-
-                  <div className="p-4 rounded-2xl border border-gray-200 bg-gray-50/80 text-xs text-gray-400 flex items-center justify-between cursor-not-allowed">
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-xl opacity-50">💳</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div>
-                        <span>Online Cards & Netbanking</span>
-                        <span className="text-[10px] text-gray-400 block">
-                          Razorpay / Stripe Gateway (Coming Soon)
-                        </span>
+                        <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                          City *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
+                          placeholder="New Delhi"
+                          className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                          PIN Code *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={pincode}
+                          onChange={(e) => setPincode(e.target.value)}
+                          placeholder="110020"
+                          className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                          Landmark
+                        </label>
+                        <input
+                          type="text"
+                          value={landmark}
+                          onChange={(e) => setLandmark(e.target.value)}
+                          placeholder="Near Diplomatic Enclave"
+                          className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
+                        />
                       </div>
                     </div>
-                    <Lock className="w-4 h-4 text-gray-400" />
-                  </div>
+                  </>
+                )}
+
+                <div>
+                  <label className="text-xs font-mono font-bold text-[#D1C7BD] uppercase tracking-wider block mb-1">
+                    Special Packaging &amp; Gifting Instructions
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={instructions}
+                    onChange={(e) => setInstructions(e.target.value)}
+                    placeholder="e.g. Include personalized handwritten calligraphy note or black wax seal..."
+                    className="w-full bg-[#0A0B0E] border border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A059]"
+                  />
                 </div>
               </div>
 
-              {/* Special Instructions */}
-              <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-sm space-y-2">
-                <label className="text-xs font-bold text-gray-700 block">
-                  Delivery / Packaging Notes (Optional)
-                </label>
-                <textarea
-                  value={instructions}
-                  onChange={(e) => setInstructions(e.target.value)}
-                  rows={2}
-                  placeholder="e.g. Please ring doorbell twice, tie extra pink ribbon for birthday..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50/30 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
-                />
+              {/* Step 3: Payment Method */}
+              <div className="p-6 rounded-2xl bg-[#13151A] border border-[#C5A059]/30 shadow-xl space-y-4">
+                <span className="text-xs font-mono uppercase font-bold text-[#C5A059] tracking-widest block">
+                  Step 3 &bull; Settlement Method
+                </span>
+                <div className="space-y-3">
+                  <label className="flex items-center gap-3 p-3.5 rounded-xl border border-[#C5A059]/30 bg-[#0A0B0E] cursor-pointer hover:border-[#C5A059]">
+                    <input
+                      type="radio"
+                      name="payment"
+                      checked={paymentMethod === "cod"}
+                      onChange={() => setPaymentMethod("cod")}
+                      className="accent-[#C5A059]"
+                    />
+                    <div className="text-xs">
+                      <strong className="block text-[#F7F5F0] font-mono">
+                        {orderType === "delivery" ? "Pay on Delivery (Cash / UPI / Card)" : "Pay at Atelier Pickup"}
+                      </strong>
+                      <span className="text-gray-400 text-[11px]">
+                        Inspect cold-seal packaging upon doorstep arrival before settling.
+                      </span>
+                    </div>
+                  </label>
+                </div>
               </div>
             </div>
 
-            {/* Sidebar Summary (1 col) */}
+            {/* Right Column: Order Summary */}
             <div className="space-y-6">
-              <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-sm space-y-5 sticky top-28">
-                <h3 className="font-coquette-serif font-bold text-lg text-[#3D2D2E]">
-                  Feast Review
+              <div className="bg-[#13151A] rounded-2xl p-6 border border-[#C5A059]/30 shadow-xl space-y-4 sticky top-28">
+                <h3 className="font-serif font-bold text-base text-[#F7F5F0] tracking-wide">
+                  Order Manifest
                 </h3>
 
-                {/* Items Mini List */}
-                <div className="max-h-56 overflow-y-auto space-y-3 pr-1 divide-y divide-rose-50">
-                  {cart.items.map((it) => (
-                    <div key={it.cart_key} className="pt-2 first:pt-0 flex justify-between text-xs">
+                <div className="space-y-3 max-h-60 overflow-y-auto divide-y divide-[#C5A059]/15 pr-1">
+                  {cart.items.map((item) => (
+                    <div key={item.cart_key} className="pt-2 first:pt-0 flex items-center justify-between text-xs">
                       <div>
-                        <span className="font-bold text-gray-900 block">{it.name} &times; {it.quantity}</span>
-                        {it.customization_options?.length > 0 && (
-                          <span className="text-[10px] text-gray-400 line-clamp-1">
-                            {it.customization_options.map((o) => o.name).join(", ")}
+                        <span className="font-serif font-bold text-[#F7F5F0] block">{item.name}</span>
+                        {item.special_instructions && (
+                          <span className="text-[10px] text-[#A89F91] font-mono">
+                            {item.quantity} &times; {item.special_instructions}
                           </span>
                         )}
                       </div>
-                      <span className="font-semibold text-gray-800">{api.formatPrice(it.line_total)}</span>
+                      <span className="font-mono text-[#C5A059] font-bold">
+                        {api.formatPrice(item.line_total)}
+                      </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="space-y-2 text-xs text-gray-600 border-t border-rose-100 pt-4">
+                <div className="space-y-2 text-xs font-mono text-[#D1C7BD] border-t border-[#C5A059]/20 pt-4">
                   <div className="flex justify-between">
-                    <span>Subtotal</span>
-                    <span className="font-semibold text-gray-900">{api.formatPrice(cart.subtotal)}</span>
+                    <span className="text-gray-400">Subtotal:</span>
+                    <span>{api.formatPrice(cart.subtotal)}</span>
                   </div>
                   {cart.discount_amount > 0 && (
-                    <div className="flex justify-between text-emerald-600 font-semibold">
-                      <span>Promo Savings</span>
+                    <div className="flex justify-between text-[#C5A059]">
+                      <span>Privilege Discount:</span>
                       <span>-{api.formatPrice(cart.discount_amount)}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
-                    <span>Delivery Fee</span>
-                    <span>
-                      {cart.delivery_fee === 0 ? (
-                        <span className="text-emerald-600 font-bold uppercase">Free</span>
-                      ) : (
-                        api.formatPrice(cart.delivery_fee)
-                      )}
-                    </span>
+                    <span className="text-gray-400">Insulated Shipping:</span>
+                    <span>{cart.delivery_fee === 0 ? "FREE" : api.formatPrice(cart.delivery_fee)}</span>
                   </div>
-                  <div className="flex justify-between pt-3 border-t border-rose-100 text-lg font-bold text-[#3D2D2E]">
-                    <span className="font-coquette-serif">Total Payable</span>
-                    <span className="font-coquette-serif">{api.formatPrice(cart.total)}</span>
-                  </div>
+                </div>
+
+                <div className="flex justify-between font-serif font-bold text-lg text-[#F7F5F0] border-t border-[#C5A059]/20 pt-3">
+                  <span>Grand Total:</span>
+                  <span className="text-[#C5A059]">{api.formatPrice(cart.total)}</span>
                 </div>
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-4 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-rose-200/50 hover:opacity-95 disabled:opacity-50 transition"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B38F46] text-[#0A0B0E] font-bold text-xs uppercase tracking-widest shadow-xl shadow-[#C5A059]/20 hover:brightness-110 transition disabled:opacity-50"
                 >
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>{submitting ? "Tying Ribbons & Booking..." : "Place Order Now 🎀"}</span>
+                  {submitting ? "Processing Order..." : "Confirm Cold-Chain Order ✦"}
                 </button>
-
-                <p className="text-[11px] text-gray-400 text-center leading-relaxed">
-                  Your order is prepared fresh by our culinary brigade in New Delhi.
-                </p>
               </div>
             </div>
           </form>
