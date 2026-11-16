@@ -64,16 +64,16 @@ export default function AdminLayout({ children, title, subtitle }: AdminLayoutPr
 
   const navItems = [
     { label: "Overview", href: "/admin/", icon: LayoutDashboard },
-    { label: "Orders", href: "/admin/orders/", icon: ShoppingBag },
-    { label: "Menu Management", href: "/admin/menu/", icon: UtensilsCrossed },
+    { label: "Orders & Shipping", href: "/admin/orders/", icon: ShoppingBag },
+    { label: "Product Catalog", href: "/admin/menu/", icon: UtensilsCrossed },
     { label: "Categories", href: "/admin/categories/", icon: Tags },
     { label: "Customers", href: "/admin/customers/", icon: Users },
-    { label: "Reservations", href: "/admin/reservations/", icon: Calendar },
-    { label: "Coupons", href: "/admin/coupons/", icon: TicketPercent },
-    { label: "Reviews", href: "/admin/reviews/", icon: Star },
-    { label: "Gallery", href: "/admin/gallery/", icon: ImageIcon },
-    { label: "Analytics", href: "/admin/analytics/", icon: BarChart3 },
-    { label: "Website Settings", href: "/admin/settings/", icon: Settings },
+    { label: "Wholesale Inquiries", href: "/admin/reservations/", icon: Calendar },
+    { label: "Coupons & Promos", href: "/admin/coupons/", icon: TicketPercent },
+    { label: "Product Reviews", href: "/admin/reviews/", icon: Star },
+    { label: "Media & Assets", href: "/admin/gallery/", icon: ImageIcon },
+    { label: "Sales Analytics", href: "/admin/analytics/", icon: BarChart3 },
+    { label: "Store Settings", href: "/admin/settings/", icon: Settings },
     { label: "Profile & Security", href: "/admin/profile/", icon: Shield },
   ];
 

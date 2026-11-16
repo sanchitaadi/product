@@ -138,7 +138,7 @@ export default function PresentationHubPage() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200/60 text-rose-800 text-xs font-bold tracking-wide uppercase mb-6"
         >
           <Sparkles className="w-3.5 h-3.5 text-[#E07A86]" />
-          <span>Interactive Client Direction Showcase &bull; 7 Distinct Concepts</span>
+          <span>Gourmet Food Product & D2C E-Commerce Showcase &bull; 7 Brand Concepts</span>
         </motion.div>
 
         <motion.h1
@@ -147,9 +147,9 @@ export default function PresentationHubPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-6xl font-serif font-black tracking-tight text-[#2B2118] leading-[1.15]"
         >
-          Seven Distinct Digital Flavors for{" "}
+          Seven Distinct Brand Expressions for{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E07A86] via-[#FF6B35] to-[#FF2A55]">
-            Peachy Plate
+            Peachy Plate Food Products
           </span>
         </motion.h1>
 
@@ -159,7 +159,7 @@ export default function PresentationHubPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mt-5 leading-relaxed"
         >
-          All seven concepts share the same battle-tested PHP 8+ engine, MySQL database, live ordering cart, real-time customizations, and SaaS admin dashboard. Select any concept below to experience its fully articulated 13-page restaurant ordering system.
+          All seven concepts share the same battle-tested PHP 8+ engine, MySQL database, live e-commerce shopping cart, pack variant bundle savings, B2B wholesale inquiry portal, and SaaS admin dashboard. Select any concept below to experience its fully articulated 13-page packaged food brand.
         </motion.p>
       </section>
 

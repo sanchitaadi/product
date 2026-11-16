@@ -11,6 +11,7 @@ export default function CustomizationModal() {
   const [loading, setLoading] = useState(false);
   const [groups, setGroups] = useState<any[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<Record<number, number[]>>({});
+  const [packVariant, setPackVariant] = useState<"single" | "bundle3" | "bundle6">("single");
   const [instructions, setInstructions] = useState("");
   const [adding, setAdding] = useState(false);
 
@@ -19,6 +20,7 @@ export default function CustomizationModal() {
 
     setLoading(true);
     setInstructions("");
+    setPackVariant("single");
     api
       .getItemCustomizations(customizingItem.id)
       .then((res) => {
@@ -69,19 +71,25 @@ export default function CustomizationModal() {
 
   const calculatedTotal = useMemo(() => {
     if (!customizingItem) return 0;
-    let total = Number(customizingItem.price || 0);
+    let baseUnit = Number(customizingItem.price || 0);
 
     groups.forEach((g) => {
       const selectedIds = selectedOptions[g.id] || [];
       (g.options || []).forEach((o: any) => {
         if (selectedIds.includes(o.id)) {
-          total += Number(o.price_delta || 0);
+          baseUnit += Number(o.price_delta || 0);
         }
       });
     });
 
-    return total;
-  }, [customizingItem, groups, selectedOptions]);
+    if (packVariant === "bundle3") {
+      return Math.round(baseUnit * 3 * 0.9);
+    }
+    if (packVariant === "bundle6") {
+      return Math.round(baseUnit * 6 * 0.85);
+    }
+    return baseUnit;
+  }, [customizingItem, groups, selectedOptions, packVariant]);
 
   const handleAdd = async () => {
     if (!customizingItem) return;
@@ -89,7 +97,17 @@ export default function CustomizationModal() {
     const flattenedOptionIds: number[] = [];
     Object.values(selectedOptions).forEach((ids) => flattenedOptionIds.push(...ids));
 
-    await addToCart(customizingItem.id, 1, flattenedOptionIds, instructions);
+    const packPrefix =
+      packVariant === "bundle3"
+        ? "[3-Pack Bundle (Save 10%)] "
+        : packVariant === "bundle6"
+        ? "[6-Pack Pantry Box (Save 15%)] "
+        : "[Single Unit] ";
+
+    const fullNote = `${packPrefix}${instructions}`.trim();
+    const qty = packVariant === "bundle3" ? 3 : packVariant === "bundle6" ? 6 : 1;
+
+    await addToCart(customizingItem.id, qty, flattenedOptionIds, fullNote);
     setAdding(false);
     closeCustomization();
   };
@@ -160,11 +178,16 @@ export default function CustomizationModal() {
           {/* Header */}
           <div className="p-6 border-b border-black/10 flex items-start justify-between">
             <div className="pr-4">
-              <span className="text-xs uppercase tracking-wider font-bold opacity-60">
-                {customizingItem.category}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-wider font-bold opacity-60">
+                  {customizingItem.category}
+                </span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-200">
+                  ★ Small Batch Pantry
+                </span>
+              </div>
               <h2 className="text-xl font-bold font-serif text-[#2B2118] mt-0.5">
-                Customize {customizingItem.name}
+                {customizingItem.name}
               </h2>
               <p className="text-xs text-gray-600 mt-1 line-clamp-2">
                 {customizingItem.description}
@@ -180,16 +203,93 @@ export default function CustomizationModal() {
 
           {/* Options Body */}
           <div className="p-6 overflow-y-auto space-y-6 flex-1">
+            {/* Pack Size & Bundle Selector */}
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
+                  <span>📦</span> Select Pack Size / Bundle
+                </label>
+                <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  Bundle & Save up to 15%
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setPackVariant("single")}
+                  className={`p-3 rounded-xl border text-center transition flex flex-col items-center justify-between gap-1 ${
+                    packVariant === "single"
+                      ? "border-black bg-black/5 ring-2 ring-black font-bold shadow-sm"
+                      : "border-black/15 bg-white/70 hover:border-black/30"
+                  }`}
+                >
+                  <span className="text-xs font-bold">Single Unit</span>
+                  <span className="text-[11px] text-gray-500">1x Standard Pack</span>
+                  <span className="text-xs font-black text-gray-900">{api.formatPrice(customizingItem.price)}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPackVariant("bundle3")}
+                  className={`p-3 rounded-xl border text-center transition flex flex-col items-center justify-between gap-1 relative overflow-hidden ${
+                    packVariant === "bundle3"
+                      ? "border-emerald-600 bg-emerald-50 ring-2 ring-emerald-600 font-bold shadow-sm"
+                      : "border-black/15 bg-white/70 hover:border-black/30"
+                  }`}
+                >
+                  <span className="absolute top-0 right-0 bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-bl font-black">
+                    SAVE 10%
+                  </span>
+                  <span className="text-xs font-bold text-emerald-950">3-Pack Bundle</span>
+                  <span className="text-[11px] text-gray-500">Popular Choice</span>
+                  <span className="text-xs font-black text-emerald-700">
+                    {api.formatPrice(Math.round(customizingItem.price * 3 * 0.9))}
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPackVariant("bundle6")}
+                  className={`p-3 rounded-xl border text-center transition flex flex-col items-center justify-between gap-1 relative overflow-hidden ${
+                    packVariant === "bundle6"
+                      ? "border-rose-600 bg-rose-50 ring-2 ring-rose-600 font-bold shadow-sm"
+                      : "border-black/15 bg-white/70 hover:border-black/30"
+                  }`}
+                >
+                  <span className="absolute top-0 right-0 bg-rose-600 text-white text-[9px] px-1.5 py-0.2 rounded-bl font-black">
+                    SAVE 15%
+                  </span>
+                  <span className="text-xs font-bold text-rose-950">6-Pack Pantry Box</span>
+                  <span className="text-[11px] text-gray-500">Best Value</span>
+                  <span className="text-xs font-black text-rose-700">
+                    {api.formatPrice(Math.round(customizingItem.price * 6 * 0.85))}
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Pantry Freshness Guarantee Bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 py-2 px-3 rounded-xl bg-black/[0.03] border border-black/10 text-[10px] text-gray-600">
+              <span className="flex items-center gap-1 font-medium">
+                <span>🌿</span> 100% Artisan
+              </span>
+              <span className="flex items-center gap-1 font-medium">
+                <span>📦</span> Vacuum Sealed
+              </span>
+              <span className="flex items-center gap-1 font-medium">
+                <span>❄️</span> Climate-Safe
+              </span>
+              <span className="flex items-center gap-1 font-medium">
+                <span>🚫</span> Zero Artificials
+              </span>
+            </div>
+
             {loading ? (
               <div className="py-12 flex flex-col items-center justify-center gap-3 text-gray-500">
                 <Sparkles className="w-6 h-6 animate-spin text-[#E07A86]" />
-                <span className="text-sm">Loading gourmet options...</span>
+                <span className="text-sm">Loading product options...</span>
               </div>
-            ) : groups.length === 0 ? (
-              <div className="py-6 text-center text-sm text-gray-500">
-                No customization options available for this dish. You can still add special requests below!
-              </div>
-            ) : (
+            ) : groups.length === 0 ? null : (
               groups.map((group) => {
                 const currentSelected = selectedOptions[group.id] || [];
                 return (
@@ -252,15 +352,15 @@ export default function CustomizationModal() {
               })
             )}
 
-            {/* Special Instructions */}
+            {/* Gift Message / Special Packing Instructions */}
             <div className="space-y-2 pt-2 border-t border-black/10">
-              <label className="text-xs font-bold uppercase tracking-wider text-gray-800">
-                Special Kitchen Instructions (Optional)
+              <label className="text-xs font-bold uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
+                <span>🎁</span> Gift Message or Packing Instructions (Optional)
               </label>
               <textarea
                 value={instructions}
                 onChange={(e) => setInstructions(e.target.value)}
-                placeholder="e.g. Extra spicy, dressing on side, allergy note..."
+                placeholder="e.g. Include handwritten gift card 'Happy Anniversary!', fragile handle with care..."
                 rows={2}
                 className="w-full text-sm p-3 rounded-xl border border-black/15 bg-white/90 focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
               />

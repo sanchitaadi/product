@@ -26,11 +26,11 @@ export default function ConceptBHeader() {
 
   const navLinks = [
     { label: "HOME", href: "/concept-b/" },
-    { label: "MENU", href: "/concept-b/menu/" },
+    { label: "SHOP", href: "/concept-b/menu/" },
     { label: "THE VIBE", href: "/concept-b/about/" },
     { label: "PHOTO DROP", href: "/concept-b/gallery/" },
     { label: "REVIEWS", href: "/concept-b/reviews/" },
-    { label: "BOOK TABLE", href: "/concept-b/reservations/" },
+    { label: "WHOLESALE", href: "/concept-b/reservations/" },
     { label: "CONTACT", href: "/concept-b/contact/" },
   ];
 

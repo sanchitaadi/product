@@ -197,8 +197,8 @@ export default function AdminMenuPage() {
 
   return (
     <AdminLayout
-      title="Menu Management"
-      subtitle="Organize dishes, update pricing, toggle 86'd stock status, and curate seasonal specials."
+      title="Product Catalog & Inventory"
+      subtitle="Organize pantry products, manage bundle pricing, monitor inventory stock status, and curate seasonal releases."
     >
       {/* Controls Bar */}
       <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
