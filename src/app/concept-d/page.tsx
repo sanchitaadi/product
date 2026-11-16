@@ -52,7 +52,7 @@ export default function ConceptDHomePage() {
       });
       if (res.success) {
         setResSuccess(true);
-        showToast("Your conservatory table has been reserved.", "success");
+        showToast("Your wholesale farm share inquiry has been received.", "success");
       } else {
         showToast(res.error || "Reservation request failed", "error");
       }
@@ -187,7 +187,7 @@ export default function ConceptDHomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#7B8E78] block mb-1">
-                Seasonal Degustation
+                Seasonal Farmstead Signatures
               </span>
               <h2 className="text-3xl sm:text-5xl font-normal text-[#1E3F20]">
                 Botanical Harvest Highlights
@@ -198,7 +198,7 @@ export default function ConceptDHomePage() {
               href="/concept-d/menu/"
               className="self-start sm:self-auto text-xs uppercase tracking-widest text-[#C86D51] hover:underline flex items-center gap-1 font-sans"
             >
-              <span>Explore Complete Carte</span>
+              <span>Explore Complete Harvest Provisions</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

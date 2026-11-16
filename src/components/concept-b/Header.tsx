@@ -44,21 +44,17 @@ export default function ConceptBHeader() {
       {/* Top Animated Retro Diner Marquee Strip */}
       <div className="bg-[#121212] text-[#FFE15D] text-xs font-black tracking-wider uppercase py-1.5 overflow-hidden border-b-2 border-black flex items-center select-none font-retro-bold">
         <div className="animate-marquee whitespace-nowrap flex items-center gap-6">
-          <span>★ 90s RETRO DINER VIBES</span>
+          <span>★ 90s RETRO SNACK BODEGA</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>48-HR SOURDOUGH PIZZAS</span>
+          <span>AIR-POPPED SORGHUM CRISPS</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>USE CODE &apos;PEACHY20&apos; FOR 20% OFF</span>
+          <span>PREBIOTIC WHITE PEACH SODA</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>FAST DELIVERY ACROSS NEW DELHI</span>
+          <span>ZERO PALM OIL &bull; GLUTEN FREE</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>HANDCRAFTED GELATO &amp; BOBA LATTE</span>
+          <span>NITROGEN SEALED FOR MAX CRUNCH</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>GOOD FOOD. CUTE MOODS.</span>
-          <span className="text-[#FF2A55]">●</span>
-          <span>★ 90s RETRO DINER VIBES</span>
-          <span className="text-[#FF2A55]">●</span>
-          <span>48-HR SOURDOUGH PIZZAS</span>
+          <span>PAN-INDIA SNACK DISPATCH</span>
           <span className="text-[#FF2A55]">●</span>
           <span>USE CODE &apos;PEACHY20&apos; FOR 20% OFF</span>
         </div>
@@ -77,7 +73,7 @@ export default function ConceptBHeader() {
           <Link href="/concept-b/" className="flex items-center gap-3 group relative">
             <div className="relative">
               <span className="w-11 h-11 rounded-2xl bg-[#FFE15D] border-[2.5px] border-black flex items-center justify-center font-black text-2xl shadow-[3px_3px_0px_#000] group-hover:rotate-12 transition-transform duration-200">
-                🍕
+                ⚡
               </span>
               {/* Rotating Mini Starburst */}
               <div className="absolute -top-2 -right-2 w-5 h-5 bg-[#FF2A55] rounded-full border border-black text-white text-[8px] font-black flex items-center justify-center animate-spin-slow">
@@ -88,15 +84,15 @@ export default function ConceptBHeader() {
             <div className="leading-tight">
               <div className="flex items-center gap-2">
                 <span className="font-retro-bold font-black text-2xl sm:text-3xl tracking-tight text-black flex items-center gap-1">
-                  PEACHY <span className="text-[#FF2A55]">PLATE</span>
+                  PEACHY <span className="text-[#FF2A55]">CRUNCH</span>
                 </span>
                 {/* Speech Bubble Badge */}
                 <span className="hidden sm:inline-block bg-[#FFE15D] border-2 border-black text-[9px] font-black px-2 py-0.5 rounded-full shadow-[2px_2px_0px_#000] rotate-2">
-                  HOT &amp; FRESH!
+                  AIR-POPPED!
                 </span>
               </div>
               <span className="text-[10px] font-black tracking-widest text-[#FF6B35] uppercase block font-mono">
-                GOOD FOOD &bull; CUTE MOODS
+                RETRO BODEGA SNACKS &bull; CPG DISPENSARY
               </span>
             </div>
           </Link>

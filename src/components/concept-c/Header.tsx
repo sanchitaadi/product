@@ -73,7 +73,7 @@ export default function ConceptCHeader() {
                 </span>
               </div>
               <span className="text-[9px] font-black uppercase tracking-widest text-[#0047FF]">
-                Maximalist Gastronomy
+                Maximalist Flavor Lab &bull; D2C CPG
               </span>
             </div>
           </Link>

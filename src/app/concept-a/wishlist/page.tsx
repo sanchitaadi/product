@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Heart, ArrowRight, ShoppingBag } from "lucide-react";
+import { Heart, ArrowRight, Package } from "lucide-react";
 import ConceptAHeader from "@/components/concept-a/Header";
 import ConceptAFooter from "@/components/concept-a/Footer";
 import ConceptAFoodCard from "@/components/concept-a/FoodCard";
@@ -29,42 +29,42 @@ export default function ConceptAWishlistPage() {
   }, [wishlistIds]);
 
   return (
-    <div className="bg-[#FFF8F9] min-h-screen text-[#3D2D2E] flex flex-col">
+    <div className="bg-[#0A0B0E] min-h-screen text-[#F7F5F0] flex flex-col selection:bg-[#C5A059] selection:text-[#0A0B0E]">
       <ConceptAHeader />
 
-      <section className="pt-10 pb-6 border-b border-rose-100 bg-[#FFF0F3]/40">
+      <section className="pt-16 pb-10 border-b border-[#C5A059]/20 bg-[#0E1015]">
         <div className="max-w-7xl mx-auto px-6">
-          <span className="text-xs font-bold text-[#E07A86] uppercase tracking-wider block mb-1">
-            🎀 Saved Cravings &bull; Wishlist
+          <span className="text-xs font-mono font-bold text-[#C5A059] uppercase tracking-widest block mb-1">
+            ✦ Client Private Vault &bull; Saved Provisions
           </span>
-          <h1 className="font-coquette-serif font-black text-3xl sm:text-4xl text-[#3D2D2E]">
-            Your Saved Feasts ({items.length})
+          <h1 className="font-serif font-black text-3xl sm:text-4xl text-[#F7F5F0]">
+            Saved Reserve Provisions ({items.length})
           </h1>
         </div>
       </section>
 
-      <section className="py-12 flex-1">
+      <section className="py-16 flex-1">
         <div className="max-w-7xl mx-auto px-6">
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((n) => (
-                <div key={n} className="h-80 bg-white rounded-3xl animate-pulse border border-rose-100" />
+                <div key={n} className="h-80 bg-[#13151A] rounded-2xl animate-pulse border border-[#C5A059]/30" />
               ))}
             </div>
           ) : items.length === 0 ? (
             <div className="py-24 text-center max-w-md mx-auto space-y-4">
-              <span className="text-5xl">💖</span>
-              <h2 className="font-coquette-serif font-bold text-2xl text-gray-800">
-                No saved dishes yet
+              <span className="text-4xl text-[#C5A059]">✦</span>
+              <h2 className="font-serif font-bold text-2xl text-[#F7F5F0]">
+                No Saved Provisions Yet
               </h2>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Click the heart icon on any pizza, pasta or shake to pin it to your secret wishlist.
+              <p className="text-xs text-[#A89F91] leading-relaxed font-light">
+                Click the heart on any single-estate dark cacao block, honeycomb jar, or sablés tin to save to your personal client vault.
               </p>
               <Link
                 href="/concept-a/menu/"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:opacity-95 transition"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B38F46] text-[#0A0B0E] text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#C5A059]/20 hover:brightness-110 transition"
               >
-                <span>Browse Menu</span>
+                <span>Browse Reserve Provisions</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

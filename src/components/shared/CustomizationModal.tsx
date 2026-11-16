@@ -121,7 +121,7 @@ export default function CustomizationModal() {
   const isMetro = conceptTheme === "metro" || conceptTheme === "concept-e";
   const isManga = conceptTheme === "manga" || conceptTheme === "concept-f";
   const isCircus = conceptTheme === "circus" || conceptTheme === "concept-g";
-  const isLuxury = conceptTheme === "luxury";
+  const isLuxury = conceptTheme === "luxury" || conceptTheme === "coquette" || conceptTheme === "concept-a";
 
   const modalBg = isManga
     ? "bg-[#FFFDF7] border-4 border-black text-black shadow-[10px_10px_0px_#D7263D] rounded-none font-sans"
@@ -136,8 +136,8 @@ export default function CustomizationModal() {
     : isEarth
     ? "bg-[#FDFBF7] border-2 border-[#5E6B4E]/30 shadow-2xl rounded-3xl"
     : isLuxury
-    ? "bg-[#FAF7F2] border border-[#2B2118]/20 shadow-2xl rounded-2xl"
-    : "bg-[#FFF8F9] border border-rose-200/60 shadow-2xl rounded-3xl";
+    ? "bg-[#13151A] border-2 border-[#C5A059]/50 text-[#F7F5F0] shadow-[0_10px_40px_rgba(197,160,89,0.2)] rounded-2xl font-sans"
+    : "bg-[#13151A] border-2 border-[#C5A059]/50 text-[#F7F5F0] shadow-2xl rounded-2xl font-sans";
 
   const btnBg = isManga
     ? "bg-[#D7263D] hover:bg-[#b51f33] text-white border-2 border-black font-black uppercase text-xs tracking-wider shadow-[4px_4px_0px_#000]"
@@ -152,8 +152,8 @@ export default function CustomizationModal() {
     : isEarth
     ? "bg-[#5E6B4E] hover:bg-[#4E5B3F] text-white rounded-full font-serif shadow-md"
     : isLuxury
-    ? "bg-[#2B2118] text-[#FAF7F2] hover:bg-[#3D2E22] tracking-widest uppercase text-xs"
-    : "bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white shadow-lg shadow-rose-200/50 hover:opacity-95 rounded-2xl";
+    ? "bg-gradient-to-r from-[#C5A059] to-[#D4AF37] text-[#0A0B0E] font-bold tracking-widest uppercase text-xs rounded-xl shadow-lg shadow-[#C5A059]/20 hover:brightness-110"
+    : "bg-gradient-to-r from-[#C5A059] to-[#D4AF37] text-[#0A0B0E] font-bold tracking-widest uppercase text-xs rounded-xl shadow-lg shadow-[#C5A059]/20 hover:brightness-110";
 
   return (
     <AnimatePresence>

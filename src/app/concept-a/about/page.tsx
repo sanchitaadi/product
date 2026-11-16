@@ -2,75 +2,77 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Heart, ChefHat, Award, ArrowRight } from "lucide-react";
+import { Sparkles, ShieldCheck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 import ConceptAHeader from "@/components/concept-a/Header";
 import ConceptAFooter from "@/components/concept-a/Footer";
 
 export default function ConceptAAboutPage() {
   return (
-    <div className="bg-[#FFF8F9] min-h-screen text-[#3D2D2E] flex flex-col">
+    <div className="bg-[#0A0B0E] min-h-screen text-[#F7F5F0] flex flex-col selection:bg-[#C5A059] selection:text-[#0A0B0E]">
       <ConceptAHeader />
 
-      <section className="pt-12 pb-16 border-b border-rose-100 bg-[#FFF0F3]/40">
+      <section className="pt-16 pb-16 border-b border-[#C5A059]/20 bg-[#0E1015]">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-4">
-          <span className="text-xs font-bold text-[#E07A86] uppercase tracking-wider block">
-            🎀 The Origin &amp; Purity Philosophy
+          <span className="text-xs font-mono font-bold text-[#C5A059] uppercase tracking-widest block">
+            ✦ The Maison Reserve Provenance &bull; Single-Estate Mastery
           </span>
-          <h1 className="font-coquette-serif font-black text-4xl sm:text-5xl text-[#3D2D2E] leading-tight">
-            A Love Affair with French Preserves, Cocoa &amp; Ribbons
+          <h1 className="font-serif font-black text-4xl sm:text-5xl text-[#F7F5F0] leading-tight">
+            Single-Estate Cacao, Wild Forest Hives &amp; Precision Conching
           </h1>
-          <p className="text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            Founded in 2026, Peachy Plate was born out of a desire to rescue pantry shelves from ultra-processed additives. We craft small-batch fruit preserves, stone-milled biscuits, and artisanal confections that taste like home and look like art.
+          <p className="text-sm text-[#A89F91] leading-relaxed max-w-2xl mx-auto font-light">
+            Founded in 2026, Maison Reserve was conceived to deliver collector-grade pantry provisions and single-estate chocolates direct to discerning homes. Every slab and jar is crafted without compromise, using heirloom varieties, volcanic soils, and cold-chain integrity.
           </p>
         </div>
       </section>
 
-      <section className="py-20 flex-1">
-        <div className="max-w-7xl mx-auto px-6 space-y-20">
+      <section className="py-24 flex-1">
+        <div className="max-w-7xl mx-auto px-6 space-y-24">
           {/* Story Block 1 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E07A86]">
-                Our Atelier Heritage
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C5A059]">
+                ✦ Single-Estate Terroir
               </span>
-              <h2 className="font-coquette-serif font-bold text-3xl sm:text-4xl text-[#3D2D2E]">
-                Copper-Kettle Cooking &amp; Real Vanilla Pods
+              <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#F7F5F0]">
+                72-Hour Granite Stone Conching &amp; Pure Cacao Butter
               </h2>
-              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                We believe that food packaged for the pantry shouldn&apos;t compromise on fresh craft. Our white peach compotes and slow-simmered tomato marinara sauces are stirred in traditional open copper kettles in small batches of no more than 60 jars at a time.
+              <p className="text-xs sm:text-sm text-[#D1C7BD] leading-relaxed font-light">
+                Our shaded Malabar forest cacao pods are harvested by generational farm hands, naturally wild-fermented in wooden sweat boxes, sun-dried on bamboo mats, and stone-conched with granite rollers for 72 continuous hours. No artificial emulsifiers, no defatted powder — only pure single-estate cacao and cold-pressed cacao butter.
               </p>
-              <div className="p-5 rounded-2xl bg-white border border-rose-100 shadow-sm space-y-2 text-xs">
-                <span className="font-bold text-gray-900 block">✨ Clean Label Standards</span>
-                <p className="text-gray-500">Zero artificial colors, zero corn syrup, zero palm oil. Hot-filled in reusable glass jars with foil tamper seals.</p>
+              <div className="p-5 rounded-xl bg-[#13151A] border border-[#C5A059]/30 space-y-2 text-xs">
+                <span className="font-serif font-bold text-[#F7F5F0] block flex items-center gap-2">
+                  <span className="text-[#C5A059]">✦</span> Zero Defatted Fillers &bull; Pure Clean Label
+                </span>
+                <p className="text-[#A89F91]">Hermetically sealed in multi-layer gold foil and rigid embossed boxes to preserve volatile fruit and floral terpenes for up to 18 months.</p>
               </div>
             </div>
 
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden border-4 border-white shadow-xl">
-              <img src="/images/heroes/coquette-pantry-hero.jpg" alt="Atelier Crafting" className="w-full h-full object-cover" />
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#C5A059]/40 shadow-2xl bg-[#16181F]">
+              <img src="/images/heroes/noir-reserve-hero.jpg" alt="Maison Reserve Cacao Atelier" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {/* Story Block 2 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 aspect-[4/3] rounded-3xl overflow-hidden border-4 border-white shadow-xl">
-              <img src="/images/products/cocoa-hazelnut-cookies.jpg" alt="Artisan Butter Sablés & Preserves" className="w-full h-full object-cover" />
+            <div className="order-2 lg:order-1 aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#C5A059]/40 shadow-2xl bg-[#16181F]">
+              <img src="/images/products/noir-truffle-honey.jpg" alt="Raw Himalayan Wild Honeycomb" className="w-full h-full object-cover" />
             </div>
 
             <div className="order-1 lg:order-2 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E07A86]">
-                Gifting &amp; Wholesale
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C5A059]">
+                ✦ Bespoke Curation
               </span>
-              <h2 className="font-coquette-serif font-bold text-3xl sm:text-4xl text-[#3D2D2E]">
-                Crafted for Aesthetic Hampers &amp; Fine Grocers
+              <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#F7F5F0]">
+                Private Stockist Suites &amp; Luxury Corporate Chests
               </h2>
-              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                Whether you are curating luxury corporate hampers, stocking boutique coffee bar retail shelves, or sending a loved one an indulgent sweet box, each parcel is packed with eco-cushioning and hand-tied with our signature peach ribbon.
+              <p className="text-xs sm:text-sm text-[#D1C7BD] leading-relaxed font-light">
+                Whether curating executive gifting suites for boardrooms, stocking five-star hotel boutique larders, or delighting high-net-worth clients, each parcel is packed with temperature-buffering honeycomb inserts and sealed with authentic black wax stamps.
               </p>
               <Link
                 href="/concept-a/reservations/"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white text-xs font-bold uppercase tracking-wider shadow-md"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B38F46] text-[#0A0B0E] text-xs font-bold uppercase tracking-widest shadow-xl shadow-[#C5A059]/20 hover:brightness-110 transition"
               >
-                <span>Wholesale &amp; Bulk Gifting Inquiries</span>
+                <span>Inquire Corporate &amp; Luxury Gifting</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

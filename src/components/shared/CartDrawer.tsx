@@ -35,6 +35,7 @@ export default function CartDrawer() {
   const isMetro = conceptTheme === "metro" || conceptTheme === "concept-e";
   const isManga = conceptTheme === "manga" || conceptTheme === "concept-f";
   const isCircus = conceptTheme === "circus" || conceptTheme === "concept-g";
+  const isLuxury = conceptTheme === "luxury" || conceptTheme === "coquette" || conceptTheme === "concept-a";
 
   const drawerBg = isManga
     ? "bg-[#FFFDF7] border-l-4 border-black text-black font-sans shadow-2xl"
@@ -43,12 +44,12 @@ export default function CartDrawer() {
     : isMetro
     ? "bg-[#08142C] border-l-4 border-[#FFD100] text-[#F8F6F0]"
     : isRetro
-    ? "bg-[#FFF9EC] border-l-4 border-black"
+    ? "bg-[#FFF9EC] border-l-4 border-black text-black"
     : isPopArt
     ? "bg-[#FFFDF7] border-l-4 border-black text-black"
     : isEarth
     ? "bg-[#FDFBF7] border-l-2 border-[#5E6B4E]/30 text-[#1E3F20]"
-    : "bg-[#FFF8F9] border-l border-rose-200/60 text-[#3D2D2E]";
+    : "bg-[#0A0B0E] border-l border-[#C5A059]/30 text-[#F7F5F0]";
 
   const btnCheckout = isManga
     ? "bg-[#D7263D] hover:bg-[#b51f33] text-white border-3 border-black shadow-[4px_4px_0px_#000] font-black uppercase text-xs tracking-wider rounded-none"
@@ -62,7 +63,7 @@ export default function CartDrawer() {
     ? "bg-[#FF007F] text-white border-2 border-black shadow-[4px_4px_0px_#0047FF] hover:translate-x-0.5 hover:translate-y-0.5 font-black uppercase text-xs tracking-wider"
     : isEarth
     ? "bg-[#5E6B4E] hover:bg-[#4E5B3F] text-white rounded-2xl shadow-md text-xs font-bold tracking-wider uppercase"
-    : "bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white shadow-lg shadow-rose-200/50 hover:opacity-95 rounded-2xl";
+    : "bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B38F46] text-[#0A0B0E] font-bold uppercase text-xs tracking-widest shadow-xl shadow-[#C5A059]/20 hover:brightness-110 rounded-xl";
 
   const conceptRoute = isManga
     ? "/concept-f"
