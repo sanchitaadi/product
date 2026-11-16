@@ -1,308 +1,304 @@
 "use client";
 
 import React, { useState } from "react";
-import { Star, Ticket, Clock, Users, Calendar, CheckCircle2, MapPin } from "lucide-react";
+import { Star, Ticket, Package, Building2, CheckCircle2, ShieldCheck, Download, Sparkles } from "lucide-react";
 import ConceptGHeader from "@/components/concept-g/Header";
 import ConceptGFooter from "@/components/concept-g/Footer";
 import { useToast } from "@/context/ToastContext";
 import * as api from "@/lib/api";
 
-export default function ConceptGReservationsPage() {
+export default function ConceptGWholesalePage() {
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-  const [time, setTime] = useState("07:30 PM");
-  const [guests, setGuests] = useState(2);
-  const [seating, setSeating] = useState("Center Ring Royal Booth (Box 01)");
-  const [requests, setRequests] = useState("");
+  const [inquiryType, setInquiryType] = useState("Festival Concession & Theme Park Retail");
+  const [volume, setVolume] = useState("Carnival Trunk (100–300 units)");
+  const [targetDate, setTargetDate] = useState("");
+  const [city, setCity] = useState("New Delhi");
+  const [notes, setNotes] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
+  const [ticketNo, setTicketNo] = useState("");
 
   const { showToast } = useToast();
 
-  const handleBooking = async (e: React.FormEvent) => {
+  const handleWholesaleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !email || !date) return;
+    if (!name || !phone || !email || !company) {
+      showToast("PLEASE COMPLETE ALL CARNIVAL CONCESSION FIELDS! 🎪", "error");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await api.createReservation({
         name,
         phone,
         email,
-        reservation_date: date,
-        reservation_time: time,
-        guests,
-        seating_area: seating,
-        special_requests: requests,
-        concept_source: "Concept G - Circus Social",
+        reservation_date: targetDate || new Date().toISOString().split("T")[0],
+        reservation_time: "Circus Wholesale",
+        guests: volume.includes("100–300") ? 200 : volume.includes("300–800") ? 500 : 1500,
+        seating_area: `${company} — ${inquiryType}`,
+        special_requests: `[City: ${city}] [Volume: ${volume}] ${notes}`.trim(),
+        concept_source: "Concept G — Circus Social Wholesale",
       });
       if (res.success) {
         setConfirmed(true);
-        showToast("Ringside table pass confirmed! Welcome to the show!", "success");
+        setTicketNo(`GOLDEN-CONCESSION-${Math.floor(1000 + Math.random() * 9000)}`);
+        showToast("GOLDEN WHOLESALE TICKET REGISTERED! 🎟️", "success");
       } else {
-        showToast(res.error || "Reservation request failed", "error");
+        showToast(res.error || "Wholesale request failed", "error");
       }
     } catch {
-      showToast("Unable to process ticket booth reservation.", "error");
+      showToast("Unable to process carnival wholesale consignment.", "error");
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-[#FFFDD0] min-h-screen text-[#5C0614] flex flex-col font-sans selection:bg-[#FFD54F] selection:text-[#5C0614]">
+    <div className="bg-[#FFFDD0] min-h-screen text-[#3D0C11] flex flex-col font-sans selection:bg-[#C41E3A] selection:text-white">
       <ConceptGHeader />
 
-      {/* Header Banner */}
-      <section className="bg-[#FFFDF5] py-16 border-b-6 border-[#C41E3A] text-center space-y-4 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFD54F] text-[#5C0614] font-black text-xs uppercase tracking-widest rounded-full border-2 border-[#5C0614] shadow-[3px_3px_0px_#C41E3A]">
-            <Ticket className="w-3.5 h-3.5" />
-            TICKET BOOTH &bull; RINGSIDE RESERVED ADMISSION
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#5C0614] font-serif">
-            Book Your Ringside Table
-          </h1>
-          <p className="text-xs sm:text-sm text-[#5C0614]/80 font-medium max-w-lg mx-auto">
-            Reserve your personal box or carousel booth beneath the glowing marquee lights. Priority seating and complimentary carnival popcorn included.
-          </p>
+      {/* Marquee Banner */}
+      <div className="bg-[#5C0614] text-[#FFD54F] py-2 px-4 font-black text-xs uppercase tracking-widest border-b-4 border-[#C41E3A] flex items-center justify-between select-none">
+        <div className="flex items-center gap-3">
+          <span className="bg-[#FFD54F] text-[#3D0C11] px-2 py-0.5 rounded text-[10px] font-black border border-[#3D0C11] shadow-[2px_2px_0px_#000]">
+            🎪 BIG TOP WHOLESALE & CONCESSIONS
+          </span>
+          <span className="hidden sm:inline">GOURMET POPCORN TUBS, SPICED CARAMEL JARS & FAIRGROUND SWEETS</span>
         </div>
-      </section>
+        <span className="bg-[#C41E3A] text-white px-3 py-0.5 rounded-full text-[10px] font-black border border-[#FFD54F]">
+          ADMIT ONE WHOLESALER
+        </span>
+      </div>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-16 flex-1 w-full">
+      <div className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full">
         {confirmed ? (
-          <div className="bg-white border-6 border-[#C41E3A] rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-[12px_12px_0px_#5C0614] max-w-2xl mx-auto">
-            <div className="w-20 h-20 bg-[#FFD54F] border-3 border-[#5C0614] rounded-full text-[#5C0614] flex items-center justify-center mx-auto text-3xl font-black shadow-md">
-              <CheckCircle2 className="w-10 h-10" />
+          <div className="max-w-xl mx-auto bg-white border-4 border-[#C41E3A] p-8 sm:p-10 shadow-[10px_10px_0px_#FFD54F] rounded-3xl text-center space-y-6">
+            <div className="inline-block p-4 bg-[#FFD54F] text-[#3D0C11] border-3 border-[#C41E3A] rounded-full shadow-[4px_4px_0px_#C41E3A] text-3xl">
+              🎟️✨
             </div>
 
-            <div className="space-y-2">
-              <span className="text-xs font-black uppercase tracking-widest text-[#C41E3A] block font-mono">
-                BOX ASSIGNED &bull; GOLDEN TICKET SEALED
+            <div>
+              <span className="px-3 py-1 bg-[#C41E3A] text-[#FFD54F] text-xs font-black uppercase tracking-wider rounded-full">
+                PASS #{ticketNo}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#5C0614] font-serif">
-                Welcome to the Show, {name}!
+              <h2 className="text-3xl font-black uppercase tracking-tight mt-3 text-[#3D0C11]">
+                WHOLESALE PASS ISSUED!
               </h2>
-              <p className="text-xs sm:text-sm text-[#5C0614]/80 font-medium max-w-md mx-auto">
-                Your ringside table has been reserved at our Connaught Place big top. Present your digital ticket pass at the velvet curtain entrance.
+              <p className="text-xs text-gray-700 font-bold mt-2">
+                STEP RIGHT UP, <strong>{name}</strong>! THE BIG TOP CONCESSION HEADQUARTERS IS DISPATCHING THE MASTER WHOLESALE PRICE LIST & TASTING HAMPER DETAILS TO <strong>{email}</strong>.
               </p>
             </div>
 
-            {/* Golden Ticket View */}
-            <div className="p-6 bg-[#FFFDD0] border-3 border-[#5C0614] rounded-2xl text-left font-mono text-xs space-y-3 shadow-sm">
-              <div className="flex justify-between border-b border-[#5C0614]/20 pb-2">
-                <span className="text-[#5C0614]/70 font-bold">BOX SELECTION:</span>
-                <span className="text-[#5C0614] font-black">{seating}</span>
+            <div className="p-5 bg-[#FFFEEA] border-3 border-dashed border-[#C41E3A] rounded-2xl text-left space-y-2 text-xs font-mono">
+              <div className="flex justify-between border-b border-[#C41E3A]/20 pb-1.5">
+                <span className="font-bold text-gray-600">RETAIL VENUE:</span>
+                <span className="font-black text-[#3D0C11]">{company}</span>
               </div>
-              <div className="flex justify-between border-b border-[#5C0614]/20 pb-2">
-                <span className="text-[#5C0614]/70 font-bold">CURTAIN TIME:</span>
-                <span className="text-[#5C0614] font-black">{date} &bull; {time}</span>
+              <div className="flex justify-between border-b border-[#C41E3A]/20 pb-1.5">
+                <span className="font-bold text-gray-600">CONCESSION FORMAT:</span>
+                <span className="font-black text-[#C41E3A]">{inquiryType}</span>
               </div>
-              <div className="flex justify-between border-b border-[#5C0614]/20 pb-2">
-                <span className="text-[#5C0614]/70 font-bold">SPECTATORS:</span>
-                <span className="text-[#5C0614] font-black">{guests} Guest{guests > 1 ? "s" : ""}</span>
+              <div className="flex justify-between border-b border-[#C41E3A]/20 pb-1.5">
+                <span className="font-bold text-gray-600">VOLUME TIER:</span>
+                <span className="font-black text-[#3D0C11]">{volume}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-[#5C0614]/70 font-bold">ADMISSION:</span>
-                <span className="text-[#22C55E] font-black">CONFIRMED (SEAT HELD)</span>
+              <div className="flex justify-between border-b border-[#C41E3A]/20 pb-1.5">
+                <span className="font-bold text-gray-600">DESTINATION:</span>
+                <span className="font-black text-[#3D0C11]">{city}</span>
               </div>
+              {notes && (
+                <div className="pt-1 text-[11px] text-gray-700 font-mono italic">
+                  &ldquo;{notes}&rdquo;
+                </div>
+              )}
             </div>
 
             <button
               onClick={() => setConfirmed(false)}
-              className="inline-block bg-[#C41E3A] hover:bg-[#a3162c] text-white text-xs font-black uppercase tracking-widest px-8 py-3.5 rounded-full border-2 border-[#FFD54F] shadow-[4px_4px_0px_#5C0614] transition-transform active:scale-95"
+              className="w-full py-4 bg-[#FFD54F] text-[#3D0C11] font-black uppercase text-sm border-3 border-[#C41E3A] rounded-full shadow-[4px_4px_0px_#C41E3A] hover:bg-[#C41E3A] hover:text-[#FFD54F] transition"
             >
-              Book Another Box &rarr;
+              ORDER ANOTHER CONCESSION PASS &crarr;
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Form */}
-            <div className="lg:col-span-7 bg-white border-4 border-[#C41E3A] rounded-3xl p-8 sm:p-10 shadow-[8px_8px_0px_#5C0614]">
-              <div className="flex items-center gap-2 mb-6 pb-4 border-b-2 border-[#5C0614]/20">
-                <Ticket className="w-5 h-5 text-[#C41E3A]" />
-                <h2 className="text-xl font-black uppercase tracking-wider text-[#5C0614] font-serif">
-                  Golden Ticket Booking
-                </h2>
+            <form onSubmit={handleWholesaleSubmit} className="lg:col-span-2 bg-white border-4 border-[#C41E3A] p-6 sm:p-8 shadow-[8px_8px_0px_#FFD54F] rounded-3xl space-y-5">
+              <div className="border-b-4 border-[#FFD54F] pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <span className="text-[10px] font-black uppercase bg-[#C41E3A] text-[#FFD54F] px-2 py-0.5 rounded-full inline-block mb-1">
+                    BIG TOP TICKET BOOTH
+                  </span>
+                  <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#3D0C11]">
+                    CONCESSIONS & WHOLESALE INQUIRY
+                  </h1>
+                </div>
+                <span className="text-xs font-black bg-[#FFD54F] text-[#3D0C11] px-3 py-1 rounded-full self-start sm:self-auto border border-[#C41E3A]">
+                  CARNIVAL BULK
+                </span>
               </div>
 
-              <form onSubmit={handleBooking} className="space-y-5 text-xs font-bold">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[#5C0614] uppercase mb-1">
-                      Spectator Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Lady Clara Sterling"
-                      className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[#5C0614] uppercase mb-1">
-                      Contact Line / Mobile *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 98765 43210"
-                      className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
-                    />
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold">
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">RINGMASTER / BUYER *</label>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g. Kabir Chawla"
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C41E3A]"
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-[#5C0614] uppercase mb-1">
-                    Electronic Mail *
-                  </label>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">VENUE / COMPANY / THEME PARK *</label>
+                  <input
+                    type="text"
+                    required
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    placeholder="e.g. Wonder Fair Concessions"
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C41E3A]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">BUSINESS EMAIL *</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="spectator@circussocial.org"
-                    className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
+                    placeholder="wholesale@wonderfair.example"
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C41E3A]"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-[#5C0614] uppercase mb-1">
-                      Show Date *
-                    </label>
-                    <input
-                      type="date"
-                      required
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                      className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[#5C0614] uppercase mb-1">
-                      Curtain Time *
-                    </label>
-                    <select
-                      value={time}
-                      onChange={(e) => setTime(e.target.value)}
-                      className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
-                    >
-                      {["12:30 PM", "01:30 PM", "02:30 PM", "07:00 PM", "07:30 PM", "08:30 PM", "09:30 PM"].map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-[#5C0614] uppercase mb-1">
-                      Spectators (Seats) *
-                    </label>
-                    <input
-                      type="number"
-                      min={1}
-                      max={12}
-                      required
-                      value={guests}
-                      onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
-                      className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
-                    />
-                  </div>
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">PHONE NUMBER *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+91 98112 34567"
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C41E3A]"
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-[#5C0614] uppercase mb-1">
-                    Midway Box Selection
-                  </label>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">VENUE / CONCESSION FORMAT</label>
                   <select
-                    value={seating}
-                    onChange={(e) => setSeating(e.target.value)}
-                    className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
+                    value={inquiryType}
+                    onChange={(e) => setInquiryType(e.target.value)}
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-white focus:outline-none"
                   >
-                    <option value="Center Ring Royal Booth (Box 01)">
-                      Center Ring Royal Booth (Box 01) &bull; Prime Marquee View
-                    </option>
-                    <option value="Carousel Tiered Table (Box 02)">
-                      Carousel Tiered Table (Box 02) &bull; Kinetic Light Show
-                    </option>
-                    <option value="Acrobat Observation Terrace (Box 03)">
-                      Acrobat Observation Terrace (Box 03) &bull; Open Kitchen View
-                    </option>
-                    <option value="Midway Courtyard Lantern Veranda (Box 04)">
-                      Midway Courtyard Lantern Veranda (Box 04) &bull; Al Fresco Dining
-                    </option>
+                    <option value="Festival Concession & Theme Park Retail">Festival Concession & Theme Park Retail</option>
+                    <option value="Cinema & Luxury Theatre Snack Lounge">Cinema & Luxury Theatre Snack Lounge</option>
+                    <option value="Carnival Holiday Corporate Gifting">Carnival Holiday Corporate Gifting</option>
+                    <option value="Gourmet Candy Store & Sweet Boutique">Gourmet Candy Store & Sweet Boutique</option>
+                    <option value="Midway Event Pop-Up & Wedding Hamper">Midway Event Pop-Up & Wedding Hamper</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-[#5C0614] uppercase mb-1">
-                    Special Requests (Anniversaries / Dietary Restrictions)
-                  </label>
-                  <textarea
-                    rows={3}
-                    value={requests}
-                    onChange={(e) => setRequests(e.target.value)}
-                    placeholder="Celebrating birthday, need high chair, wheat-free pasta..."
-                    className="w-full bg-[#FFFDD0] border-2 border-[#5C0614] focus:border-[#C41E3A] rounded-xl p-3 text-[#5C0614] outline-none"
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">ESTIMATED BULK VOLUME</label>
+                  <select
+                    value={volume}
+                    onChange={(e) => setVolume(e.target.value)}
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-white focus:outline-none"
+                  >
+                    <option value="Sample Midway Box (25–50 units)">Sample Midway Box (25–50 units)</option>
+                    <option value="Carnival Trunk (100–300 units)">Carnival Trunk (100–300 units)</option>
+                    <option value="Big Top Master Case (300–800 units)">Big Top Master Case (300–800 units)</option>
+                    <option value="Grand Finale Pallet (1,000+ units)">Grand Finale Pallet (1,000+ units)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">TARGET EVENT / DELIVERY DATE</label>
+                  <input
+                    type="date"
+                    value={targetDate}
+                    onChange={(e) => setTargetDate(e.target.value)}
+                    min={new Date().toISOString().split("T")[0]}
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:outline-none"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full bg-[#C41E3A] hover:bg-[#a3162c] text-white font-black uppercase text-xs tracking-widest py-4 rounded-full border-2 border-[#FFD54F] shadow-[4px_4px_0px_#5C0614] transition-all disabled:opacity-50"
-                >
-                  {submitting ? "SEALING GOLDEN TICKET..." : "CONFIRM RINGSIDE TABLE TICKET &rarr;"}
-                </button>
-              </form>
-            </div>
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">DESTINATION CITY</label>
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder="e.g. Mumbai, Goa, Bengaluru, Delhi"
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:outline-none"
+                  />
+                </div>
 
-            {/* Sidebar Guidelines */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="bg-[#FFFDF5] border-4 border-[#C41E3A] rounded-3xl p-6 sm:p-8 space-y-4 shadow-[6px_6px_0px_#5C0614]">
-                <span className="px-3 py-1 bg-[#FFD54F] text-[#5C0614] font-mono text-[10px] font-black uppercase rounded-full border border-[#5C0614]">
-                  SHOWROOM POLICIES
+                <div className="sm:col-span-2">
+                  <label className="block mb-1 uppercase tracking-wider text-[#3D0C11]">
+                    CONCESSION SWEETS, CARAMEL TUBS OR SPECIAL PACKAGING SPECS
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder="e.g. Ordering 250 units of gourmet popcorn tins and spiced caramel jars in custom circus red-and-white striped gift boxes..."
+                    className="w-full p-3 border-3 border-[#C41E3A]/40 rounded-xl bg-[#FFFEEA] focus:outline-none focus:ring-2 focus:ring-[#C41E3A]"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full py-4 bg-[#C41E3A] hover:bg-[#A3162C] text-white font-black uppercase text-sm border-3 border-[#FFD54F] rounded-full shadow-[4px_4px_0px_#FFD54F] transition disabled:opacity-50"
+              >
+                {submitting ? "ISSUING WHOLESALE PASS..." : "SUBMIT CONCESSION INQUIRY & GET TASTING HAMPER 🎟️🎪"}
+              </button>
+            </form>
+
+            {/* Sidebar */}
+            <div className="space-y-6">
+              <div className="bg-[#FFD54F] border-4 border-[#C41E3A] p-6 shadow-[6px_6px_0px_#C41E3A] rounded-3xl space-y-4">
+                <span className="text-[10px] font-black uppercase bg-[#C41E3A] text-white px-2.5 py-0.5 rounded-full inline-block">
+                  CARNIVAL PERKS
                 </span>
-                <h3 className="text-xl font-black uppercase tracking-tight text-[#5C0614] font-serif">
-                  Big Top Rules
+                <h3 className="text-xl font-black uppercase text-[#3D0C11]">
+                  WHY STOCK CIRCUS SOCIAL?
                 </h3>
-                <ul className="space-y-3 text-xs text-[#5C0614]/85 font-bold">
+                <ul className="space-y-3 text-xs font-bold text-[#3D0C11]">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#C41E3A]">&bull;</span>
-                    <span>Reserved tables held up to 15 minutes past scheduled curtain call.</span>
+                    <span className="text-[#C41E3A]">★</span>
+                    <span><strong>CARNIVAL NOVELTY PACKAGING:</strong> Arched ticket posters, collector tins, and golden foil badges that sell on sight.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#C41E3A]">&bull;</span>
-                    <span>All ringside admissions include complimentary circus popcorn &amp; flavored sodas.</span>
+                    <span className="text-[#C41E3A]">★</span>
+                    <span><strong>100% GOURMET ARTISANAL:</strong> Real clarified butter, organic cane sugars, and authentic Madagascar vanilla.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#C41E3A]">&bull;</span>
-                    <span>For entire big top private tent charters (up to 80 guests), contact Guest Relations.</span>
+                    <span className="text-[#C41E3A]">★</span>
+                    <span><strong>FAST REPLENISHMENT:</strong> Priority wholesale dispatch within 48 hours for active retail stockists.</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-[#5C0614] text-white rounded-3xl p-6 border-2 border-[#FFD54F] shadow-md space-y-2">
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-[#FFD54F]" />
-                  <div>
-                    <h4 className="text-sm font-black uppercase text-[#FFD54F]">Flagship Tent</h4>
-                    <p className="text-xs text-[#FFFDD0]/80 font-mono">Connaught Circus Outer Circle, New Delhi</p>
-                  </div>
-                </div>
+              <div className="bg-white border-3 border-[#C41E3A] p-6 rounded-2xl shadow-[4px_4px_0px_#FFD54F] text-xs font-bold space-y-2">
+                <p className="uppercase text-gray-500 text-[10px]">CIRCUS CONCESSIONS HEADQUARTERS</p>
+                <p className="text-base font-black text-[#C41E3A]">concessions@peachyplate.example</p>
+                <p className="text-[#3D0C11]">PHONE: +91 98765 43210 (MON–SAT 10AM–7PM)</p>
               </div>
             </div>
           </div>
         )}
-      </main>
+      </div>
 
       <ConceptGFooter />
     </div>

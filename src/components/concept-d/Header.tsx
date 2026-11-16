@@ -21,10 +21,10 @@ export default function ConceptDHeader() {
 
   const navLinks = [
     { label: "Home", href: "/concept-d/" },
-    { label: "Harvest Menu", href: "/concept-d/menu/" },
+    { label: "Pantry Provisions", href: "/concept-d/menu/" },
     { label: "Our Story", href: "/concept-d/about/" },
     { label: "Conservatory", href: "/concept-d/gallery/" },
-    { label: "Reserve Table", href: "/concept-d/reservations/" },
+    { label: "Wholesale & Farm Share", href: "/concept-d/reservations/" },
     { label: "Diner Notes", href: "/concept-d/reviews/" },
     { label: "Contact", href: "/concept-d/contact/" },
   ];
@@ -40,15 +40,15 @@ export default function ConceptDHeader() {
       <div className="bg-[#1E3F20] text-[#FDFBF7] text-[11px] font-serif py-1.5 px-4 flex items-center justify-between border-b border-[#5E6B4E]/30">
         <div className="flex items-center gap-2">
           <Leaf className="w-3 h-3 text-[#7B8E78]" />
-          <span>FARM-TO-TABLE BOTANICAL DINING &bull; 100% REGENERATIVE CROPS</span>
+          <span>REGENERATIVE ORGANIC PANTRY &bull; 100% NATURAL PROVISIONS</span>
         </div>
         <div className="hidden sm:flex items-center gap-4 text-[10px] tracking-wider uppercase">
-          <span>LUNCH: 12:00 &ndash; 15:30</span>
+          <span>SMALL-BATCH HARVEST</span>
           <span>&bull;</span>
-          <span>DINNER: 19:00 &ndash; 23:00</span>
+          <span>COLD-CHAIN PACKAGED</span>
           <span>&bull;</span>
           <Link href="/concept-d/reservations/" className="text-[#C86D51] hover:underline">
-            CONSERVATORY SEATS &rarr;
+            WHOLESALE DESK &rarr;
           </Link>
         </div>
       </div>

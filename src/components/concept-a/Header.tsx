@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Heart, User, Menu, X, Sparkles, Calendar } from "lucide-react";
+import { ShoppingBag, Heart, User, Menu, X, Sparkles, Calendar, Package } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 
@@ -26,10 +26,10 @@ export default function ConceptAHeader() {
 
   const navLinks = [
     { label: "Home", href: "/concept-a/" },
-    { label: "Menu", href: "/concept-a/menu/" },
+    { label: "Shop", href: "/concept-a/menu/" },
     { label: "Our Story", href: "/concept-a/about/" },
     { label: "Gallery", href: "/concept-a/gallery/" },
-    { label: "Reservations", href: "/concept-a/reservations/" },
+    { label: "Wholesale", href: "/concept-a/reservations/" },
     { label: "Contact", href: "/concept-a/contact/" },
   ];
 
@@ -132,13 +132,13 @@ export default function ConceptAHeader() {
               <span>Patron</span>
             </Link>
 
-            {/* Reservation CTA */}
+            {/* Wholesale CTA */}
             <Link
               href="/concept-a/reservations/"
               className="hidden md:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white text-xs font-bold tracking-wide shadow-md shadow-rose-200/60 hover:opacity-95 transition"
             >
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Reserve Table</span>
+              <Package className="w-3.5 h-3.5" />
+              <span>Wholesale & Bulk</span>
             </Link>
 
             {/* Mobile Hamburger */}

@@ -83,8 +83,8 @@ export default function AdminReservationsPage() {
 
   return (
     <AdminLayout
-      title="Table Reservations"
-      subtitle="Manage seating bookings, approve table allocations, and accommodate patron hospitality requests."
+      title="Wholesale & Bulk Inquiries"
+      subtitle="Manage B2B stockist applications, quotation requests, and commercial sample kit dispatches."
     >
       {/* Filters Bar */}
       <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm mb-6 flex flex-wrap items-center justify-between gap-4">

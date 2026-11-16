@@ -21,10 +21,10 @@ export default function ConceptEHeader() {
 
   const navLinks = [
     { label: "Concourse", href: "/concept-e/" },
-    { label: "Foodway Carte", href: "/concept-e/menu/" },
+    { label: "Express Pantry", href: "/concept-e/menu/" },
     { label: "Our Journey", href: "/concept-e/about/" },
     { label: "Photo Wall", href: "/concept-e/gallery/" },
-    { label: "Reserve Seat", href: "/concept-e/reservations/" },
+    { label: "Cargo Wholesale", href: "/concept-e/reservations/" },
     { label: "Passenger Log", href: "/concept-e/reviews/" },
     { label: "Station Desk", href: "/concept-e/contact/" },
   ];
@@ -43,16 +43,16 @@ export default function ConceptEHeader() {
             🚆 METRO BITES
           </span>
           <span className="hidden sm:inline">
-            CENTRAL TERMINAL DINING &bull; PLATFORM 1 TO 4 OPEN
+            CENTRAL TERMINAL FOODWAY &bull; AMBIENT PANTRY PROVISIONS
           </span>
         </div>
         <div className="flex items-center gap-4 text-[11px]">
-          <span className="hidden md:inline">⚡ EXPRESS CARRIAGE SERVICE</span>
+          <span className="hidden md:inline">⚡ RAPID RAIL NATIONWIDE FREIGHT</span>
           <Link
             href="/concept-e/reservations/"
             className="bg-[#08142C] hover:bg-[#D71920] text-white px-3 py-0.5 rounded border border-black transition-colors"
           >
-            FIRST-CLASS TICKET &rarr;
+            CARGO WHOLESALE &rarr;
           </Link>
         </div>
       </div>

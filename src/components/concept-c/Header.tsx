@@ -21,10 +21,10 @@ export default function ConceptCHeader() {
 
   const navLinks = [
     { label: "Home", href: "/concept-c/" },
-    { label: "Pop Menu", href: "/concept-c/menu/" },
+    { label: "Pop Shop", href: "/concept-c/menu/" },
     { label: "Manifesto", href: "/concept-c/about/" },
     { label: "Art Vault", href: "/concept-c/gallery/" },
-    { label: "Book Table", href: "/concept-c/reservations/" },
+    { label: "Wholesale", href: "/concept-c/reservations/" },
     { label: "Reviews", href: "/concept-c/reviews/" },
     { label: "Contact", href: "/concept-c/contact/" },
   ];
@@ -42,15 +42,15 @@ export default function ConceptCHeader() {
           <span className="bg-[#FF007F] text-white px-2 py-0.5 rounded-sm text-[10px] border border-black shadow-[2px_2px_0px_#000]">
             ⚡ ART x FOOD
           </span>
-          <span className="hidden sm:inline">MAXIMALIST POP ART RESTAURANT &bull; NEW DELHI</span>
+          <span className="hidden sm:inline">MAXIMALIST POP ART PANTRY &bull; SHIPPED NATIONWIDE</span>
         </div>
         <div className="flex items-center gap-4 text-[11px]">
-          <span className="hidden md:inline">💥 ORDER ONLINE FOR EXPRESS PICKUP</span>
+          <span className="hidden md:inline">💥 NATIONWIDE EXPRESS DISPATCH</span>
           <Link
             href="/concept-c/reservations/"
             className="bg-[#0047FF] hover:bg-[#FF007F] text-white px-3 py-0.5 rounded border border-black shadow-[2px_2px_0px_#000] transition-colors"
           >
-            RESERVE VIP BOOTH &rarr;
+            WHOLESALE DESK &rarr;
           </Link>
         </div>
       </div>

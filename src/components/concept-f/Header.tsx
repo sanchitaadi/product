@@ -20,10 +20,10 @@ export default function ConceptFHeader() {
   }, [setConceptTheme]);
 
   const navLinks = [
-    { href: "/concept-f/menu/", label: "CHAPTER 01: MENU", icon: "🍜" },
+    { href: "/concept-f/menu/", label: "CHAPTER 01: SHOP", icon: "🍜" },
     { href: "/concept-f/about/", label: "ORIGIN STORY", icon: "📖" },
     { href: "/concept-f/gallery/", label: "OMAKE: VAULT", icon: "⚡" },
-    { href: "/concept-f/reservations/", label: "TABLE BOOKING", icon: "🥢" },
+    { href: "/concept-f/reservations/", label: "GUILD WHOLESALE", icon: "🥢" },
     { href: "/concept-f/contact/", label: "DISPATCH DESK", icon: "💬" },
   ];
 

@@ -20,10 +20,10 @@ export default function ConceptGHeader() {
   }, [setConceptTheme]);
 
   const navLinks = [
-    { href: "/concept-g/menu/", label: "BIG TOP MENU", icon: "🎪" },
+    { href: "/concept-g/menu/", label: "BIG TOP SHOP", icon: "🎪" },
     { href: "/concept-g/about/", label: "CARNIVAL TALE", icon: "🎡" },
     { href: "/concept-g/gallery/", label: "MIDWAY VAULT", icon: "🎠" },
-    { href: "/concept-g/reservations/", label: "TICKET BOOTH", icon: "🎟️" },
+    { href: "/concept-g/reservations/", label: "WHOLESALE TRUNK", icon: "🎟️" },
     { href: "/concept-g/contact/", label: "INFORMATION GATE", icon: "🎭" },
   ];
 

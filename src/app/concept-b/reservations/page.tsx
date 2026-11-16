@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Zap, CheckCircle2, Clock, Users, Calendar, Sparkles } from "lucide-react";
+import { Zap, CheckCircle2, Package, Building2, Truck, Sparkles, ShoppingBag } from "lucide-react";
 import confetti from "canvas-confetti";
 import ConceptBHeader from "@/components/concept-b/Header";
 import ConceptBFooter from "@/components/concept-b/Footer";
@@ -11,55 +11,64 @@ import RetroScrollProgress from "@/components/concept-b/RetroScrollProgress";
 import { useToast } from "@/context/ToastContext";
 import * as api from "@/lib/api";
 
-function ConceptBReservationsContent() {
+function ConceptBWholesaleContent() {
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("08:00 PM");
-  const [guests, setGuests] = useState(4);
-  const [seating, setSeating] = useState("Retro Booth");
-  const [requests, setRequests] = useState("");
+  const [inquiryType, setInquiryType] = useState("Retro Bodega & Snack Dispensary");
+  const [volume, setVolume] = useState("Starter Pack (100–300 units)");
+  const [targetDate, setTargetDate] = useState("");
+  const [city, setCity] = useState("New Delhi");
+  const [notes, setNotes] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
+  const [poNumber, setPoNumber] = useState("");
 
   const { showToast } = useToast();
   const { playCoin, playPop, playClick } = useRetroSound();
 
-  const handleBooking = async (e: React.FormEvent) => {
+  const handleWholesaleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !email || !date) return;
+    if (!name || !phone || !email || !company) {
+      showToast("FILL ALL BUSINESS DETAILS! 💥", "error");
+      return;
+    }
     setSubmitting(true);
+    playClick();
     try {
       const res = await api.createReservation({
         name,
         phone,
         email,
-        reservation_date: date,
-        reservation_time: time,
-        guests,
-        seating_area: seating,
-        special_requests: requests,
-        concept_source: "Concept B — Retro Gen-Z",
+        reservation_date: targetDate || new Date().toISOString().split("T")[0],
+        reservation_time: "Wholesale PO",
+        guests: volume.includes("100–300") ? 200 : volume.includes("300–800") ? 500 : 1500,
+        seating_area: `${company} — ${inquiryType}`,
+        special_requests: `[City: ${city}] [Volume: ${volume}] ${notes}`.trim(),
+        concept_source: "Concept B — Retro Gen-Z Wholesale",
       });
       if (res.success) {
         setConfirmed(true);
+        setPoNumber(`PO-90S-${Math.floor(1000 + Math.random() * 9000)}`);
         playCoin();
         try {
           confetti({
-            particleCount: 50,
-            spread: 70,
+            particleCount: 60,
+            spread: 80,
             origin: { y: 0.6 },
             colors: ["#FFE15D", "#FF2A55", "#000000", "#FFFFFF"],
           });
         } catch {
           // ignore
         }
-        showToast("BOOTH SECURED! ⚡", "success");
+        showToast("WHOLESALE PO GENERATED! ⚡", "success");
+      } else {
+        showToast(res.error || "Could not register PO.", "error");
       }
     } catch {
-      showToast("Unable to lock booth.", "error");
+      showToast("Wholesale connection error.", "error");
     } finally {
       setSubmitting(false);
     }
@@ -73,184 +82,258 @@ function ConceptBReservationsContent() {
       {/* Desktop Custom Cursor */}
       <RetroCustomCursor />
 
-      {/* Header */}
       <ConceptBHeader />
 
-      <section className="py-12 bg-[#FFE15D] border-b-4 border-black relative overflow-hidden">
-        <div className="absolute inset-0 pattern-comic-halftone opacity-20 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 text-center space-y-3 relative z-10">
-          <span className="px-4 py-1.5 bg-black text-[#FFE15D] text-xs font-retro-bold font-black uppercase tracking-wider inline-block rounded-xl border-2 border-black shadow-[3px_3px_0px_#FF2A55]">
-            ⚡ SECURE THE SPOT &bull; VINYL BOOTHS
-          </span>
-          <h1 className="font-retro-bold font-black text-4xl sm:text-6xl uppercase tracking-tight text-black">
-            BOOK YOUR VINYL BOOTH
-          </h1>
-          <p className="text-xs sm:text-sm font-bold text-stone-900 max-w-md mx-auto">
-            Friday &amp; Saturday nights fill fast. Grab your booth in advance.
-          </p>
+      {/* Retro Marquee Sub-Bar */}
+      <div className="bg-[#FF2A55] text-white font-black text-xs uppercase py-2 px-4 border-b-4 border-black flex items-center justify-between font-retro-bold select-none">
+        <div className="flex items-center gap-2">
+          <span>⚡ B2B BODEGA & WHOLESALE DISPENSARY</span>
+          <span>&bull;</span>
+          <span className="hidden sm:inline">BULK CANDY, CRUNCHY SNACKS & SODA PALLETS</span>
         </div>
-      </section>
+        <span className="bg-[#FFE15D] text-black px-2 py-0.5 text-[10px] font-black border-2 border-black">
+          UP TO 45% OFF WHOLESALE
+        </span>
+      </div>
 
-      <section className="py-12 md:py-16 flex-1">
-        <div className="max-w-4xl mx-auto px-6">
-          {confirmed ? (
-            <div className="p-8 sm:p-12 text-center bg-white rounded-3xl border-4 border-black shadow-[10px_10px_0px_#000] space-y-4">
-              <CheckCircle2 className="w-14 h-14 text-[#48BB78] mx-auto stroke-[3]" />
-              <h2 className="font-retro-bold font-black text-3xl sm:text-4xl text-black uppercase">
-                YOU&apos;RE LOCKED IN! ⚡
-              </h2>
-              <p className="text-xs sm:text-sm font-bold text-stone-700 max-w-md mx-auto">
-                We sent a text to {phone} and confirmation to {email}. See you on {date} at {time}!
-              </p>
-              <button
-                onClick={() => setConfirmed(false)}
-                className="px-6 py-3 rounded-2xl bg-[#FF2A55] text-white text-xs font-retro-bold font-black uppercase border-2 border-black shadow-[3px_3px_0px_#000]"
-              >
-                BOOK ANOTHER BOOTH
-              </button>
+      <div className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full">
+        {confirmed ? (
+          <div className="max-w-xl mx-auto bg-white border-4 border-black p-8 sm:p-10 shadow-[10px_10px_0px_#000] text-center space-y-6">
+            <div className="inline-block p-4 bg-[#FFE15D] border-4 border-black shadow-[4px_4px_0px_#000] text-3xl">
+              📦⚡
             </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-              <form onSubmit={handleBooking} className="bg-white p-6 sm:p-8 rounded-3xl border-4 border-black shadow-[8px_8px_0px_#000] space-y-4 text-xs font-retro-bold font-black">
+
+            <div>
+              <span className="px-3 py-1 bg-black text-[#FFE15D] text-xs font-black uppercase tracking-wider font-mono">
+                PURCHASE ORDER FILED: {poNumber}
+              </span>
+              <h2 className="text-3xl font-black font-retro-bold uppercase tracking-tight mt-3">
+                WHOLESALE DROP LOCKED IN!
+              </h2>
+              <p className="text-xs text-gray-700 font-bold mt-2">
+                HELL YEAH, <strong>{name}</strong>! OUR WHOLESALE DISPENSARY TEAM IS PACKING YOUR RETRO CATALOG & PRICING SCHEDULE FOR <strong>{email}</strong>.
+              </p>
+            </div>
+
+            <div className="p-5 bg-[#FFF9EC] border-3 border-black text-left space-y-2 text-xs font-mono">
+              <div className="flex justify-between border-b-2 border-dashed border-black pb-1.5">
+                <span className="font-bold text-gray-600">CLIENT STORE:</span>
+                <span className="font-black">{company}</span>
+              </div>
+              <div className="flex justify-between border-b-2 border-dashed border-black pb-1.5">
+                <span className="font-bold text-gray-600">INQUIRY CATEGORY:</span>
+                <span className="font-black text-[#FF2A55]">{inquiryType}</span>
+              </div>
+              <div className="flex justify-between border-b-2 border-dashed border-black pb-1.5">
+                <span className="font-bold text-gray-600">VOLUME TIER:</span>
+                <span className="font-black text-[#000]">{volume}</span>
+              </div>
+              <div className="flex justify-between border-b-2 border-dashed border-black pb-1.5">
+                <span className="font-bold text-gray-600">DISPATCH CITY:</span>
+                <span className="font-black">{city}</span>
+              </div>
+              {notes && (
+                <div className="pt-1 text-[11px] text-gray-700 font-mono italic">
+                  &ldquo;{notes}&rdquo;
+                </div>
+              )}
+            </div>
+
+            <button
+              onClick={() => {
+                playPop();
+                setConfirmed(false);
+              }}
+              className="w-full py-4 bg-[#FFE15D] text-black font-black uppercase text-sm border-4 border-black shadow-[4px_4px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition active:bg-[#FF2A55] active:text-white"
+            >
+              FILE ANOTHER PURCHASE ORDER &crarr;
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Form */}
+            <form onSubmit={handleWholesaleSubmit} className="lg:col-span-2 bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000] space-y-5">
+              <div className="border-b-4 border-black pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <label className="block mb-1">CREW LEAD FULL NAME *</label>
+                  <span className="text-[10px] font-black uppercase bg-[#FF2A55] text-white px-2 py-0.5 border-2 border-black inline-block mb-1">
+                    OFFICIAL DISPENSARY ORDER DESK
+                  </span>
+                  <h1 className="text-2xl sm:text-3xl font-black font-retro-bold uppercase tracking-tight">
+                    WHOLESALE & BULK PURCHASE INQUIRY
+                  </h1>
+                </div>
+                <span className="text-xs font-black bg-[#FFE15D] text-black px-3 py-1 border-2 border-black font-mono self-start sm:self-auto">
+                  MIN. 100 UNITS
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold">
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider">YOUR NAME *</label>
                   <input
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. Aadi Saxena"
-                    className="w-full px-4 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none"
+                    placeholder="e.g. Aryan Malhotra"
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-1">MOBILE NUMBER (FOR SMS TICKET) *</label>
+                  <label className="block mb-1 uppercase tracking-wider">STORE / VENUE / BRAND *</label>
                   <input
-                    type="tel"
+                    type="text"
                     required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+91 98765 43210"
-                    className="w-full px-4 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    placeholder="e.g. Pixel Arcade & Cafe"
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-1">EMAIL ADDRESS *</label>
+                  <label className="block mb-1 uppercase tracking-wider">BUSINESS EMAIL *</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="aadi@example.com"
-                    className="w-full px-4 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none"
+                    placeholder="orders@pixelarcade.example"
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                   />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block mb-1">DATE *</label>
-                    <input
-                      type="date"
-                      required
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                      className="w-full px-3 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none text-xs"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block mb-1">TIME *</label>
-                    <select
-                      value={time}
-                      onChange={(e) => setTime(e.target.value)}
-                      className="w-full px-3 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none text-xs"
-                    >
-                      <option value="01:00 PM">01:00 PM (Lunch)</option>
-                      <option value="02:00 PM">02:00 PM (Lunch)</option>
-                      <option value="07:00 PM">07:00 PM (Early Dinner)</option>
-                      <option value="08:00 PM">08:00 PM (Prime Time)</option>
-                      <option value="09:30 PM">09:30 PM (Late Slices)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block mb-1">PARTY SIZE *</label>
-                    <select
-                      value={guests}
-                      onChange={(e) => setGuests(Number(e.target.value))}
-                      className="w-full px-3 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none text-xs"
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((g) => (
-                        <option key={g} value={g}>
-                          {g} {g === 1 ? "PERSON" : "PEOPLE"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block mb-1">ZONE</label>
-                    <select
-                      value={seating}
-                      onChange={(e) => setSeating(e.target.value)}
-                      className="w-full px-3 py-2.5 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none text-xs"
-                    >
-                      <option value="Retro Booth">VINYL BOOTH ⚡</option>
-                      <option value="High-Top Bar">BAR COUNTER</option>
-                      <option value="Outdoor Deck">GARDEN DECK</option>
-                    </select>
-                  </div>
                 </div>
 
                 <div>
-                  <label className="block mb-1">SPECIAL REQUESTS</label>
-                  <textarea
-                    rows={2}
-                    value={requests}
-                    onChange={(e) => setRequests(e.target.value)}
-                    placeholder="Birthday, anniversary, high-chair needed..."
-                    className="w-full px-3 py-2 rounded-xl border-2 border-black bg-[#FFF9EC] focus:outline-none text-xs font-normal"
+                  <label className="block mb-1 uppercase tracking-wider">PHONE / WHATSAPP *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+91 98991 23456"
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full py-4 rounded-2xl bg-[#FF2A55] text-white border-[3px] border-black font-retro-bold font-black text-xs uppercase tracking-wider shadow-[4px_4px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[6px_6px_0px_#000] disabled:opacity-50 transition"
-                >
-                  {submitting ? "SECURING BOOTH..." : "LOCK BOOTH IN NOW ★"}
-                </button>
-              </form>
-
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden border-4 border-black shadow-[6px_6px_0px_#000]">
-                  <img src="/images/restaurant-interior.webp" alt="Retro Dining Vibe" className="w-full h-full object-cover" />
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider">STORE / CLIENT TYPE</label>
+                  <select
+                    value={inquiryType}
+                    onChange={(e) => setInquiryType(e.target.value)}
+                    className="w-full p-3 border-3 border-black bg-white focus:outline-none font-mono"
+                  >
+                    <option value="Retro Bodega & Snack Dispensary">Retro Bodega & Snack Dispensary</option>
+                    <option value="Arcade Bar & Entertainment Venue">Arcade Bar & Entertainment Venue</option>
+                    <option value="Streetwear Brand Pop-Up / Drop">Streetwear Brand Pop-Up / Drop</option>
+                    <option value="College Campus Convenience Store">College Campus Convenience Store</option>
+                    <option value="Festival & Music Event Stockist">Festival & Music Event Stockist</option>
+                  </select>
                 </div>
-                <div className="p-6 rounded-3xl bg-[#FFE15D] border-4 border-black shadow-[6px_6px_0px_#000] space-y-2 text-xs font-bold">
-                  <h4 className="font-retro-bold font-black text-sm uppercase">BOOTH RULES:</h4>
-                  <p>&bull; Booths held for 15 mins after scheduled time.</p>
-                  <p>&bull; Free high-speed Wi-Fi and phone chargers at every table.</p>
-                  <p>&bull; Walk-in counter spots available based on floor space.</p>
+
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider">ESTIMATED VOLUME</label>
+                  <select
+                    value={volume}
+                    onChange={(e) => setVolume(e.target.value)}
+                    className="w-full p-3 border-3 border-black bg-white focus:outline-none font-mono"
+                  >
+                    <option value="Sample Pack (25–50 units)">Sample Pack (25–50 units)</option>
+                    <option value="Starter Pack (100–300 units)">Starter Pack (100–300 units)</option>
+                    <option value="Retail Master Case (300–800 units)">Retail Master Case (300–800 units)</option>
+                    <option value="Pallet Drop (1,000+ units)">Pallet Drop (1,000+ units)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider">TARGET DELIVERY DATE</label>
+                  <input
+                    type="date"
+                    value={targetDate}
+                    onChange={(e) => setTargetDate(e.target.value)}
+                    min={new Date().toISOString().split("T")[0]}
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block mb-1 uppercase tracking-wider">DESTINATION CITY</label>
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder="e.g. Mumbai, Bengaluru, Delhi"
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:outline-none"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block mb-1 uppercase tracking-wider">
+                    SPECIFIC PRODUCT DROPS OR CUSTOM BUNDLE REQUESTS
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder="e.g. Looking to stock 250 units of Lotus Biscoff Shakes, Retro Sourdough Snack Packs, and Truffle Fries in custom 90s packaging..."
+                    className="w-full p-3 border-3 border-black bg-[#FFF9EC] focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
+                  />
                 </div>
               </div>
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full py-4 bg-[#FF2A55] text-white font-black uppercase text-sm border-4 border-black shadow-[6px_6px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition disabled:opacity-50 font-retro-bold"
+              >
+                {submitting ? "PROCESSING PO..." : "SUBMIT WHOLESALE PO & GET SAMPLE BOX ⚡"}
+              </button>
+            </form>
+
+            {/* Sidebar */}
+            <div className="space-y-6">
+              <div className="bg-[#FFE15D] border-4 border-black p-6 shadow-[6px_6px_0px_#000] space-y-4">
+                <span className="text-[10px] font-black uppercase bg-black text-[#FFE15D] px-2 py-0.5 border border-black inline-block">
+                  WHY STOCK RETRO GEN-Z?
+                </span>
+                <h3 className="text-xl font-black font-retro-bold uppercase">
+                  HIGH VELOCITY SNACK PERKS
+                </h3>
+                <ul className="space-y-2 text-xs font-bold">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#FF2A55]">▶</span>
+                    <span><strong>HIGH-MARGIN B2B TIERS:</strong> Guaranteed 40%+ gross margins for retail stockists.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#FF2A55]">▶</span>
+                    <span><strong>SHELF LIFE PROVEN:</strong> Sealed nitro-flushed foil packs & airtight tubs keep crispy for 180 days.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#FF2A55]">▶</span>
+                    <span><strong>DISPLAY STAND INCLUDED:</strong> Free branded 90s arcade wireframe counter display with 200+ unit orders.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border-4 border-black p-6 shadow-[6px_6px_0px_#000] text-xs font-bold space-y-2 font-mono">
+                <p className="uppercase text-gray-500 text-[10px]">DIRECT B2B DISPENSARY HOTLINE</p>
+                <p className="text-base font-black text-[#FF2A55]">wholesale@peachyplate.example</p>
+                <p>CALL / WHATSAPP: +91 98765 43210</p>
+              </div>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        )}
+      </div>
 
       <ConceptBFooter />
     </div>
   );
 }
 
-export default function ConceptBReservationsPage() {
+export default function ConceptBWholesalePage() {
   return (
     <RetroSoundProvider>
-      <ConceptBReservationsContent />
+      <ConceptBWholesaleContent />
     </RetroSoundProvider>
   );
 }
