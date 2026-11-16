@@ -104,7 +104,7 @@ export default function ConceptCHomePage() {
             </motion.h1>
 
             <p className="text-base sm:text-lg font-bold text-black max-w-xl leading-relaxed">
-              Where pop-art editorial visuals meet high-voltage culinary craft. No timid flavors, no boring plates &mdash; just explosive gourmet gastronomy designed for the bold.
+              Where pop-art editorial visuals meet high-voltage pantry craft. Bold small-batch chili crunch, fiery artisan condiments, popped street crisps, and botanical fizzy drinks.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -112,14 +112,14 @@ export default function ConceptCHomePage() {
                 href="/concept-c/menu/"
                 className="bg-[#0047FF] hover:bg-[#FF007F] text-white font-black uppercase text-sm px-8 py-4 border-4 border-black shadow-[6px_6px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-2"
               >
-                <span>EXPLORE POP MENU</span>
+                <span>SHOP POP FLAVOR DROPS</span>
                 <ArrowRight className="w-5 h-5 stroke-[3]" />
               </Link>
               <Link
                 href="/concept-c/reservations/"
                 className="bg-white hover:bg-black hover:text-white text-black font-black uppercase text-sm px-6 py-4 border-4 border-black shadow-[6px_6px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
               >
-                BOOK VIP BOOTH &rarr;
+                WHOLESALE &amp; STOCKIST &rarr;
               </Link>
             </div>
           </div>
@@ -161,29 +161,29 @@ export default function ConceptCHomePage() {
           <div className="flex animate-marquee gap-8 items-center shrink-0">
             <span>⚡ ELECTRIC FLAVORS</span>
             <span>&bull;</span>
-            <span>🎨 POP ART DINING ROOM</span>
+            <span>🎨 POP ART COLLECTIBLE PACKS</span>
             <span>&bull;</span>
-            <span>🔥 CHARRED ARTISAN CRUSTS</span>
+            <span>🔥 FIERY CHILI CRUNCH JARS</span>
             <span>&bull;</span>
-            <span>🥤 RETRO CRAFT SODAS</span>
+            <span>🥤 BOTANICAL CRAFT FIZZ</span>
             <span>&bull;</span>
             <span>★ ZERO ARTIFICIAL PRESERVATIVES</span>
             <span>&bull;</span>
-            <span>🍕 TRUFFLE CHEESE EXPLOSIONS</span>
+            <span>🥨 AIR-POPPED STREET CRISPS</span>
             <span>&bull;</span>
           </div>
           <div className="flex animate-marquee gap-8 items-center shrink-0" aria-hidden="true">
             <span>⚡ ELECTRIC FLAVORS</span>
             <span>&bull;</span>
-            <span>🎨 POP ART DINING ROOM</span>
+            <span>🎨 POP ART COLLECTIBLE PACKS</span>
             <span>&bull;</span>
-            <span>🔥 CHARRED ARTISAN CRUSTS</span>
+            <span>🔥 FIERY CHILI CRUNCH JARS</span>
             <span>&bull;</span>
-            <span>🥤 RETRO CRAFT SODAS</span>
+            <span>🥤 BOTANICAL CRAFT FIZZ</span>
             <span>&bull;</span>
             <span>★ ZERO ARTIFICIAL PRESERVATIVES</span>
             <span>&bull;</span>
-            <span>🍕 TRUFFLE CHEESE EXPLOSIONS</span>
+            <span>🥨 AIR-POPPED STREET CRISPS</span>
             <span>&bull;</span>
           </div>
         </div>
@@ -201,10 +201,10 @@ export default function ConceptCHomePage() {
               PILLAR 01
             </div>
             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight leading-tight">
-              Visual Overdrive
+              Packaging Art
             </h3>
             <p className="text-sm font-medium leading-relaxed opacity-95">
-              Every dish is treated like an installation art piece. Vivid color palettes, graphic plating compositions, and bold textural juxtapositions.
+              Every jar, can, and snack pouch is created as a collectible pop-art print. High-voltage graphics that bring museum exhibition swagger to retail grocery shelves.
             </p>
           </div>
 
@@ -218,7 +218,7 @@ export default function ConceptCHomePage() {
               Hyper Flavor
             </h3>
             <p className="text-sm font-medium leading-relaxed opacity-95">
-              Slow-fermented doughs, fire-roasted botanical peppers, hand-pulled burrata, and signature spicy peach glazes cooked down from scratch.
+              Slow-fermented botanical chilis, fire-roasted peppers, unrefined cold-pressed oils, and intense umami crunch with zero chemical additives or preservatives.
             </p>
           </div>
 
@@ -229,10 +229,10 @@ export default function ConceptCHomePage() {
               PILLAR 03
             </div>
             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight leading-tight">
-              No Boring Plates
+              No Boring Pantries
             </h3>
             <p className="text-sm font-medium leading-relaxed opacity-95">
-              Dining should be fun, loud, and unforgettable. Our pop dining space is designed to spark instant conversations and pure sensory joy.
+              Food should be energetic, daring, and unapologetically delicious. We engineer flavor profiles that ignite noodles, tacos, dips, and midnight cravings.
             </p>
           </div>
         </div>
@@ -289,13 +289,13 @@ export default function ConceptCHomePage() {
         <div className="max-w-5xl mx-auto bg-[#FFFDF7] text-black border-4 border-black p-8 sm:p-12 shadow-[12px_12px_0px_#FFE600]">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
             <span className="bg-[#FF007F] text-white text-xs font-black uppercase px-3 py-1 border-2 border-black inline-block -rotate-2">
-              ★ NEON DINING EXPERIENCE ★
+              ★ B2B &amp; DESIGN STORE STOCKISTS ★
             </span>
             <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black">
-              RESERVE A POP BOOTH
+              WHOLESALE &amp; STOCKIST ORDERS
             </h2>
             <p className="text-sm font-bold text-gray-700">
-              Skip the line! Secure a vibrant retro pop booth for private celebrations, dinner dates, and creative team gatherings.
+              Stock our collectible pop-art chili crunch bottles, hot sauces, and craft fizz in your boutique, design store, museum shop, or gourmet supermarket!
             </p>
           </div>
 
@@ -303,16 +303,16 @@ export default function ConceptCHomePage() {
             <div className="bg-[#FFE600] p-8 border-4 border-black text-center space-y-4 shadow-[6px_6px_0px_#000]">
               <span className="text-5xl">🎉</span>
               <h3 className="text-2xl font-black uppercase">
-                YOUR TABLE IS CONFIRMED!
+                STOCKIST APPLICATION RECEIVED!
               </h3>
               <p className="text-sm font-bold">
-                We sent confirmation details to your phone & email. See you at Peachy Pop!
+                We have sent our full wholesale product catalog and line sheet to your email. Our brand director will ring you shortly!
               </p>
               <button
                 onClick={() => setResSuccess(false)}
                 className="bg-[#0047FF] text-white text-xs font-black uppercase px-6 py-2.5 border-2 border-black shadow-[3px_3px_0px_#000]"
               >
-                BOOK ANOTHER TABLE
+                SUBMIT ANOTHER APPLICATION
               </button>
             </div>
           ) : (
@@ -320,21 +320,21 @@ export default function ConceptCHomePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-black uppercase mb-1">
-                    Your Name
+                    Store / Company Name
                   </label>
                   <input
                     type="text"
                     required
                     value={resForm.name}
                     onChange={(e) => setResForm({ ...resForm, name: e.target.value })}
-                    placeholder="Andy Warhol"
+                    placeholder="Pop Modern Gourmet"
                     className="w-full bg-[#FFE600]/20 border-3 border-black p-3 text-sm font-bold focus:bg-white focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-black uppercase mb-1">
-                    Phone Number
+                    Contact Phone Number
                   </label>
                   <input
                     type="tel"
@@ -348,21 +348,21 @@ export default function ConceptCHomePage() {
 
                 <div>
                   <label className="block text-xs font-black uppercase mb-1">
-                    Email Address
+                    Buyer Email Address
                   </label>
                   <input
                     type="email"
                     required
                     value={resForm.email}
                     onChange={(e) => setResForm({ ...resForm, email: e.target.value })}
-                    placeholder="andy@popart.com"
+                    placeholder="buyer@popmodern.com"
                     className="w-full bg-[#FFE600]/20 border-3 border-black p-3 text-sm font-bold focus:bg-white focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-black uppercase mb-1">
-                    Date
+                    Earliest Stocking Date
                   </label>
                   <input
                     type="date"
@@ -375,41 +375,44 @@ export default function ConceptCHomePage() {
 
                 <div>
                   <label className="block text-xs font-black uppercase mb-1">
-                    Time Slot
+                    Retail Channel
                   </label>
-                  <input
-                    type="time"
-                    required
+                  <select
                     value={resForm.reservation_time}
                     onChange={(e) => setResForm({ ...resForm, reservation_time: e.target.value })}
                     className="w-full bg-[#FFE600]/20 border-3 border-black p-3 text-sm font-bold focus:bg-white focus:outline-none"
-                  />
+                  >
+                    <option value="Design Boutique &amp; Museum Gift Shop">Design Boutique &amp; Museum Shop</option>
+                    <option value="Gourmet Food Hall &amp; Deli">Gourmet Food Hall &amp; Deli</option>
+                    <option value="Online D2C Marketplace">Online D2C Marketplace</option>
+                    <option value="Cafe / Espresso Bar Retail Shelf">Cafe / Bar Retail Shelf</option>
+                    <option value="Corporate / PR Gifting Client">Corporate / PR Gifting Client</option>
+                  </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-black uppercase mb-1">
-                    Number of Guests
+                    Initial Case Volume
                   </label>
                   <select
                     value={resForm.guests}
                     onChange={(e) => setResForm({ ...resForm, guests: Number(e.target.value) })}
                     className="w-full bg-[#FFE600]/20 border-3 border-black p-3 text-sm font-bold focus:bg-white focus:outline-none"
                   >
-                    {[1, 2, 3, 4, 5, 6, 8, 10, 12].map((num) => (
-                      <option key={num} value={num}>
-                        {num} {num === 1 ? "Guest" : "Guests"}
-                      </option>
-                    ))}
+                    <option value={5}>Starter Pack (5 Cases - 120 Units)</option>
+                    <option value={15}>Boutique Display (15 Cases - 360 Units)</option>
+                    <option value={30}>Full Endcap Display (30 Cases - 720 Units)</option>
+                    <option value={60}>Pallet Order (60+ Cases - 1,440+ Units)</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-black uppercase mb-1">
-                  Seating Vibe
+                  Primary Product Category of Interest
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {["Pop Art Neon Booth", "Artist Loft Table", "Outdoor Pop Patio"].map((area) => (
+                  {["Artisan Chili &amp; Sauces", "Air-Popped Street Snacks", "Botanical Fizzy Cans"].map((area) => (
                     <button
                       type="button"
                       key={area}
@@ -420,7 +423,7 @@ export default function ConceptCHomePage() {
                           : "bg-white text-black hover:bg-[#FFE600]"
                       }`}
                     >
-                      {area}
+                      {area.replace("&amp;", "&")}
                     </button>
                   ))}
                 </div>
@@ -431,7 +434,7 @@ export default function ConceptCHomePage() {
                 disabled={resSubmitting}
                 className="w-full bg-[#FFE600] hover:bg-[#FF007F] hover:text-white text-black font-black uppercase text-base py-4 border-4 border-black shadow-[6px_6px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
               >
-                {resSubmitting ? "SECURING BOOTH..." : "CONFIRM VIP RESERVATION &rarr;"}
+                {resSubmitting ? "TRANSMITTING APPLICATION..." : "REQUEST WHOLESALE CATALOG &amp; LINE SHEET &rarr;"}
               </button>
             </form>
           )}

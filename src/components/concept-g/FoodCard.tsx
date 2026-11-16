@@ -97,8 +97,8 @@ export default function ConceptGFoodCard({
             />
           </button>
 
-          {/* Veg / Non-Veg Badge */}
-          <div className="absolute bottom-2 left-2">
+          {/* Veg / Non-Veg Badge & Net Weight */}
+          <div className="absolute bottom-2 left-2 flex items-center gap-1.5">
             <span
               className={`px-2 py-0.5 text-[9px] font-black uppercase tracking-wider rounded-full border border-white ${
                 item.is_veg
@@ -107,6 +107,9 @@ export default function ConceptGFoodCard({
               }`}
             >
               {item.is_veg ? "VEG 🥬" : "NON-VEG 🍗"}
+            </span>
+            <span className="px-2 py-0.5 text-[9px] font-black uppercase rounded-full bg-[#5C0614] text-[#FFD54F] border border-white/60">
+              {item.net_weight || "250g Jar"}
             </span>
           </div>
         </div>
@@ -135,7 +138,7 @@ export default function ConceptGFoodCard({
           className="w-full py-3 bg-[#C41E3A] hover:bg-[#a3162c] text-white font-black uppercase text-xs tracking-wider rounded-2xl border-2 border-[#FFD54F] shadow-[3px_3px_0px_#5C0614] active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
-          <span>ORDER CARNIVAL TICKET</span>
+          <span>CARNIVAL PACK • ADD</span>
         </button>
       </div>
     </motion.article>

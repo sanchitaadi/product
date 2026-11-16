@@ -71,15 +71,15 @@ export default function ConceptCMenuPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-4 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-black text-[#FFE600] text-xs font-black uppercase tracking-widest border border-white">
             <Zap className="w-4 h-4 fill-current" />
-            <span>EXPRESSIVE CULINARY CATALOGUE</span>
+            <span>EXPRESSIVE PRODUCT CATALOGUE</span>
           </div>
 
           <h1 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter text-white">
-            THE POP ART MENU
+            THE POP ART SHOP
           </h1>
 
           <p className="text-sm sm:text-base font-bold text-white/90 max-w-xl mx-auto">
-            Bold recipes inspired by modern art movements, fiery artisan kitchens, and vibrant street food sensations.
+            Hyper-flavor chili crunch jars, slow-simmered hot sauces, popped street snacks, and botanical craft sodas packaged as graphic art pieces.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function ConceptCMenuPage() {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black stroke-[3]" />
               <input
                 type="text"
-                placeholder="Search dishes or ingredients..."
+                placeholder="Search pantry jars, hot sauces, snacks..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 bg-[#FFFDF7] border-3 border-black text-xs font-black placeholder-gray-500 focus:bg-[#FFE600]/20 focus:outline-none shadow-[2px_2px_0px_#000]"

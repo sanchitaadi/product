@@ -83,13 +83,13 @@ function ConceptBMenuContent() {
         <div className="absolute inset-0 pattern-comic-halftone opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 text-center space-y-3 relative z-10">
           <span className="px-4 py-1.5 bg-black text-[#FFE15D] text-xs font-retro-bold font-black uppercase tracking-wider inline-block rounded-xl border-2 border-black shadow-[3px_3px_0px_#FF2A55]">
-            ⚡ LIVE KITCHEN MENU &bull; 20+ ITEMS
+            ⚡ BODEGA SNACK DROP &bull; 20+ PACKAGED GOODS
           </span>
           <h1 className="font-retro-bold font-black text-4xl sm:text-7xl text-black uppercase tracking-tight">
-            THE OFFICIAL FOOD LINEUP
+            THE OFFICIAL SNACK LINEUP
           </h1>
           <p className="text-xs sm:text-sm font-bold text-stone-900 max-w-lg mx-auto">
-            Wood-fired 48-hour sourdough pizzas, cheese-drenched rigatoni, iced lattes and handcrafted desserts made fresh daily in New Delhi.
+            Air-popped sorghum crisps, slow-roasted chili crunch, prebiotic botanical fizz cans, and dark chocolate drops shipped direct.
           </p>
         </div>
       </section>
@@ -104,7 +104,7 @@ function ConceptBMenuContent() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search pizza, fries, latte, burger..."
+              placeholder="Search crisps, chili jars, sodas, sweets..."
               className="w-full bg-[#FFF9EC] border-2 border-black rounded-2xl pl-11 pr-4 py-2.5 text-xs font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#FF2A55] shadow-[2px_2px_0px_#000]"
             />
           </div>

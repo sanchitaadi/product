@@ -59,7 +59,7 @@ export default function ConceptAHomePage() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-rose-200 text-[#E07A86] text-xs font-bold tracking-wide shadow-sm"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Coquette Aesthetic &bull; Pastel Comfort Dining</span>
+              <span>Coquette Atelier &bull; Gourmet Pantry &amp; Confections</span>
             </motion.div>
 
             <div>
@@ -72,7 +72,7 @@ export default function ConceptAHomePage() {
                 transition={{ delay: 0.1, duration: 0.5 }}
                 className="font-coquette-serif font-black text-4xl sm:text-6xl text-[#3D2D2E] leading-[1.12]"
               >
-                Where Good Food Meets <em className="text-[#E07A86] not-italic">Cute Moods 🎀</em>
+                Artisan Pantry Treats in <em className="text-[#E07A86] not-italic">Cute Jars 🎀</em>
               </motion.h1>
             </div>
 
@@ -82,7 +82,7 @@ export default function ConceptAHomePage() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl"
             >
-              Delicate burrata bruschettas, artisanal 48-hour sourdough pizzas, velvety pink sauces, and Parisian strawberry cheesecakes delivered fresh to your door in New Delhi.
+              Small-batch white peach preserves, French cultured butter cookies, slow-simmered pink pasta sauces, and single-origin dark chocolates shipped fresh across India.
             </motion.p>
 
             <motion.div
@@ -95,7 +95,7 @@ export default function ConceptAHomePage() {
                 href="/concept-a/menu/"
                 className="px-8 py-4 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white font-bold text-sm tracking-wide shadow-lg shadow-rose-300/40 hover:opacity-95 transition flex items-center gap-2 group"
               >
-                <span>Explore Full Menu</span>
+                <span>Shop Pantry Collection</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -103,7 +103,7 @@ export default function ConceptAHomePage() {
                 href="/concept-a/reservations/"
                 className="px-7 py-4 rounded-full bg-white hover:bg-rose-50 text-[#3D2D2E] border border-rose-200 text-sm font-semibold tracking-wide shadow-sm transition flex items-center gap-2"
               >
-                <span>Book a Table</span>
+                <span>Wholesale &amp; Gifting</span>
                 <span>🎀</span>
               </Link>
             </motion.div>
@@ -116,17 +116,17 @@ export default function ConceptAHomePage() {
               </div>
               <div className="bg-white/70 backdrop-blur-sm p-3 rounded-2xl border border-rose-100">
                 <span className="font-coquette-serif font-bold text-2xl text-[#3D2D2E] block">100%</span>
-                <span className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Scratch Kitchen</span>
+                <span className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Clean Label</span>
               </div>
               <div className="bg-white/70 backdrop-blur-sm p-3 rounded-2xl border border-rose-100">
-                <span className="font-coquette-serif font-bold text-2xl text-[#3D2D2E] block">30 Min</span>
-                <span className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Fresh Delivery</span>
+                <span className="font-coquette-serif font-bold text-2xl text-[#3D2D2E] block">Pan-India</span>
+                <span className="text-[10px] text-gray-500 uppercase tracking-wide font-medium">Express Dispatch</span>
               </div>
             </div>
 
             {/* Romantic Animated Scroll Indicator */}
             <div className="pt-2 flex items-center gap-2 text-xs font-script text-[#E07A86]">
-              <span>scroll down to explore our pastel dining room</span>
+              <span>scroll down to explore our packaged confections &amp; pantry jars</span>
               <span className="text-sm animate-bounce">🎀</span>
             </div>
           </div>
@@ -215,13 +215,13 @@ export default function ConceptAHomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-xl mx-auto mb-14 space-y-2">
             <span className="text-xs uppercase tracking-widest text-[#E07A86] font-bold flex items-center justify-center gap-1.5">
-              <span>🎀</span> Chef&apos;s Signature Selections <span>🎀</span>
+              <span>🎀</span> Atelier Signature Pantry Batches <span>🎀</span>
             </span>
             <h2 className="font-coquette-serif font-black text-3xl sm:text-4xl text-[#3D2D2E]">
-              Most Loved Feasts & Drinks
+              Packaged Delicacies &amp; Cordials
             </h2>
             <p className="text-xs sm:text-sm text-gray-500">
-              Each dish is prepared to order with imported Italian cheeses, sun-ripened tomatoes, and house-made sauces.
+              Slow-cooked fruit preserves, stone-ground butter cookies, single-origin cacao, and sparkling botanical drinks in glass bottles.
             </p>
           </div>
 
@@ -248,7 +248,7 @@ export default function ConceptAHomePage() {
               href="/concept-a/menu/"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-rose-50 hover:bg-[#E07A86] text-[#E07A86] hover:text-white border border-rose-200 font-bold text-xs uppercase tracking-wider transition shadow-sm"
             >
-              <span>View All 20 Dishes</span>
+              <span>Explore All Packaged Products</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -461,24 +461,24 @@ export default function ConceptAHomePage() {
 
           <div className="space-y-6">
             <span className="text-xs uppercase tracking-widest text-[#E07A86] font-bold">
-              Our Culinary Philosophy
+              Our Packaging &amp; Purity Standards
             </span>
             <h2 className="font-coquette-serif font-black text-3xl sm:text-4xl text-[#3D2D2E]">
-              Handcrafted with Love, Ribbons, and Real Vanilla 🎀
+              Small-Batch Preserves, Clean Formulas, and Pastel Ribbon Keepsakes 🎀
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">
-              At Peachy Plate, we believe dining should feel like an aesthetic retreat. Our sourdough bases ferment for 48 hours for an airy blistered crust. Our sauces are simmered in copper pans with San Marzano tomatoes, and our pastries are crowned with Madagascar vanilla chantilly.
+              At Peachy Plate, we craft packaged treats designed to turn your everyday snacking and cooking into an aesthetic ritual. We say no to palm oils, synthetic dyes, and artificial preservatives. Every jar is hot-filled in recycled glass, sealed with tamper-evident golden foil, and hand-tied with our signature cotton ribbon.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-white border border-rose-200/60 shadow-xs">
                 <ChefHat className="w-5 h-5 text-[#E07A86] mb-2" />
-                <h4 className="font-bold text-xs uppercase tracking-wider text-gray-900">Artisan Recipes</h4>
-                <p className="text-[11px] text-gray-500 mt-1">Authentic regional Italian and Continental cuisine</p>
+                <h4 className="font-bold text-xs uppercase tracking-wider text-gray-900">Clean Label</h4>
+                <p className="text-[11px] text-gray-500 mt-1">100% real fruit, cold-pressed oils, and cane sugar</p>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-rose-200/60 shadow-xs">
                 <Award className="w-5 h-5 text-[#E07A86] mb-2" />
-                <h4 className="font-bold text-xs uppercase tracking-wider text-gray-900">Fresh Guarantee</h4>
-                <p className="text-[11px] text-gray-500 mt-1">Prepared fresh upon order, never pre-packaged</p>
+                <h4 className="font-bold text-xs uppercase tracking-wider text-gray-900">Extended Freshness</h4>
+                <p className="text-[11px] text-gray-500 mt-1">Naturally shelf-stable for 6 to 18 months</p>
               </div>
             </div>
             <Link
@@ -497,10 +497,10 @@ export default function ConceptAHomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-lg mx-auto mb-14 space-y-2">
             <span className="text-xs uppercase tracking-widest text-[#E07A86] font-bold">
-              Guest Impressions
+              Pantry Testimonials
             </span>
             <h2 className="font-coquette-serif font-black text-3xl sm:text-4xl text-[#3D2D2E]">
-              Love Letters from Patrons
+              Love Letters from Pantry Aficionados
             </h2>
           </div>
 
@@ -534,7 +534,7 @@ export default function ConceptAHomePage() {
               href="/concept-a/reviews/"
               className="text-xs font-bold text-[#E07A86] hover:underline"
             >
-              View All Patron Reviews &rarr;
+              View All Customer Reviews &rarr;
             </Link>
           </div>
         </div>
@@ -545,23 +545,23 @@ export default function ConceptAHomePage() {
         <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
           <span className="text-3xl">🎀</span>
           <h2 className="font-coquette-serif font-black text-3xl sm:text-5xl text-[#3D2D2E]">
-            Planning a Cute Birthday or Romantic Dinner?
+            Curating Boutique Gift Hampers or Stocking Shelves?
           </h2>
           <p className="text-sm text-gray-600 max-w-xl mx-auto">
-            Reserve our pastel conservatory or order doorstep catering with bespoke ribbons and handwritten cards.
+            Order custom ribbon-tied holiday hampers, corporate snack boxes, or request wholesale distributor pricing.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/concept-a/reservations/"
               className="px-8 py-4 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-rose-300/50 hover:opacity-95 transition"
             >
-              Reserve a Table Online
+              Inquire Wholesale &amp; Gifting
             </Link>
             <Link
               href="/concept-a/menu/"
               className="px-8 py-4 rounded-full bg-white text-[#3D2D2E] border border-rose-200 font-bold text-xs uppercase tracking-wider shadow-sm hover:bg-rose-50 transition"
             >
-              Order for Delivery
+              Shop Direct to Consumer
             </Link>
           </div>
         </div>
