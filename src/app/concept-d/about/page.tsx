@@ -47,8 +47,8 @@ export default function ConceptDAboutPage() {
           <div className="lg:col-span-6">
             <div className="rounded-3xl overflow-hidden border border-[#5E6B4E]/20 shadow-xl">
               <img
-                src="/images/restaurant-kitchen.webp"
-                alt="Baking with stone-ground flour"
+                src="/images/products/khapli-emmer-flour.jpg"
+                alt="Stone-ground heirloom grains"
                 className="w-full aspect-[4/3] object-cover"
               />
             </div>
@@ -60,8 +60,8 @@ export default function ConceptDAboutPage() {
           <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="rounded-3xl overflow-hidden border border-[#5E6B4E]/20 shadow-xl">
               <img
-                src="/images/restaurant-garden.webp"
-                alt="Greenhouse Conservatory Dining"
+                src="/images/heroes/organic-earth-hero.jpg"
+                alt="Regenerative Farmland Harvest"
                 className="w-full aspect-[4/3] object-cover"
               />
             </div>

@@ -11,15 +11,15 @@ export default function ConceptDGalleryPage() {
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   const images = [
-    { id: 1, src: "/images/restaurant-garden.webp", title: "Conservatory Glasshouse", tag: "grounds", span: "md:col-span-2 md:row-span-2" },
-    { id: 2, src: "/images/burrata-bruschetta.webp", title: "Garden Peach Burrata", tag: "plates", span: "" },
-    { id: 3, src: "/images/margherita-pizza.webp", title: "Ancient Sourdough Hearth", tag: "hearth", span: "" },
-    { id: 4, src: "/images/citrus-salmon.webp", title: "Herb Roasted Wild Catch", tag: "plates", span: "" },
-    { id: 5, src: "/images/restaurant-interior.webp", title: "Linen Candlelit Salon", tag: "grounds", span: "" },
-    { id: 6, src: "/images/pink-sauce-pasta.webp", title: "Hand-Rolled Rosa Pasta", tag: "plates", span: "md:col-span-2" },
-    { id: 7, src: "/images/velvet-cold-coffee.webp", title: "Single-Origin Cold Extraction", tag: "cellar", span: "" },
-    { id: 8, src: "/images/strawberry-cheesecake.webp", title: "Wild Berry Crème Gateau", tag: "plates", span: "" },
-    { id: 9, src: "/images/restaurant-kitchen.webp", title: "Morning Dough Shaping", tag: "hearth", span: "" },
+    { id: 1, src: "/images/heroes/organic-earth-hero.jpg", title: "Single-Estate Olive Grove Harvest", tag: "harvest", span: "md:col-span-2 md:row-span-2" },
+    { id: 2, src: "/images/products/cold-pressed-olive-oil.jpg", title: "First Cold-Pressed Extra Virgin Olive Oil", tag: "oils", span: "" },
+    { id: 3, src: "/images/products/khapli-emmer-flour.jpg", title: "Stone-Ground Khapli Ancient Emmer Flour", tag: "grains", span: "" },
+    { id: 4, src: "/images/products/raw-forest-honey.jpg", title: "Raw Himalayan Wildflower Forest Honey", tag: "harvest", span: "" },
+    { id: 5, src: "/images/products/kashmiri-walnuts.jpg", title: "Hand-Cracked Kashmiri Jumbo Walnuts", tag: "nuts", span: "" },
+    { id: 6, src: "/images/products/roasted-mamra-almonds.jpg", title: "Royal Mamra Slow-Roasted Almonds", tag: "nuts", span: "md:col-span-2" },
+    { id: 7, src: "/images/products/maple-pecan-granola.jpg", title: "Ancient Grain Toasted Maple Granola", tag: "grains", span: "" },
+    { id: 8, src: "/images/products/white-peach-jam.jpg", title: "Sun-Ripened Orchard Peach Compote", tag: "harvest", span: "" },
+    { id: 9, src: "/images/heroes/organic-earth-hero.jpg", title: "Regenerative Living Soils & Harvest Table", tag: "harvest", span: "" },
   ];
 
   const filtered = filter === "all" ? images : images.filter((img) => img.tag === filter);
@@ -34,20 +34,20 @@ export default function ConceptDGalleryPage() {
           Visual Anthology
         </span>
         <h1 className="text-4xl sm:text-6xl font-normal text-[#1E3F20] tracking-tight">
-          Conservatory Impressions
+          Farmland Harvest Impressions
         </h1>
         <p className="text-xs sm:text-sm text-[#5E6B4E] max-w-md mx-auto font-light leading-relaxed">
-          Glimpses of our sunlit greenhouse, seasonal bread bakes, and calm botanical interiors.
+          Glimpses of our heritage olive extraction, granite stone milling, and pure living soil provisions.
         </p>
 
         {/* Filters */}
         <div className="flex flex-wrap items-center justify-center gap-2 pt-6 text-xs">
           {[
-            { id: "all", label: "All Impressions" },
-            { id: "grounds", label: "Greenhouse Grounds" },
-            { id: "plates", label: "Harvest Plates" },
-            { id: "hearth", label: "Sourdough Hearth" },
-            { id: "cellar", label: "Natural Cellar" },
+            { id: "all", label: "All Harvests" },
+            { id: "oils", label: "Cold-Pressed Oils" },
+            { id: "grains", label: "Ancient Milled Flours" },
+            { id: "nuts", label: "Orchard Nuts & Granola" },
+            { id: "harvest", label: "Raw Honey & Compotes" },
           ].map((t) => (
             <button
               key={t.id}

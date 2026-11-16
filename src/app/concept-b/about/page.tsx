@@ -73,7 +73,7 @@ function ConceptBAboutContent() {
                   id: "about-kitchen",
                   name: "The Snack Production Atelier",
                   category: "Clean Lab",
-                  image_url: "/images/restaurant-kitchen.webp",
+                  image_url: "/images/products/gourmet-sorghum-crisps.jpg",
                   description: "Our air-popping and packaging facility with nitrogen-flushed sealing in New Delhi.",
                   conceptTheme: "retro",
                 });
@@ -81,8 +81,8 @@ function ConceptBAboutContent() {
               className="aspect-[4/3] rounded-3xl overflow-hidden border-4 border-black shadow-[10px_10px_0px_#000] relative cursor-pointer group"
             >
               <img
-                src="/images/restaurant-kitchen.webp"
-                alt="Kitchen Prep"
+                src="/images/products/gourmet-sorghum-crisps.jpg"
+                alt="Air-Popping Craft"
                 className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -102,7 +102,7 @@ function ConceptBAboutContent() {
                   id: "about-dining",
                   name: "The 90s Bodega Dispensary",
                   category: "Packaging Art",
-                  image_url: "/images/restaurant-dining.webp",
+                  image_url: "/images/heroes/snackattack-hero.jpg",
                   description: "Collectible tin cans, retro foil pouches, and vintage 90s snack branding.",
                   conceptTheme: "retro",
                 });
@@ -110,8 +110,8 @@ function ConceptBAboutContent() {
               className="order-2 lg:order-1 aspect-[4/3] rounded-3xl overflow-hidden border-4 border-black shadow-[10px_10px_0px_#000] relative cursor-pointer group"
             >
               <img
-                src="/images/restaurant-dining.webp"
-                alt="Delhi Pop Dining"
+                src="/images/heroes/snackattack-hero.jpg"
+                alt="Bodega Packaging Display"
                 className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

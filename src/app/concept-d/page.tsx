@@ -8,14 +8,15 @@ import ConceptDHeader from "@/components/concept-d/Header";
 import ConceptDFooter from "@/components/concept-d/Footer";
 import ConceptDFoodCard from "@/components/concept-d/FoodCard";
 import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
+import { CONCEPT_D_BRAND } from "@/lib/concept-catalogs";
 import * as api from "@/lib/api";
 import { useToast } from "@/context/ToastContext";
 
 export default function ConceptDHomePage() {
   const { showToast } = useToast();
-  const [signatureDishes, setSignatureDishes] = useState<any[]>([]);
+  const [signatureDishes, setSignatureDishes] = useState<any[]>(CONCEPT_D_BRAND.products);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   // Reservation State
@@ -26,23 +27,19 @@ export default function ConceptDHomePage() {
     reservation_date: new Date().toISOString().split("T")[0],
     reservation_time: "19:30",
     guests: 2,
-    seating_area: "Greenhouse Conservatory",
+    seating_area: "Wholesale Partner",
     special_requests: "",
   });
   const [resSubmitting, setResSubmitting] = useState(false);
   const [resSuccess, setResSuccess] = useState(false);
 
   useEffect(() => {
-    Promise.all([api.getMenu({ bestseller: "1" }), api.getReviews(6)])
-      .then(([menuRes, revRes]) => {
-        if (menuRes.success && Array.isArray(menuRes.items)) {
-          setSignatureDishes(menuRes.items.slice(0, 6));
-        }
-        if (revRes.success && Array.isArray(revRes.reviews)) {
-          setReviews(revRes.reviews);
-        }
-      })
-      .finally(() => setLoading(false));
+    setSignatureDishes(CONCEPT_D_BRAND.products);
+    api.getReviews(6).then((revRes) => {
+      if (revRes.success && Array.isArray(revRes.reviews)) {
+        setReviews(revRes.reviews);
+      }
+    });
   }, []);
 
   const handleReservationSubmit = async (e: React.FormEvent) => {
@@ -122,8 +119,8 @@ export default function ConceptDHomePage() {
               className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-[#5E6B4E]/20"
             >
               <img
-                src="/images/restaurant-garden.webp"
-                alt="Peachy Earth Farmland Conservatory"
+                src={CONCEPT_D_BRAND.heroImage}
+                alt="Terra Pure Regenerative Farmland Harvest"
                 className="w-full aspect-[4/5] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 text-[#FDFBF7]">
@@ -148,19 +145,19 @@ export default function ConceptDHomePage() {
             Harvest Philosophy
           </span>
           <h2 className="text-3xl sm:text-5xl font-normal text-[#1E3F20] tracking-tight">
-            Rooted in True Sustainability
+            Rooted in Living Soils
           </h2>
           <p className="text-xs sm:text-sm text-[#5E6B4E] leading-relaxed">
-            We partner exclusively with zero-pesticide smallholder farmers across northern India.
+            We partner exclusively with zero-pesticide regenerative smallholders across India.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-[#F2EFE9] p-8 rounded-2xl border border-[#5E6B4E]/15 space-y-3">
             <span className="text-3xl">🌾</span>
-            <h3 className="text-xl font-medium text-[#1E3F20]">48-Hour Cold Sourdough</h3>
+            <h3 className="text-xl font-medium text-[#1E3F20]">Khapli Ancient Emmer</h3>
             <p className="text-xs text-[#5E6B4E] leading-relaxed font-light">
-              Our wild yeast starter has been nurtured daily for 7 years. Slow cold maturation breaks down gluten and yields a tender, gut-friendly crust.
+              Heirloom Khapli wheat stone-milled at low RPMs on granite millstones. Retains 100% of germ oil, vitamin E, and natural bran.
             </p>
           </div>
 
@@ -168,15 +165,15 @@ export default function ConceptDHomePage() {
             <span className="text-3xl">🫒</span>
             <h3 className="text-xl font-medium text-[#1E3F20]">First Cold Pressing</h3>
             <p className="text-xs text-[#5E6B4E] leading-relaxed font-light">
-              Single-variety extra virgin olive nectar sourced from Mediterranean and Himalayan micro-groves, pressed within 6 hours of harvest.
+              Single-variety extra virgin olive oil cold-extracted within 3 hours of orchard harvest. Unfiltered and rich in living polyphenols.
             </p>
           </div>
 
           <div className="bg-[#F2EFE9] p-8 rounded-2xl border border-[#5E6B4E]/15 space-y-3">
-            <span className="text-3xl">🌱</span>
-            <h3 className="text-xl font-medium text-[#1E3F20]">Living Microgreens</h3>
+            <span className="text-3xl">🍯</span>
+            <h3 className="text-xl font-medium text-[#1E3F20]">Raw Himalayan Honey</h3>
             <p className="text-xs text-[#5E6B4E] leading-relaxed font-light">
-              Clipped table-side from our interior conservatory beds just moments before reaching your plate, bursting with chlorophyll and aroma.
+              Wild forest multi-floral honey gathered from alpine blooms. Unheated above hive temperature (35°C), preserving natural live enzymes.
             </p>
           </div>
         </div>

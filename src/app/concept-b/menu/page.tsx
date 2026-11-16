@@ -9,12 +9,13 @@ import RetroSoundProvider, { useRetroSound } from "@/components/concept-b/RetroS
 import RetroCustomCursor from "@/components/concept-b/RetroCustomCursor";
 import RetroScrollProgress from "@/components/concept-b/RetroScrollProgress";
 import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
+import { CONCEPT_B_BRAND } from "@/lib/concept-catalogs";
 import * as api from "@/lib/api";
 
 function ConceptBMenuContent() {
-  const [items, setItems] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(CONCEPT_B_BRAND.products);
+  const [categories, setCategories] = useState<any[]>(CONCEPT_B_BRAND.categories);
+  const [loading, setLoading] = useState(false);
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   // Filters
@@ -26,16 +27,9 @@ function ConceptBMenuContent() {
   const { playClick, playPop, playCoin } = useRetroSound();
 
   useEffect(() => {
-    setLoading(true);
-    api
-      .getMenu()
-      .then((res) => {
-        if (res.success) {
-          setItems(res.items || []);
-          setCategories(res.categories || []);
-        }
-      })
-      .finally(() => setLoading(false));
+    // Keep Concept B's dedicated bodega snacks catalog
+    setItems(CONCEPT_B_BRAND.products);
+    setCategories(CONCEPT_B_BRAND.categories);
   }, []);
 
   const filteredItems = useMemo(() => {

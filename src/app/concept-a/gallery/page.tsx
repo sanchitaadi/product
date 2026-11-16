@@ -10,18 +10,18 @@ export default function ConceptAGalleryPage() {
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   const images = [
-    { src: "/images/hero-coquette.webp", title: "Signature Table Feast", tag: "ambiance", span: "md:col-span-2 md:row-span-2" },
-    { src: "/images/pink-sauce-pasta.webp", title: "Velvety Rosa Pasta", tag: "mains", span: "" },
-    { src: "/images/strawberry-cheesecake.webp", title: "New York Chantilly Cake", tag: "sweets", span: "" },
-    { src: "/images/margherita-pizza.webp", title: "48h Sourdough Margherita", tag: "sourdough", span: "" },
-    { src: "/images/lotus-biscoff-shake.webp", title: "Belgian Biscoff Shake", tag: "drinks", span: "" },
-    { src: "/images/burrata-bruschetta.webp", title: "Peach & Whipped Ricotta", tag: "mains", span: "md:col-span-2" },
-    { src: "/images/restaurant-dining.webp", title: "Pastel Conservatory", tag: "ambiance", span: "" },
-    { src: "/images/matcha-cloud-latte.webp", title: "Uji Matcha Blossom Cloud", tag: "drinks", span: "" },
-    { src: "/images/parisian-macarons.webp", title: "Damask Rose Macarons", tag: "sweets", span: "" },
-    { src: "/images/citrus-salmon.webp", title: "Pan-Seared Salmon", tag: "mains", span: "" },
-    { src: "/images/truffle-fries.webp", title: "Aged Parmesan Truffle Fries", tag: "mains", span: "" },
-    { src: "/images/restaurant-interior.webp", title: "Garden Ave Atelier", tag: "ambiance", span: "" },
+    { src: "/images/heroes/coquette-pantry-hero.jpg", title: "Atelier Fruit Dessert Jars", tag: "jars", span: "md:col-span-2 md:row-span-2" },
+    { src: "/images/products/white-peach-jam.jpg", title: "Orchard White Peach Bellini Jam", tag: "jars", span: "" },
+    { src: "/images/products/cocoa-hazelnut-cookies.jpg", title: "Normandy Butter Hazelnut Sablés", tag: "sweets", span: "" },
+    { src: "/images/products/french-macarons.jpg", title: "Damask Rose French Macarons", tag: "sweets", span: "" },
+    { src: "/images/products/malabar-dark-chocolate.jpg", title: "74% Bean-to-Bar Dark Chocolate Slab", tag: "sweets", span: "" },
+    { src: "/images/products/strawberry-compote.jpg", title: "Wild Strawberry & Hibiscus Compote", tag: "jars", span: "md:col-span-2" },
+    { src: "/images/products/uji-matcha-tin.jpg", title: "Ceremonial Kyoto Matcha Keepsake Tin", tag: "drinks", span: "" },
+    { src: "/images/products/blood-orange-ginger-nectar.jpg", title: "Sparkling Botanical Fruit Cordials", tag: "drinks", span: "" },
+    { src: "/images/products/toasted-maple-pecan-granola.jpg", title: "Pecan & Spelt Morning Granola", tag: "sweets", span: "" },
+    { src: "/images/products/cold-pressed-olive-oil.jpg", title: "Cold-Pressed Botanical Finishing EVOO", tag: "jars", span: "" },
+    { src: "/images/products/french-macarons.jpg", title: "Pastel Gifting Hamper Box", tag: "gifting", span: "" },
+    { src: "/images/heroes/coquette-pantry-hero.jpg", title: "Morning Tea Pantry Ritual", tag: "gifting", span: "" },
   ];
 
   const filtered = filter === "all" ? images : images.filter((img) => img.tag === filter);
@@ -36,21 +36,20 @@ export default function ConceptAGalleryPage() {
             🎀 Pinterest Visual Board
           </span>
           <h1 className="font-coquette-serif font-black text-3xl sm:text-4xl text-[#3D2D2E]">
-            Editorial Mood & Feasts
+            Packaged Delicacies &amp; Gifting Aesthetic
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">
-            A curated photographic collection of our kitchen creations, floral ambiance, and handcrafted moments.
+            A curated photographic collection of our ribbon jars, French butter sablés, and handcrafted gift hampers.
           </p>
 
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
             {[
               { id: "all", label: "All Pins" },
-              { id: "sourdough", label: "Sourdough & Pizzas" },
-              { id: "mains", label: "Pastas & Plates" },
-              { id: "sweets", label: "Patisserie & Sweets" },
-              { id: "drinks", label: "Shakes & Lattes" },
-              { id: "ambiance", label: "Garden Conservatory" },
+              { id: "jars", label: "Preserves & Jars" },
+              { id: "sweets", label: "Sablés & Chocolates" },
+              { id: "drinks", label: "Cordials & Teas" },
+              { id: "gifting", label: "Ribbon Gifting Hampers" },
             ].map((t) => (
               <button
                 key={t.id}

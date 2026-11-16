@@ -49,8 +49,8 @@ export default function ConceptCAboutPage() {
           <div className="lg:col-span-6">
             <div className="relative bg-black border-4 border-black p-3 shadow-[8px_8px_0px_#FF007F]">
               <img
-                src="/images/restaurant-kitchen.webp"
-                alt="Open Pop Kitchen"
+                src="/images/heroes/pop-art-hero.jpg"
+                alt="Pop Art Bottling Lab"
                 className="w-full aspect-[4/3] object-cover border-2 border-white"
               />
               <span className="absolute bottom-6 right-6 bg-[#0047FF] text-white text-xs font-black uppercase px-3 py-1 border-2 border-black rotate-3">
@@ -65,8 +65,8 @@ export default function ConceptCAboutPage() {
           <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="relative bg-black border-4 border-black p-3 shadow-[8px_8px_0px_#0047FF]">
               <img
-                src="/images/restaurant-interior.webp"
-                alt="Pop Art Dining Room"
+                src="/images/products/habanero-hot-sauce.jpg"
+                alt="Pop Art Condiment Packaging"
                 className="w-full aspect-[4/3] object-cover border-2 border-white"
               />
               <span className="absolute top-6 left-6 bg-[#FFE600] text-black text-xs font-black uppercase px-3 py-1 border-2 border-black -rotate-3">

@@ -6,11 +6,12 @@ import ConceptAHeader from "@/components/concept-a/Header";
 import ConceptAFooter from "@/components/concept-a/Footer";
 import ConceptAFoodCard from "@/components/concept-a/FoodCard";
 import * as api from "@/lib/api";
+import { CONCEPT_A_BRAND } from "@/lib/concept-catalogs";
 
 export default function ConceptAMenuPage() {
-  const [items, setItems] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState<any[]>(CONCEPT_A_BRAND.products);
+  const [categories, setCategories] = useState<any[]>(CONCEPT_A_BRAND.categories);
+  const [loading, setLoading] = useState(false);
 
   // Filters
   const [search, setSearch] = useState("");
@@ -19,16 +20,9 @@ export default function ConceptAMenuPage() {
   const [sortBy, setSortBy] = useState("default");
 
   useEffect(() => {
-    setLoading(true);
-    api
-      .getMenu()
-      .then((res) => {
-        if (res.success) {
-          setItems(res.items || []);
-          setCategories(res.categories || []);
-        }
-      })
-      .finally(() => setLoading(false));
+    // Keep Concept A's dedicated artisan preserves, biscuits & confections
+    setItems(CONCEPT_A_BRAND.products);
+    setCategories(CONCEPT_A_BRAND.categories);
   }, []);
 
   const filteredItems = useMemo(() => {

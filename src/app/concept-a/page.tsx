@@ -10,24 +10,20 @@ import ConceptAFoodCard from "@/components/concept-a/FoodCard";
 import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
 import PageTransition from "@/components/shared/PageTransition";
 import * as api from "@/lib/api";
+import { CONCEPT_A_BRAND } from "@/lib/concept-catalogs";
 
 export default function ConceptAHomePage() {
-  const [featured, setFeatured] = useState<any[]>([]);
+  const [featured, setFeatured] = useState<any[]>(CONCEPT_A_BRAND.products);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
 
   useEffect(() => {
-    Promise.all([api.getMenu({ bestseller: "1" }), api.getReviews(6)])
-      .then(([menuRes, revRes]) => {
-        if (menuRes.success && Array.isArray(menuRes.items)) {
-          setFeatured(menuRes.items.slice(0, 6));
-        }
-        if (revRes.success && Array.isArray(revRes.reviews)) {
-          setReviews(revRes.reviews);
-        }
-      })
-      .finally(() => setLoading(false));
+    api.getReviews(6).then((revRes) => {
+      if (revRes.success && Array.isArray(revRes.reviews)) {
+        setReviews(revRes.reviews);
+      }
+    });
   }, []);
 
   return (
@@ -82,7 +78,7 @@ export default function ConceptAHomePage() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl"
             >
-              Small-batch white peach preserves, French cultured butter cookies, slow-simmered pink pasta sauces, and single-origin dark chocolates shipped fresh across India.
+              Small-batch white peach preserves, French cultured butter sablés, delicate almond macarons, and single-origin dark chocolate slabs shipped fresh in ribbon gift boxes.
             </motion.p>
 
             <motion.div
@@ -141,15 +137,15 @@ export default function ConceptAHomePage() {
             {/* Primary Main Photograph with Ken Burns camera movement */}
             <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="/images/hero-coquette.webp"
-                alt="Peachy Plate Coquette Feast"
+                src={CONCEPT_A_BRAND.heroImage}
+                alt="Maison Pêche Confectionery Atelier"
                 className="w-full h-full object-cover animate-ken-burns scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               
               <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-[#E07A86] shadow-sm flex items-center gap-1.5">
                 <span>🎀</span>
-                <span>The Coquette Collection</span>
+                <span>The Maison Pêche Collection</span>
               </div>
             </div>
 
@@ -161,15 +157,15 @@ export default function ConceptAHomePage() {
               whileHover={{ rotate: 0, scale: 1.05 }}
               onClick={() =>
                 setActiveLightboxItem({
-                  id: 9,
-                  name: "Strawberry Chantilly Basque",
-                  category: "Patisserie & Sweets",
-                  image_url: "/images/strawberry-cheesecake.webp",
-                  price: 349,
+                  id: 102,
+                  name: "Artisan French Cocoa & Hazelnut Sablés",
+                  category: "Artisan Sablés & Biscuits",
+                  image_url: "/images/products/cocoa-hazelnut-cookies.jpg",
+                  price: 299,
                   description:
-                    "Silky burnt Basque cheesecake infused with real Madagascar vanilla bean, crowned with fresh strawberry compote and whipped chantilly.",
-                  preparation_time: "Fresh",
-                  calories: 420,
+                    "Slow-baked melt-in-your-mouth French butter sablés loaded with roasted Turkish hazelnut praline, pure Belgian dark cocoa butter, and fleur de sel.",
+                  net_weight: "200g Gift Box",
+                  shelf_life: "6 Months",
                   is_veg: 1,
                   is_bestseller: 1,
                   conceptTheme: "coquette",
@@ -180,13 +176,13 @@ export default function ConceptAHomePage() {
               <div className="washi-tape" />
               <div className="aspect-square rounded-xl overflow-hidden mb-2">
                 <img
-                  src="/images/strawberry-cheesecake.webp"
-                  alt="Strawberry Basque"
+                  src="/images/products/cocoa-hazelnut-cookies.jpg"
+                  alt="Artisan Sablés"
                   className="w-full h-full object-cover"
                 />
               </div>
               <p className="font-script text-base text-[#E07A86] text-center leading-tight">
-                so sweet & creamy ♡
+                french butter sablés ♡
               </p>
             </motion.div>
 
@@ -201,9 +197,9 @@ export default function ConceptAHomePage() {
               <div>
                 <div className="flex text-amber-400 text-xs">★★★★★</div>
                 <p className="text-xs font-semibold text-gray-800 line-clamp-1 mt-0.5">
-                  &ldquo;The pink sauce pasta is pure heaven!&rdquo;
+                  &ldquo;{CONCEPT_A_BRAND.heroReview.quote}&rdquo;
                 </p>
-                <span className="text-[10px] text-gray-500 font-medium">Aanya Sharma &bull; Verified Patron 🎀</span>
+                <span className="text-[10px] text-gray-500 font-medium">{CONCEPT_A_BRAND.heroReview.author} &bull; {CONCEPT_A_BRAND.heroReview.role}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -275,15 +271,15 @@ export default function ConceptAHomePage() {
             <div
               onClick={() =>
                 setActiveLightboxItem({
-                  id: "pin-pasta",
-                  name: "Velvet Pink Rigatoni",
-                  category: "Artisan Pasta",
-                  image_url: "/images/pink-sauce-pasta.webp",
-                  price: 449,
+                  id: 101,
+                  name: "Signature White Peach & Blossom Jam",
+                  category: "Orchard Preserves & Jams",
+                  image_url: "/images/ingredients/wild-peach.jpg",
+                  price: 289,
                   description:
-                    "Bronze-die rigatoni simmered in slow-roasted tomato cream, infused with fresh sweet basil and hand-torn burrata.",
-                  preparation_time: "15 mins",
-                  calories: 520,
+                    "Artisanal small-batch fruit preserves slow-cooked in open copper kettles with organic orchard peaches, raw mountain honey, and natural citrus pectin.",
+                  net_weight: "250g Glass Jar",
+                  shelf_life: "12 Months",
                   is_veg: 1,
                   is_bestseller: 1,
                   conceptTheme: "coquette",
@@ -294,24 +290,24 @@ export default function ConceptAHomePage() {
               <div className="washi-tape" />
               <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-3 relative">
                 <img
-                  src="/images/pink-sauce-pasta.webp"
-                  alt="Pink Sauce Rigatoni"
+                  src="/images/ingredients/wild-peach.jpg"
+                  alt="White Peach Preserve"
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-rose-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-[10px] font-bold bg-white text-[#E07A86] px-2.5 py-1 rounded-full shadow-sm">
-                    View Dish 🎀
+                    View Preserve 🎀
                   </span>
                 </div>
               </div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-[#E07A86] block mb-1">
-                🎀 Signature Dish
+                🎀 Signature Jar
               </span>
               <h4 className="font-coquette-serif font-bold text-base text-[#3D2D2E]">
-                Velvet Pink Rigatoni
+                White Peach &amp; Blossom Jam
               </h4>
               <p className="font-script text-lg text-[#E07A86] mt-1">
-                simmered in sweet cream & basil
+                simmered in copper kettles ♡
               </p>
             </div>
 
@@ -319,12 +315,17 @@ export default function ConceptAHomePage() {
             <div
               onClick={() =>
                 setActiveLightboxItem({
-                  id: "pin-conservatory",
-                  name: "The Pastel Conservatory",
-                  category: "Garden Space",
-                  image_url: "/images/restaurant-garden.webp",
+                  id: 102,
+                  name: "Artisan French Cocoa & Hazelnut Sablés",
+                  category: "Artisan Sablés & Biscuits",
+                  image_url: "/images/products/cocoa-hazelnut-cookies.jpg",
+                  price: 299,
                   description:
-                    "Our sun-drenched garden dining lounge filled with blush peonies, soft acoustic jazz, and velvet chairs.",
+                    "Slow-baked melt-in-your-mouth French butter sablés loaded with roasted Turkish hazelnut praline, pure Belgian dark cocoa butter, and fleur de sel.",
+                  net_weight: "200g Gift Box",
+                  shelf_life: "6 Months",
+                  is_veg: 1,
+                  is_bestseller: 1,
                   conceptTheme: "coquette",
                 })
               }
@@ -333,24 +334,24 @@ export default function ConceptAHomePage() {
               <div className="washi-tape" />
               <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-3 relative">
                 <img
-                  src="/images/restaurant-garden.webp"
-                  alt="Pastel Conservatory"
+                  src="/images/products/cocoa-hazelnut-cookies.jpg"
+                  alt="French Cocoa Sablés"
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-rose-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-[10px] font-bold bg-white text-[#E07A86] px-2.5 py-1 rounded-full shadow-sm">
-                    View Space 🌸
+                    View Sablés 🍪
                   </span>
                 </div>
               </div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-[#E07A86] block mb-1">
-                🌸 Our Space
+                🍪 French Sablés
               </span>
               <h4 className="font-coquette-serif font-bold text-base text-[#3D2D2E]">
-                The Pastel Conservatory
+                Cocoa &amp; Hazelnut Sablés
               </h4>
               <p className="font-script text-lg text-[#E07A86] mt-1">
-                where sunlight meets fresh blooms
+                slow-baked with normandy butter
               </p>
             </div>
 
@@ -358,15 +359,15 @@ export default function ConceptAHomePage() {
             <div
               onClick={() =>
                 setActiveLightboxItem({
-                  id: "pin-matcha",
-                  name: "Matcha Cloud Latté",
-                  category: "Cold Sips",
-                  image_url: "/images/matcha-cloud-latte.webp",
-                  price: 289,
+                  id: 103,
+                  name: "Malabar Dark Chocolate 74% Block",
+                  category: "Single-Origin Chocolates",
+                  image_url: "/images/products/malabar-dark-chocolate-74.jpg",
+                  price: 325,
                   description:
-                    "Japanese Uji matcha layered with oat milk and crowned with velvety whipped strawberry cold foam.",
-                  preparation_time: "5 mins",
-                  calories: 210,
+                    "Velvety bean-to-bar dark chocolate crafted from Malabar forest heritage cacao. Infused with crunchy roasted cocoa nibs and dusted with Himalayan rock salt.",
+                  net_weight: "80g Artisanal Bar",
+                  shelf_life: "12 Months",
                   is_veg: 1,
                   is_bestseller: 1,
                   conceptTheme: "coquette",
@@ -377,24 +378,24 @@ export default function ConceptAHomePage() {
               <div className="washi-tape" />
               <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-3 relative">
                 <img
-                  src="/images/matcha-cloud-latte.webp"
-                  alt="Matcha Cloud"
+                  src="/images/products/malabar-dark-chocolate-74.jpg"
+                  alt="Malabar Dark Chocolate"
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-rose-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-[10px] font-bold bg-white text-[#E07A86] px-2.5 py-1 rounded-full shadow-sm">
-                    View Sip ✨
+                    View Chocolate 🍫
                   </span>
                 </div>
               </div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-[#E07A86] block mb-1">
-                ✨ Cloud Sippers
+                🍫 Bean-to-Bar
               </span>
               <h4 className="font-coquette-serif font-bold text-base text-[#3D2D2E]">
-                Matcha Cloud Latté
+                Malabar 74% Dark Block
               </h4>
               <p className="font-script text-lg text-[#E07A86] mt-1">
-                topped with sweet strawberry foam
+                stone-ground for 72 hours
               </p>
             </div>
 
@@ -402,15 +403,15 @@ export default function ConceptAHomePage() {
             <div
               onClick={() =>
                 setActiveLightboxItem({
-                  id: "pin-macarons",
-                  name: "Petite Macaron Box",
-                  category: "Parisian Sweets",
+                  id: 104,
+                  name: "Damask Rose & Pistachio Macaron Box",
+                  category: "Artisan Sablés & Biscuits",
                   image_url: "/images/parisian-macarons.webp",
-                  price: 299,
+                  price: 399,
                   description:
-                    "Box of four Parisian macarons: Damask Rose, Lavender Honey, Pistachio, and Raspberry Dark Chocolate.",
-                  preparation_time: "Fresh",
-                  calories: 320,
+                    "Collector gift box of six delicate French almond macarons filled with aromatic Kannauj Damask rose buttercream and roasted Iranian pistachio ganache.",
+                  net_weight: "130g Gift Box (6 Pcs)",
+                  shelf_life: "30 Days",
                   is_veg: 1,
                   is_bestseller: 1,
                   conceptTheme: "coquette",
@@ -427,18 +428,18 @@ export default function ConceptAHomePage() {
                 />
                 <div className="absolute inset-0 bg-rose-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-[10px] font-bold bg-white text-[#E07A86] px-2.5 py-1 rounded-full shadow-sm">
-                    View Sweet 🍰
+                    View Gift Box 🍰
                   </span>
                 </div>
               </div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-[#E07A86] block mb-1">
-                🍰 Sweet Treats
+                🍰 Luxury Gift Box
               </span>
               <h4 className="font-coquette-serif font-bold text-base text-[#3D2D2E]">
-                Petite Macaron Box
+                Damask Rose Macaron Box
               </h4>
               <p className="font-script text-lg text-[#E07A86] mt-1">
-                rose, lavender & raspberry ganache
+                kannauj rose &amp; pistachio ganache
               </p>
             </div>
           </div>
@@ -450,12 +451,12 @@ export default function ConceptAHomePage() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-white shadow-xl">
             <img
-              src="/images/restaurant-interior.webp"
-              alt="Coquette Dining Interior"
+              src="/images/heroes/flavourverse-hero.jpg"
+              alt="Maison Pêche Confectionery Atelier"
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-script text-[#E07A86] shadow-sm">
-              our cozy corner in New Delhi ♡
+              our confectionery atelier ♡
             </div>
           </div>
 

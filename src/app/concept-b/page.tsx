@@ -30,11 +30,12 @@ import RetroScrollProgress from "@/components/concept-b/RetroScrollProgress";
 import CinematicLightbox, { LightboxItem } from "@/components/shared/CinematicLightbox";
 import PageTransition from "@/components/shared/PageTransition";
 import * as api from "@/lib/api";
+import { CONCEPT_B_BRAND } from "@/lib/concept-catalogs";
 
 function ConceptBHomePageContent() {
-  const [bestsellers, setBestsellers] = useState<any[]>([]);
+  const [bestsellers, setBestsellers] = useState<any[]>(CONCEPT_B_BRAND.products);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeLightboxItem, setActiveLightboxItem] = useState<LightboxItem | null>(null);
   const [dietFilter, setDietFilter] = useState<"all" | "veg" | "non-veg">("all");
   const [activeStoryChapter, setActiveStoryChapter] = useState(0);
@@ -45,8 +46,8 @@ function ConceptBHomePageContent() {
     phone: "",
     email: "",
     date: "",
-    time: "20:00",
-    guests: 2,
+    time: "Retail Gourmet Shelf",
+    guests: 5,
   });
   const [resSuccess, setResSuccess] = useState(false);
   const [resSubmitting, setResSubmitting] = useState(false);
@@ -54,16 +55,11 @@ function ConceptBHomePageContent() {
   const { playCoin, playPop, playBoing, playClick } = useRetroSound();
 
   useEffect(() => {
-    Promise.all([api.getMenu({ bestseller: "1" }), api.getReviews(6)])
-      .then(([menuRes, revRes]) => {
-        if (menuRes.success && Array.isArray(menuRes.items)) {
-          setBestsellers(menuRes.items.slice(0, 8));
-        }
-        if (revRes.success && Array.isArray(revRes.reviews)) {
-          setReviews(revRes.reviews);
-        }
-      })
-      .finally(() => setLoading(false));
+    api.getReviews(6).then((revRes) => {
+      if (revRes.success && Array.isArray(revRes.reviews)) {
+        setReviews(revRes.reviews);
+      }
+    });
   }, []);
 
   const handleReservationSubmit = async (e: React.FormEvent) => {
@@ -78,8 +74,8 @@ function ConceptBHomePageContent() {
         reservation_date: resForm.date,
         reservation_time: resForm.time,
         guests: resForm.guests,
-        seating_area: "Retro Booth",
-        special_requests: "Vinyl Booth Seating Request — Concept B",
+        seating_area: "Wholesale Inquiry",
+        special_requests: "B2B Bodega Wholesale Inquiry — Super Crunch Co.",
         concept_source: "Concept B — Retro Gen-Z",
       });
       if (res.success) {
@@ -111,28 +107,28 @@ function ConceptBHomePageContent() {
       title: "Ancient Grains & Non-GMO Sorghum",
       desc: "Our snack puffs don't take shortcuts. We air-pop ancient millets and sorghum at high velocity with zero deep-frying. The payoff? Incredible crunch, clean plant fiber, and zero heavy trans-fat greasy aftertaste.",
       badge: "🌾 100% NON-GMO ANCIENT GRAINS",
-      image: "/images/margherita-pizza.webp",
+      image: "/images/products/gourmet-sorghum-crisps.jpg",
       highlight: "FEATHER-LIGHT CRUNCH",
     },
     {
       id: "ch-2",
       number: "ACT 02",
-      tagline: "COLD-PRESSED OIL INFUSION",
-      title: "Artisan Sichuan Crisps & Himalayan Salt",
-      desc: "Every batch of chili crunch and barbecue chips is tossed in cold-pressed sesame and groundnut oils infused with fiery crisp aromatics, crushed pink rock salt, and toasted garlic cloves.",
-      badge: "🔥 STONE-GROUND CHILI AROMATICS",
-      image: "/images/wild-mushroom-pizza.webp",
-      highlight: "UMAMI EXPLOSION",
+      tagline: "BATCH KETTLE PROCESS",
+      title: "Batch Kettle Chips & Sea Salt",
+      desc: "Every batch of thick-cut potato crisps is kettle-cooked in small vats using non-GMO sunflower oil, dusted with coarse sea salt flakes and tangy malt vinegar.",
+      badge: "🥔 THICK-CUT BATCH CHIPS",
+      image: "/images/products/kettle-sea-salt-chips.jpg",
+      highlight: "CRUNCH MULTIPLIER",
     },
     {
       id: "ch-3",
       number: "ACT 03",
-      tagline: "NITROGEN-FLUSHED FRESHNESS",
-      title: "Zero-Air Sealed Foil Pouches",
-      desc: "We vacuum-pack our crisps with inert food-grade nitrogen within 4 minutes of baking. Every pouch retains peak shatter-crisp texture for 9 to 12 months in your pantry.",
-      badge: "📦 12-MONTH SHELF STABILITY",
-      image: "/images/pink-sauce-pasta.webp",
-      highlight: "FACTORY FRESH CRACK",
+      tagline: "PREBIOTIC BOTANICAL FIZZ",
+      title: "Cold Prebiotic Soda in Recyclable Cans",
+      desc: "Crisp white peach purees paired with chicory root prebiotic fiber and sparkling mountain bubbles. Packed into airtight recyclable cans for 12 months of ice-cold refreshment.",
+      badge: "🥤 12-MONTH SHELF STABILITY",
+      image: "/images/products/prebiotic-white-peach-soda.jpg",
+      highlight: "GUT-FRIENDLY REFRESH",
     },
   ];
 
@@ -252,14 +248,14 @@ function ConceptBHomePageContent() {
                 playPop();
                 setActiveLightboxItem({
                   id: "hero-b",
-                  name: "Classic Neapolitan Margherita",
-                  category: "Wood-Fired Pizza",
-                  image_url: "/images/margherita-pizza.webp",
-                  price: 349,
-                  calories: 680,
-                  preparation_time: "18-20 mins",
+                  name: "Black Summer Truffle Sorghum Crisps",
+                  category: "Air-Popped Ancient Grains",
+                  image_url: "/images/products/gourmet-sorghum-crisps.jpg",
+                  price: 249,
+                  calories: 135,
+                  preparation_time: "150g Nitrogen Pouch",
                   description:
-                    "Slow-fermented 48-hour sourdough base, San Marzano tomato reduction, fior di latte mozzarella, fragrant sweet basil & cold-pressed EVOO.",
+                    "Ultra-light, crunchy whole grain crisps created through slow indirect ceramic popping. Seasoned with hand-harvested grey sea salt and wild Italian black truffle essence.",
                   conceptTheme: "retro",
                 });
               }}
@@ -267,8 +263,8 @@ function ConceptBHomePageContent() {
             >
               <div className="aspect-square rounded-2xl overflow-hidden border-2 border-black relative bg-[#FFE15D]">
                 <img
-                  src="/images/margherita-pizza.webp"
-                  alt="Peachy Plate Signature Pizza"
+                  src="/images/products/gourmet-sorghum-crisps.jpg"
+                  alt="Super Crunch Co. Truffle Sorghum Crisps"
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 animate-ken-burns"
                 />
 
@@ -285,14 +281,14 @@ function ConceptBHomePageContent() {
               <div className="mt-4 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-retro-bold font-black uppercase tracking-wider text-[#FF2A55] block">
-                    ★ CROWN JEWEL
+                    ★ BODEGA BESTSELLER
                   </span>
                   <h3 className="font-retro-bold font-black text-2xl text-black">
-                    SOURDOUGH MARGHERITA
+                    TRUFFLE SORGHUM CRISPS
                   </h3>
                 </div>
                 <div className="bg-[#FFE15D] text-black font-retro-bold font-black text-xl px-4 py-2 rounded-xl border-2 border-black shadow-[3px_3px_0px_#000] rotate-2">
-                  ₹349
+                  ₹249
                 </div>
               </div>
             </div>
@@ -300,14 +296,14 @@ function ConceptBHomePageContent() {
             {/* Rotating Retro Starburst Sticker */}
             <div className="absolute -top-6 -right-6 sm:-right-8 w-24 h-24 bg-[#FFE15D] rounded-full border-[3.5px] border-black flex flex-col items-center justify-center text-center font-retro-bold font-black text-[11px] leading-tight shadow-[5px_5px_0px_#000] animate-spin-slow z-20 select-none">
               <span>100%</span>
-              <span className="text-[#FF2A55]">FRESH</span>
-              <span>DAILY</span>
+              <span className="text-[#FF2A55]">AIR</span>
+              <span>POPPED</span>
             </div>
 
             {/* Comic Speech Bubble Sticker */}
             <div className="absolute -bottom-6 -left-6 bg-white border-[3px] border-black p-3.5 rounded-2xl shadow-[5px_5px_0px_#000] rotate-[-6deg] z-20 max-w-[190px] select-none">
               <p className="text-xs font-black text-black leading-tight font-retro-bold">
-                &ldquo;BEST AIRY CRUST IN DELHI!&rdquo; 🤤
+                &ldquo;10/10 CRUNCH ZERO GREASE!&rdquo; 🤤
               </p>
             </div>
 
@@ -317,7 +313,7 @@ function ConceptBHomePageContent() {
               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
               className="absolute -top-8 left-10 bg-[#FF2A55] text-white p-2 rounded-xl border-2 border-black shadow-[3px_3px_0px_#000] z-20 text-xl font-retro-bold select-none"
             >
-              🍒
+              🥨
             </motion.div>
           </motion.div>
         </div>
@@ -329,38 +325,38 @@ function ConceptBHomePageContent() {
       {/* Marquee Track 1 (Going Left) */}
       <div className="bg-[#121212] text-[#FFE15D] text-xs font-retro-bold font-black uppercase py-2.5 overflow-hidden border-b-2 border-black flex items-center select-none">
         <div className="animate-marquee whitespace-nowrap flex items-center gap-6">
-          <span>★ 90s RETRO DINER WORLD</span>
+          <span>★ 90s RETRO SNACK BODEGA</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>48-HR SOURDOUGH PIZZAS</span>
+          <span>AIR-POPPED SORGHUM CRISPS</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>AIRY CRUST &amp; LEOPARD SPOTS</span>
+          <span>PREBIOTIC WHITE PEACH SODA</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>CHERRY CRUSH &amp; MATCHA CLOUD</span>
+          <span>BATCH KETTLE CHIPS</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>PARISIAN MACARONS &amp; NY CAKE</span>
+          <span>HICKORY HERB SMOKED JERKY</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>★ 90s RETRO DINER WORLD</span>
+          <span>★ 90s RETRO SNACK BODEGA</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>48-HR SOURDOUGH PIZZAS</span>
+          <span>AIR-POPPED SORGHUM CRISPS</span>
           <span className="text-[#FF2A55]">●</span>
-          <span>AIRY CRUST &amp; LEOPARD SPOTS</span>
+          <span>NITROGEN FRESHNESS SEALED</span>
         </div>
       </div>
 
       {/* Marquee Track 2 (Going Right / Reverse) */}
       <div className="bg-[#FF2A55] text-white text-xs font-retro-bold font-black uppercase py-2 overflow-hidden border-b-4 border-black flex items-center select-none">
         <div className="animate-marquee-reverse whitespace-nowrap flex items-center gap-6">
-          <span>⚡ USE CODE &apos;PEACHY20&apos; FOR 20% OFF</span>
+          <span>⚡ USE CODE &apos;CRUNCH20&apos; FOR 20% OFF</span>
           <span className="text-[#FFE15D]">★</span>
-          <span>FAST DELIVERY ACROSS NEW DELHI</span>
+          <span>PAN-INDIA FAST EXPRESS SHIPPING</span>
           <span className="text-[#FFE15D]">★</span>
-          <span>TABLES AT 24 GARDEN AVENUE</span>
+          <span>WHOLESALE CARTONS &amp; B2B SUPPLY</span>
           <span className="text-[#FFE15D]">★</span>
-          <span>100% VEG &amp; HALAL OPTIONS READY</span>
+          <span>100% CLEAN LABEL CPG GOODS</span>
           <span className="text-[#FFE15D]">★</span>
-          <span>⚡ USE CODE &apos;PEACHY20&apos; FOR 20% OFF</span>
+          <span>⚡ USE CODE &apos;CRUNCH20&apos; FOR 20% OFF</span>
           <span className="text-[#FFE15D]">★</span>
-          <span>FAST DELIVERY ACROSS NEW DELHI</span>
+          <span>PAN-INDIA FAST EXPRESS SHIPPING</span>
         </div>
       </div>
 
@@ -374,10 +370,10 @@ function ConceptBHomePageContent() {
               ⚡ OUR RETRO CRAFT CHRONICLES
             </span>
             <h2 className="font-retro-bold font-black text-4xl sm:text-6xl text-black uppercase">
-              HOW WE SLICE IT DIFFERENT
+              HOW WE POP IT DIFFERENT
             </h2>
             <p className="text-xs sm:text-sm font-bold text-stone-900 max-w-md mx-auto">
-              Explore the 3 acts of our 48-hour sourdough craft. Click through the timeline below.
+              Explore the 3 acts of our snack popping &amp; nitrogen-sealed craft. Click through the timeline below.
             </p>
 
             {/* Chapter Selector Tabs */}
@@ -573,7 +569,7 @@ function ConceptBHomePageContent() {
               LATE NIGHT SLICE &amp; RECORD VAULT
             </h2>
             <p className="text-xs sm:text-sm font-semibold text-stone-300 max-w-lg">
-              Swipe across our Delhi diner scenes, blistered sourdough crusts, and neon booth aesthetic. Click any frame to inspect in full-screen cinema mode.
+              Swipe across our bodega shelves, air-popped sorghum batches, cold prebiotic cans, and high-protein snack drops. Click any frame to inspect in full-screen cinema mode.
             </p>
           </div>
           <span className="font-retro-bold text-xs font-black text-[#FF2A55] bg-white px-3 py-1.5 rounded-xl border-2 border-black shrink-0">
@@ -587,45 +583,45 @@ function ConceptBHomePageContent() {
             {[
               {
                 id: "vault-1",
-                title: "THE NEON BOOTH",
-                category: "Diner Vibes",
-                img: "/images/restaurant-dining.webp",
-                desc: "Our signature high-energy vinyl booth seating in New Delhi.",
+                title: "AIR-POPPED SORGHUM POUCHES",
+                category: "Ancient Grains",
+                img: "/images/products/gourmet-sorghum-crisps.jpg",
+                desc: "Nitrogen-flushed high-velocity popped sorghum with black truffle essence.",
               },
               {
                 id: "vault-2",
-                title: "TRUFFLE CRUST BAKE",
-                category: "Wood-Fired Pizza",
-                img: "/images/wild-mushroom-pizza.webp",
-                desc: "48-hour fermented wild mushroom truffle pizza fresh out of the 500°C oven.",
+                title: "BATCH KETTLE SEA SALT CHIPS",
+                category: "Kettle Crisps",
+                img: "/images/products/kettle-sea-salt-chips.jpg",
+                desc: "Thick-cut golden farm potatoes batch kettle-fried in non-GMO sunflower oil.",
               },
               {
                 id: "vault-3",
-                title: "MATCHA CLOUD LATTE",
-                category: "Cold Sips",
-                img: "/images/matcha-cloud-latte.webp",
-                desc: "Velvety strawberry cold foam poured over ceremonial Uji green matcha.",
+                title: "PREBIOTIC WHITE PEACH SODA",
+                category: "Cold Fizz",
+                img: "/images/products/prebiotic-white-peach-soda.jpg",
+                desc: "Real orchard white peach puree with chicory root prebiotics in cold recyclable cans.",
               },
               {
                 id: "vault-4",
-                title: "PARISIAN SWEET DROP",
-                category: "Sweet Treats",
-                img: "/images/parisian-macarons.webp",
-                desc: "Handcrafted ganache macarons with damask rose and lavender honey.",
+                title: "SPICED MILLET CRACKERS",
+                category: "Ancient Grains",
+                img: "/images/products/spiced-millet-crackers.jpg",
+                desc: "Sprouted foxtail and finger millets seasoned with rosemary and crushed pepper.",
               },
               {
                 id: "vault-5",
-                title: "TRUFFLE PARMESAN CRUNCH",
-                category: "Hand-Cut Fries",
-                img: "/images/truffle-fries.webp",
-                desc: "Crispy golden Russets tossed in aromatic black truffle oil & Maldon salt.",
+                title: "BLOOD ORANGE BOTANICAL NECTAR",
+                category: "Craft Fizz",
+                img: "/images/products/blood-orange-ginger-nectar.jpg",
+                desc: "Sicilian blood oranges cold-pressed with Himalayan ginger root and sparkling water.",
               },
               {
                 id: "vault-6",
-                title: "STRAWBERRY CHANTILLY",
-                category: "Baked Desserts",
-                img: "/images/strawberry-cheesecake.webp",
-                desc: "Silky New York style baked cheesecake on buttery graham crust.",
+                title: "SMOKED SAVORY PEPPER JERKY",
+                category: "High Protein",
+                img: "/images/products/smoked-beef-jerky.jpg",
+                desc: "Hickory-wood smoked lean strips cured with sea salt and cracked black pepper.",
               },
             ].map((shot, idx) => (
               <div
@@ -897,7 +893,7 @@ function ConceptBHomePageContent() {
                 <div className="pt-4 border-t-2 border-black/20 flex items-center justify-between font-retro-bold font-black text-xs">
                   <span>{rev.customer_name}</span>
                   <span className="bg-white px-2.5 py-1 rounded-lg border-2 border-black text-[10px]">
-                    {rev.dish_recommended || "Sourdough Pizza"}
+                    {rev.dish_recommended || "Truffle Sorghum Crisps"}
                   </span>
                 </div>
               </div>
