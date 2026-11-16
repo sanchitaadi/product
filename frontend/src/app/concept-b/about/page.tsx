@@ -30,13 +30,13 @@ function ConceptBAboutContent() {
         <div className="absolute inset-0 pattern-comic-halftone opacity-25 pointer-events-none" />
         <div className="max-w-4xl mx-auto px-6 text-center space-y-4 relative z-10">
           <span className="px-4 py-1.5 bg-black text-[#FFE15D] text-xs font-retro-bold font-black uppercase tracking-wider inline-block rounded-xl border-2 border-black shadow-[3px_3px_0px_#FF2A55]">
-            ⚡ THE RETRO ZINE &bull; ORIGIN STORY
+            ⚡ THE RETRO ZINE &bull; BODEGA ORIGIN STORY
           </span>
           <h1 className="font-retro-bold font-black text-4xl sm:text-7xl uppercase tracking-tight text-black">
-            BUILT FOR FLAVOR JUNKIES
+            CRUNCH WITHOUT THE JUNK
           </h1>
           <p className="text-sm sm:text-base font-bold text-stone-900 max-w-xl mx-auto leading-relaxed">
-            We got sick of sterile beige cafes with lukewarm pizza and watery coffee. Peachy Plate was engineered in 2026 to be the loudest, crispiest culinary spot in Delhi.
+            We got sick of artificial, neon-orange powdered snacks made with cheap palm oil and mystery preservatives. Peachy Plate was engineered in 2026 to bring clean, air-popped pantry crunch and real-fruit sodas to everyday snackers.
           </p>
         </div>
       </section>
@@ -48,20 +48,20 @@ function ConceptBAboutContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <span className="text-xs font-retro-bold font-black uppercase text-[#FF2A55] tracking-widest bg-white border-2 border-black px-3 py-1 rounded-md inline-block shadow-[2px_2px_0px_#000]">
-                ACT 01 // THE DOUGH EXPERIMENT
+                ACT 01 // HIGH-VELOCITY AIR POPPING
               </span>
               <h2 className="font-retro-bold font-black text-4xl sm:text-5xl leading-tight uppercase">
-                48-HOUR NATURAL SOURDOUGH BUBBLE CRUST
+                POPPED ANCIENT MILLETS &amp; NON-GMO SORGHUM
               </h2>
               <p className="text-sm font-semibold text-stone-700 leading-relaxed">
-                We ferment our dough for 2 full days using Italian unbleached Caputo flour. That means huge blistered air pockets, an insane chew, and zero bloat afterwards. Flash-baked at 500°C over hardwood fire in 90 seconds.
+                Instead of dumping grains into vats of reused oil, we pop ancient non-GMO sorghum and millets using pressurized hot air. That results in feather-light, shatter-crisp puffs with natural plant fiber and zero heavy greasy residue.
               </p>
               <div className="p-5 rounded-2xl bg-white border-4 border-black shadow-[5px_5px_0px_#000] text-xs font-bold space-y-1">
                 <span className="text-[#FF2A55] font-retro-bold font-black text-sm block">
-                  ⚡ SAN MARZANO REDUCTION
+                  ⚡ STONE-GROUND SPICE BLENDS
                 </span>
                 <span className="text-stone-700 font-semibold">
-                  Real imported Italian plum tomatoes simmered with cold-harvest olive oil, garlic confit & freshly plucked sweet basil.
+                  Sichuan chili crisps, roasted garlic confit, crushed Himalayan pink salt, and toasted sesame seeds cold-infused onto every chip.
                 </span>
               </div>
             </div>
@@ -71,10 +71,10 @@ function ConceptBAboutContent() {
                 playPop();
                 setActiveLightboxItem({
                   id: "about-kitchen",
-                  name: "The 500°C Fire Hearth",
-                  category: "Kitchen Atelier",
+                  name: "The Snack Production Atelier",
+                  category: "Clean Lab",
                   image_url: "/images/restaurant-kitchen.webp",
-                  description: "Our kitchen crew firing 48-hour sourdough Neapolitan pizzas at 500°C in New Delhi.",
+                  description: "Our air-popping and packaging facility with nitrogen-flushed sealing in New Delhi.",
                   conceptTheme: "retro",
                 });
               }}
@@ -100,10 +100,10 @@ function ConceptBAboutContent() {
                 playPop();
                 setActiveLightboxItem({
                   id: "about-dining",
-                  name: "The Neon Diner Booths",
-                  category: "Ambiance",
+                  name: "The 90s Bodega Dispensary",
+                  category: "Packaging Art",
                   image_url: "/images/restaurant-dining.webp",
-                  description: "Custom vintage diner booths, indie synth-pop records, and neon glow at 24 Garden Avenue.",
+                  description: "Collectible tin cans, retro foil pouches, and vintage 90s snack branding.",
                   conceptTheme: "retro",
                 });
               }}
@@ -123,20 +123,20 @@ function ConceptBAboutContent() {
 
             <div className="order-1 lg:order-2 space-y-6">
               <span className="text-xs font-retro-bold font-black uppercase text-[#FF2A55] tracking-widest bg-white border-2 border-black px-3 py-1 rounded-md inline-block shadow-[2px_2px_0px_#000]">
-                ACT 02 // CULTURE FIRST
+                ACT 02 // PACKAGING ART
               </span>
               <h2 className="font-retro-bold font-black text-4xl sm:text-5xl leading-tight uppercase">
-                NEON LIGHTS, INDIE BEATS &amp; ZERO PRETENSE
+                COLLECTIBLE CANS, 90s DOODLES &amp; ZERO WASTE
               </h2>
               <p className="text-sm font-semibold text-stone-700 leading-relaxed">
-                Food should be an experience, not a chore. We built Peachy Plate with custom retro vinyl booths, vintage arcade posters, analog sound systems, and a crew that loves food as much as you do.
+                Snacking should spark joy. Every Peachy Plate pouch and beverage can features retro comic artwork, halftone explosions, and 100% recyclable aluminum or multi-barrier nitrogen pouches.
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <span className="px-3.5 py-1.5 bg-[#FFE15D] text-black border-2 border-black rounded-xl text-xs font-retro-bold font-black shadow-[2px_2px_0px_#000]">
-                  🎸 INDIE SYNTH-POP PLAYLISTS
+                  ⚡ 100% RECYCLABLE ALUMINUM CANS
                 </span>
                 <span className="px-3.5 py-1.5 bg-[#FF2A55] text-white border-2 border-black rounded-xl text-xs font-retro-bold font-black shadow-[2px_2px_0px_#000]">
-                  ⚡ VINYL BOOTH SEATING
+                  📦 12-MONTH NITROGEN SEAL
                 </span>
               </div>
             </div>
@@ -147,10 +147,10 @@ function ConceptBAboutContent() {
       {/* CTA Strip */}
       <section className="py-16 bg-[#121212] text-white text-center border-t-4 border-black space-y-4">
         <h3 className="font-retro-bold font-black text-3xl sm:text-5xl uppercase text-[#FFE15D]">
-          HUNGRY YET? GRAB A SLICE
+          CRAVING A SNACK DROP?
         </h3>
         <p className="text-xs sm:text-sm font-bold text-stone-400 max-w-md mx-auto">
-          Explore our wood-fired sourdough pizzas, loaded pastas, and ice cold matcha lattes.
+          Explore our air-popped sorghum puffs, Sichuan chili crunch jars, and cold-canned probiotic sodas.
         </p>
         <div className="pt-2">
           <Link
@@ -158,7 +158,7 @@ function ConceptBAboutContent() {
             onClick={playCoin}
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF2A55] hover:bg-[#E60033] text-white font-retro-bold font-black text-xs uppercase tracking-wider rounded-2xl border-2 border-black shadow-[4px_4px_0px_#FFE15D] hover:translate-x-[-2px] hover:translate-y-[-2px] transition"
           >
-            <span>BROWSE THE FULL MENU 🍕</span>
+            <span>SHOP ALL SNACK DROPS 🥨</span>
             <ArrowRight className="w-4 h-4 stroke-[3]" />
           </Link>
         </div>

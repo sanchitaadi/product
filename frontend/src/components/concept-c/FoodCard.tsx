@@ -100,17 +100,21 @@ export default function ConceptCFoodCard({
             <Heart className={`w-4 h-4 ${isFav ? "fill-current" : ""}`} />
           </button>
 
-          {/* Prep time banner */}
-          {item.preparation_time && (
-            <div className="absolute bottom-2 left-2 bg-black/85 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-white/20 flex items-center gap-1">
-              <Clock className="w-2.5 h-2.5 text-[#FFE600]" />
-              <span>{item.preparation_time}</span>
-            </div>
-          )}
+          {/* Net weight tag */}
+          <div className="absolute bottom-2 left-2 bg-black/90 text-[#FFE600] text-[9.5px] font-black px-2 py-0.5 rounded border border-white/20 flex items-center gap-1 font-mono">
+            <span>PACK: {item.net_weight || "250g Jar"}</span>
+          </div>
         </div>
 
         {/* Content Section */}
         <div className="p-4 space-y-2">
+          <div className="flex items-center justify-between text-[10px] font-black uppercase text-[#0047FF]">
+            <span>SHELF: {item.shelf_life || "12 MONTHS"}</span>
+            <span className="bg-[#FFE600] text-black px-1.5 py-0.5 text-[9px] font-mono border border-black">
+              {item.dietary_tags ? item.dietary_tags.split(",")[0] : "CLEAN LABEL"}
+            </span>
+          </div>
+
           <h3 className="text-xl font-black uppercase tracking-tight text-[#111111] leading-tight line-clamp-1 group-hover:text-[#FF007F] transition-colors">
             {item.name}
           </h3>
@@ -125,7 +129,7 @@ export default function ConceptCFoodCard({
       <div className="p-4 pt-2 border-t-2 border-black/10 flex items-center justify-between gap-3 bg-[#FFFDF7]">
         <div>
           <span className="text-[9px] font-black uppercase text-gray-400 block tracking-wider">
-            PRICE
+            PER UNIT
           </span>
           <span className="text-xl font-black text-black">
             {api.formatPrice(item.price)}
@@ -137,7 +141,7 @@ export default function ConceptCFoodCard({
           className="bg-[#FFE600] hover:bg-[#FF007F] hover:text-white text-black font-black uppercase text-xs px-4 py-2.5 border-2 border-black shadow-[3px_3px_0px_#000] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
-          <span>ORDER</span>
+          <span>POP PACK • ADD</span>
         </button>
       </div>
     </motion.article>

@@ -14,13 +14,13 @@ export default function ConceptAAboutPage() {
       <section className="pt-12 pb-16 border-b border-rose-100 bg-[#FFF0F3]/40">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-4">
           <span className="text-xs font-bold text-[#E07A86] uppercase tracking-wider block">
-            🎀 The Origin & Philosophy
+            🎀 The Origin &amp; Purity Philosophy
           </span>
           <h1 className="font-coquette-serif font-black text-4xl sm:text-5xl text-[#3D2D2E] leading-tight">
-            A Love Affair with Dough, Cream & Ribbons
+            A Love Affair with French Preserves, Cocoa &amp; Ribbons
           </h1>
           <p className="text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            Founded in 2026 at 24 Garden Avenue, Peachy Plate was born out of a desire to create a sanctuary where high culinary technique meets warm, dreamy Pinterest aesthetics.
+            Founded in 2026, Peachy Plate was born out of a desire to rescue pantry shelves from ultra-processed additives. We craft small-batch fruit preserves, stone-milled biscuits, and artisanal confections that taste like home and look like art.
           </p>
         </div>
       </section>
@@ -31,17 +31,17 @@ export default function ConceptAAboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-5">
               <span className="text-xs font-bold uppercase tracking-wider text-[#E07A86]">
-                Our Kitchen Heritage
+                Our Atelier Heritage
               </span>
               <h2 className="font-coquette-serif font-bold text-3xl sm:text-4xl text-[#3D2D2E]">
-                48-Hour Fermentation & Bronze-Die Pastas
+                Copper-Kettle Cooking &amp; Real Vanilla Pods
               </h2>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                We believe that food made with patience simply tastes better. Our sourdough pizza dough rests for 48 hours to create a crust that is airy, blistered, and easy on the digestion. Our bronze-die rigatoni and tagliolini grip our velvety pink rosa sauce like an embrace.
+                We believe that food packaged for the pantry shouldn&apos;t compromise on fresh craft. Our white peach compotes and slow-simmered tomato marinara sauces are stirred in traditional open copper kettles in small batches of no more than 60 jars at a time.
               </p>
               <div className="p-5 rounded-2xl bg-white border border-rose-100 shadow-sm space-y-2 text-xs">
-                <span className="font-bold text-gray-900 block">✨ Pure Ingredients</span>
-                <p className="text-gray-500">San Marzano tomatoes, imported Pugliese burrata, farm-fresh basil, and raw mountain honey.</p>
+                <span className="font-bold text-gray-900 block">✨ Clean Label Standards</span>
+                <p className="text-gray-500">Zero artificial colors, zero corn syrup, zero palm oil. Hot-filled in reusable glass jars with foil tamper seals.</p>
               </div>
             </div>
 
@@ -58,19 +58,19 @@ export default function ConceptAAboutPage() {
 
             <div className="order-1 lg:order-2 space-y-5">
               <span className="text-xs font-bold uppercase tracking-wider text-[#E07A86]">
-                The Atmosphere
+                Gifting &amp; Wholesale
               </span>
               <h2 className="font-coquette-serif font-bold text-3xl sm:text-4xl text-[#3D2D2E]">
-                Pastel Comfort for Special Memories
+                Crafted for Aesthetic Hampers &amp; Fine Grocers
               </h2>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                Whether you are celebrating a graduation, sharing a birthday with best friends, or enjoying a quiet solo afternoon latte with a good novel, Peachy Plate was designed to wrap you in warmth and sweet memories.
+                Whether you are curating luxury corporate hampers, stocking boutique coffee bar retail shelves, or sending a loved one an indulgent sweet box, each parcel is packed with eco-cushioning and hand-tied with our signature peach ribbon.
               </p>
               <Link
                 href="/concept-a/reservations/"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#E07A86] to-[#F59E0B] text-white text-xs font-bold uppercase tracking-wider shadow-md"
               >
-                <span>Reserve a Conservatory Table</span>
+                <span>Wholesale &amp; Bulk Gifting Inquiries</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

@@ -100,20 +100,17 @@ export default function ConceptEFoodCard({
             <Heart className={`w-3.5 h-3.5 ${isFav ? "fill-current" : ""}`} />
           </button>
 
-          {/* Prep Time */}
-          {item.preparation_time && (
-            <div className="absolute bottom-2 left-2.5 bg-black/85 text-[#FFD100] text-[9px] font-bold px-2 py-0.5 rounded border border-[#FFD100]/40 flex items-center gap-1">
-              <Clock className="w-2.5 h-2.5" />
-              <span>TRANSIT: {item.preparation_time}</span>
-            </div>
-          )}
+          {/* Net Weight */}
+          <div className="absolute bottom-2 left-2.5 bg-black/85 text-[#FFD100] text-[9px] font-bold px-2 py-0.5 rounded border border-[#FFD100]/40 flex items-center gap-1 font-mono">
+            <span>PACK: {item.net_weight || "250g Jar"}</span>
+          </div>
         </div>
 
         {/* Content Section */}
         <div className="p-4 space-y-2">
           <div className="flex items-center justify-between text-[9px] text-[#FFD100] uppercase tracking-wider">
-            <span>PLATFORM 02 &bull; COACH A</span>
-            <span className="text-gray-400 font-mono">SEAT CONFIRMED</span>
+            <span>FREIGHT CARGO &bull; EXPEDITE</span>
+            <span className="text-gray-400 font-mono">SHELF: {item.shelf_life || "12M"}</span>
           </div>
 
           <h3 className="text-lg font-black uppercase tracking-tight text-white leading-tight line-clamp-1 group-hover:text-[#FFD100] transition-colors">
@@ -136,7 +133,7 @@ export default function ConceptEFoodCard({
       <div className="p-4 pt-2 flex items-center justify-between gap-3 bg-[#050D1C]">
         <div>
           <span className="text-[9px] uppercase font-bold text-gray-400 block tracking-wider">
-            TICKET FARE
+            UNIT FARE
           </span>
           <span className="text-lg font-black text-[#FFD100]">
             {api.formatPrice(item.price)}
@@ -148,7 +145,7 @@ export default function ConceptEFoodCard({
           className="bg-[#D71920] hover:bg-[#FFD100] hover:text-black text-white font-mono font-black uppercase text-xs px-4 py-2.5 rounded-lg border border-white shadow-[2px_2px_0px_#000] active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5"
         >
           <Ticket className="w-3.5 h-3.5" />
-          <span>BOARD</span>
+          <span>SELECT PACK</span>
         </button>
       </div>
     </motion.article>

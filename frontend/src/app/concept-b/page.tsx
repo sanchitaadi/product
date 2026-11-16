@@ -107,32 +107,32 @@ function ConceptBHomePageContent() {
     {
       id: "ch-1",
       number: "ACT 01",
-      tagline: "48-HOUR COLD FERMENTATION",
-      title: "Wild Yeast & Italian Caputo Flour",
-      desc: "Our pizza dough doesn't take shortcuts. It rests in refrigerated chambers for two full days, allowing slow enzymatic breakdown of complex starches. The payoff? Unbelievable leopard blisters, airy lightness, and zero heavy bloating.",
-      badge: "🌾 100% UNBLEACHED CAPUTO 00",
+      tagline: "AIR-POPPED GRAIN CRUNCH",
+      title: "Ancient Grains & Non-GMO Sorghum",
+      desc: "Our snack puffs don't take shortcuts. We air-pop ancient millets and sorghum at high velocity with zero deep-frying. The payoff? Incredible crunch, clean plant fiber, and zero heavy trans-fat greasy aftertaste.",
+      badge: "🌾 100% NON-GMO ANCIENT GRAINS",
       image: "/images/margherita-pizza.webp",
-      highlight: "AIRY CORNICIONE CRUST",
+      highlight: "FEATHER-LIGHT CRUNCH",
     },
     {
       id: "ch-2",
       number: "ACT 02",
-      tagline: "500°C VOLCANIC STONE OVEN",
-      title: "90-Second Scorched Blistering",
-      desc: "Inside our custom dual-flame stone oven, pizzas cook at blistering temperatures. The dough expands instantly into crisp, pillowy crusts with caramelized micro-bubbles while maintaining an ultra-juicy, fresh center.",
-      badge: "🔥 500°C STONE-BAKED FLASH",
+      tagline: "COLD-PRESSED OIL INFUSION",
+      title: "Artisan Sichuan Crisps & Himalayan Salt",
+      desc: "Every batch of chili crunch and barbecue chips is tossed in cold-pressed sesame and groundnut oils infused with fiery crisp aromatics, crushed pink rock salt, and toasted garlic cloves.",
+      badge: "🔥 STONE-GROUND CHILI AROMATICS",
       image: "/images/wild-mushroom-pizza.webp",
-      highlight: "LEOPARD-SPOTTED CHAR",
+      highlight: "UMAMI EXPLOSION",
     },
     {
       id: "ch-3",
       number: "ACT 03",
-      tagline: "FRESH PUGLIESE CHEESE PULL",
-      title: "Molten Fior Di Latte & Cold EVOO",
-      desc: "We tear creamy fior di latte mozzarella by hand, melt it over sweet San Marzano tomato reductions, and crown every slice with torn sweet basil and cold-pressed extra virgin olive oil from southern Italy.",
-      badge: "🧀 AUTHENTIC MOZZARELLA PULL",
+      tagline: "NITROGEN-FLUSHED FRESHNESS",
+      title: "Zero-Air Sealed Foil Pouches",
+      desc: "We vacuum-pack our crisps with inert food-grade nitrogen within 4 minutes of baking. Every pouch retains peak shatter-crisp texture for 9 to 12 months in your pantry.",
+      badge: "📦 12-MONTH SHELF STABILITY",
       image: "/images/pink-sauce-pasta.webp",
-      highlight: "MAXIMUM CHEESE STRETCH",
+      highlight: "FACTORY FRESH CRACK",
     },
   ];
 
@@ -175,7 +175,7 @@ function ConceptBHomePageContent() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFE15D] border-2 border-black text-xs font-retro-bold font-black uppercase tracking-wider shadow-[3px_3px_0px_#000] rotate-[-1deg]"
             >
               <Zap className="w-4 h-4 fill-black text-black animate-bounce" />
-              <span>DELHI&apos;S HOTTEST 90s RETRO PIZZA &bull; POP OPEN!</span>
+              <span>90s RETRO SNACK BODEGA &bull; POP OPEN THE CRUNCH!</span>
             </motion.div>
 
             {/* Kinetic Oversized Headline */}
@@ -188,9 +188,9 @@ function ConceptBHomePageContent() {
               >
                 <span className="block hover:translate-x-1 transition-transform">CRUNCH.</span>
                 <span className="text-[#FF2A55] bg-white px-3 py-1 border-[3.5px] border-black shadow-[6px_6px_0px_#000] inline-block my-2 rotate-1 hover:-rotate-1 transition-transform cursor-pointer">
-                  CHEESE.
+                  FIZZ.
                 </span>
-                <span className="block text-pop-cherry">CUTE VIBES.</span>
+                <span className="block text-pop-cherry">SNACK HARD.</span>
               </motion.h1>
             </div>
 
@@ -200,7 +200,7 @@ function ConceptBHomePageContent() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="text-sm sm:text-base font-bold text-stone-800 max-w-lg leading-relaxed"
             >
-              Serving 48-hour slow-fermented artisan sourdough pizzas, cheese-drenched rigatoni, iced matcha cloud foam, and triple-stacked burgers in New Delhi. No frozen nonsense, ever.
+              Air-popped sorghum crisps, slow-roasted chili crunch jars, prebiotic botanical sodas, and bean-to-bar chocolate drops. 100% clean ingredients, zero palm oil, pure 90s bodega magic.
             </motion.p>
 
             {/* Bouncy CTA Buttons */}
@@ -215,7 +215,7 @@ function ConceptBHomePageContent() {
                 onClick={playCoin}
                 className="px-8 py-4 bg-[#FF2A55] hover:bg-[#E60033] text-white font-retro-bold font-black text-sm uppercase tracking-wider rounded-2xl border-[3.5px] border-black shadow-[6px_6px_0px_#000] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000] transition-all flex items-center gap-3"
               >
-                <span>GET FOOD NOW 🍕</span>
+                <span>SHOP SNACK DROPS 🥨</span>
                 <ArrowRight className="w-5 h-5 stroke-[3]" />
               </Link>
 
@@ -225,7 +225,7 @@ function ConceptBHomePageContent() {
                 className="px-8 py-4 bg-[#FFE15D] hover:bg-[#FFD600] text-black font-retro-bold font-black text-sm uppercase tracking-wider rounded-2xl border-[3.5px] border-black shadow-[5px_5px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#000] transition-all flex items-center gap-2"
               >
                 <Users className="w-4 h-4 stroke-[2.5]" />
-                <span>BOOK VINYL BOOTH</span>
+                <span>WHOLESALE BODEGA SUPPLY</span>
               </Link>
             </motion.div>
 
@@ -235,7 +235,7 @@ function ConceptBHomePageContent() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
               </span>
-              <span>KITCHEN IS OPEN &bull; DISPATCHING IN 18-22 MINS</span>
+              <span>WAREHOUSE IS PACKING &bull; DISPATCHING ORDERS PAN-INDIA</span>
             </div>
           </div>
 
@@ -699,10 +699,10 @@ function ConceptBHomePageContent() {
                 02
               </div>
               <h3 className="font-retro-bold font-black text-2xl text-black">
-                48-HOUR SOURDOUGH FERMENT
+                12-MONTH NITROGEN FRESH SEAL
               </h3>
               <p className="text-xs font-bold text-black leading-relaxed">
-                Our dough rests in refrigerated fermentation chambers for two full days. The result? Unbelievable leopard-spotting, airy crusts, and zero bloating after eating.
+                Our crunchy snacks are nitrogen-flushed and hot-sealed in multi-layer foil pouches. Zero soggy chips, zero stale crackers, and 100% shatter-crunch in every single bite.
               </p>
             </div>
 
@@ -712,10 +712,10 @@ function ConceptBHomePageContent() {
                 03
               </div>
               <h3 className="font-retro-bold font-black text-2xl text-black">
-                90s RETRO DINER MOODS
+                90s RETRO BODEGA CANS &amp; DROPS
               </h3>
               <p className="text-xs font-bold text-stone-700 leading-relaxed">
-                Neon signs, vinyl booths, curated indie synth-pop beats, and aesthetic food packaging that looks incredible on your camera roll.
+                Collectible tin cans, holographic comic stickers, limited monthly snack flavors, and retro soda typography that looks iconic on pantry shelves.
               </p>
             </div>
           </div>
@@ -723,20 +723,20 @@ function ConceptBHomePageContent() {
       </section>
 
       {/* -------------------------------------------------------------
-          7. IN-PAGE VINYL BOOTH RESERVATIONS BOOKING SUITE
+          7. IN-PAGE B2B WHOLESALE & BULK BODEGA DISPENSARY ORDERS
       ------------------------------------------------------------- */}
       <section className="py-20 md:py-28 border-b-4 border-black bg-[#FF2A55] text-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-[#FFE15D] text-black rounded-3xl border-4 border-black p-8 sm:p-12 shadow-[12px_12px_0px_#000]">
             <div className="max-w-xl mx-auto text-center space-y-3 mb-10">
               <span className="font-retro-bold text-xs font-black uppercase tracking-widest bg-white border-2 border-black px-3.5 py-1 rounded-full shadow-[2px_2px_0px_#000] inline-block">
-                ⚡ VINYL BOOTH PASS
+                ⚡ B2B &amp; BULK DISPENSARY
               </span>
               <h3 className="font-retro-bold font-black text-4xl sm:text-5xl uppercase leading-none">
-                RESERVE YOUR BOOTH IN NEW DELHI
+                STOCK PEACHY PLATE IN YOUR STORE OR CAFE
               </h3>
               <p className="text-xs sm:text-sm font-bold text-stone-800">
-                Friday and Saturday booths fill up fast. Lock in your spot for wood-fired pizza and neon diner vibes!
+                Inquire for wholesale carton pricing, retail distribution rights, office pantry subscriptions, and event snack drops!
               </p>
             </div>
 
@@ -744,16 +744,16 @@ function ConceptBHomePageContent() {
               <div className="p-8 text-center bg-white rounded-2xl border-4 border-black space-y-4">
                 <Check className="w-12 h-12 text-[#48BB78] mx-auto stroke-[3]" />
                 <h4 className="font-retro-bold font-black text-3xl uppercase">
-                  BOOTH INQUIRY REGISTERED! 🍕
+                  WHOLESALE INQUIRY REGISTERED! 🥨
                 </h4>
                 <p className="text-xs font-bold text-stone-700 max-w-md mx-auto">
-                  Our diner host will ring {resForm.phone} within 2 hours to confirm your booth placement.
+                  Our wholesale distribution team will dispatch our B2B catalog and ring {resForm.phone} within 2 hours.
                 </p>
                 <button
                   onClick={() => setResSuccess(false)}
                   className="px-6 py-2.5 bg-[#FF2A55] text-white font-retro-bold font-black text-xs uppercase rounded-xl border-2 border-black shadow-[2px_2px_0px_#000]"
                 >
-                  Book Another Table
+                  Submit Another Inquiry
                 </button>
               </div>
             ) : (
@@ -761,21 +761,21 @@ function ConceptBHomePageContent() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-[11px] font-retro-bold font-black uppercase mb-1">
-                      Guest Name *
+                      Business / Store Name *
                     </label>
                     <input
                       type="text"
                       required
                       value={resForm.name}
                       onChange={(e) => setResForm({ ...resForm, name: e.target.value })}
-                      placeholder="e.g. Rahul Sharma"
+                      placeholder="e.g. Neon Bodega Cafe"
                       className="w-full bg-white border-2 border-black rounded-xl px-4 py-3 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                     />
                   </div>
 
                   <div>
                     <label className="block text-[11px] font-retro-bold font-black uppercase mb-1">
-                      Mobile Number *
+                      Contact Mobile Number *
                     </label>
                     <input
                       type="tel"
@@ -789,20 +789,20 @@ function ConceptBHomePageContent() {
 
                   <div>
                     <label className="block text-[11px] font-retro-bold font-black uppercase mb-1">
-                      Email Address
+                      Business Email
                     </label>
                     <input
                       type="email"
                       value={resForm.email}
                       onChange={(e) => setResForm({ ...resForm, email: e.target.value })}
-                      placeholder="rahul@example.com"
+                      placeholder="buyer@store.com"
                       className="w-full bg-white border-2 border-black rounded-xl px-4 py-3 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                     />
                   </div>
 
                   <div>
                     <label className="block text-[11px] font-retro-bold font-black uppercase mb-1">
-                      Date of Visit *
+                      Target Delivery Date *
                     </label>
                     <input
                       type="date"
@@ -815,35 +815,34 @@ function ConceptBHomePageContent() {
 
                   <div>
                     <label className="block text-[11px] font-retro-bold font-black uppercase mb-1">
-                      Sitting Time *
+                      Channel Type *
                     </label>
                     <select
                       value={resForm.time}
                       onChange={(e) => setResForm({ ...resForm, time: e.target.value })}
                       className="w-full bg-white border-2 border-black rounded-xl px-4 py-3 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                     >
-                      <option value="13:00">1:00 PM (Lunch)</option>
-                      <option value="14:00">2:00 PM (Lunch)</option>
-                      <option value="19:30">7:30 PM (Dinner)</option>
-                      <option value="20:30">8:30 PM (Prime Dinner)</option>
-                      <option value="21:30">9:30 PM (Late Slices)</option>
+                      <option value="Retail Gourmet Shelf">Retail Gourmet Shelf</option>
+                      <option value="Cafe / Bar Counter">Cafe / Bar Counter</option>
+                      <option value="Corporate Snack Pantry">Corporate Snack Pantry</option>
+                      <option value="Online / E-Commerce Stockist">Online / E-Commerce Stockist</option>
+                      <option value="Festival / Event Pop-Up">Festival / Event Pop-Up</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-[11px] font-retro-bold font-black uppercase mb-1">
-                      Booth Crew Size *
+                      Initial Case Quantity *
                     </label>
                     <select
                       value={resForm.guests}
                       onChange={(e) => setResForm({ ...resForm, guests: Number(e.target.value) })}
                       className="w-full bg-white border-2 border-black rounded-xl px-4 py-3 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#FF2A55]"
                     >
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((g) => (
-                        <option key={g} value={g}>
-                          {g} {g === 1 ? "Person" : "People"}
-                        </option>
-                      ))}
+                      <option value={5}>Starter Trial (5 Cases - 120 Packs)</option>
+                      <option value={15}>Boutique Store (15 Cases - 360 Packs)</option>
+                      <option value={30}>Supermarket Shelf (30 Cases - 720 Packs)</option>
+                      <option value={60}>Master Distributor (60+ Cases - Master Cartons)</option>
                     </select>
                   </div>
                 </div>
@@ -854,7 +853,7 @@ function ConceptBHomePageContent() {
                     disabled={resSubmitting}
                     className="px-10 py-4 bg-[#FF2A55] hover:bg-[#E60033] text-white font-retro-bold font-black text-sm uppercase tracking-wider rounded-2xl border-[3.5px] border-black shadow-[5px_5px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_#000] transition disabled:opacity-50"
                   >
-                    {resSubmitting ? "REGISTERING BOOTH..." : "LOCK IN MY VINYL BOOTH ★"}
+                    {resSubmitting ? "TRANSMITTING INQUIRY..." : "REQUEST WHOLESALE CATALOG &amp; PRICING ★"}
                   </button>
                 </div>
               </form>

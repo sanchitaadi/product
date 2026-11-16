@@ -112,11 +112,10 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `categories` (`name`, `slug`, `description`, `display_order`) VALUES
-('Starters', 'starters', 'Crisp bites, hand-cut fries, salads and artisan bruschettas', 1),
-('Pizza and Pasta', 'pizza-and-pasta', '48hr fermented sourdough pizzas and bronze-die handcrafted pastas', 2),
-('Main Course', 'main-course', 'Flame-grilled steaks, simmered risottos and continental platters', 3),
-('Desserts', 'desserts', 'New York cheesecakes, tiramisu and Parisian macarons', 4),
-('Beverages', 'beverages', 'Velvet cold brews, thick dessert shakes and botanical coolers', 5);
+('Artisan Snacks & Crisps', 'snacks-and-crisps', 'Slow-popped ancient grain crisps, roasted nuts, and savory pantry crunches', 1),
+('Gourmet Sauces & Pantry', 'sauces-and-pantry', 'Small-batch pasta sauces, pesto jars, stone-milled risottos, and pizza kits', 2),
+('Bean-to-Bar & Sweets', 'sweets-and-confections', 'Single-origin chocolates, Parisian macaron gift boxes, and fruit butters', 3),
+('Craft Beverages & Tonics', 'craft-beverages', 'Cold-pressed prebiotic sodas, single-origin cold brews, and matcha tins', 4);
 
 -- --------------------------------------------------------
 -- Table: menu_items (Food Products)
@@ -124,15 +123,18 @@ INSERT INTO `categories` (`name`, `slug`, `description`, `display_order`) VALUES
 DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE `menu_items` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `category` ENUM('Starters', 'Main Course', 'Pizza and Pasta', 'Desserts', 'Beverages') NOT NULL,
+    `category` VARCHAR(100) NOT NULL,
     `name` VARCHAR(150) NOT NULL,
     `description` TEXT NOT NULL,
     `price` DECIMAL(10,2) NOT NULL,
     `is_veg` TINYINT(1) DEFAULT 1,
     `is_bestseller` TINYINT(1) DEFAULT 0,
     `image_url` VARCHAR(500) NOT NULL,
+    `net_weight` VARCHAR(60) DEFAULT '250g',
+    `shelf_life` VARCHAR(60) DEFAULT '9 Months',
+    `dietary_tags` VARCHAR(255) DEFAULT '100% Organic, Vegan',
     `calories` INT NULL,
-    `preparation_time` VARCHAR(30) DEFAULT '15-20 mins',
+    `preparation_time` VARCHAR(60) DEFAULT '250g Pouch',
     `is_available` TINYINT(1) DEFAULT 1,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -141,36 +143,27 @@ CREATE TABLE `menu_items` (
     INDEX idx_available (`is_available`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `menu_items` (`id`, `name`, `description`, `price`, `category`, `is_veg`, `is_bestseller`, `image_url`, `calories`, `preparation_time`) VALUES
--- Starters
-(1, 'Truffle Fries', 'Crispy hand-cut golden Russet potatoes tossed in aromatic black truffle oil, Maldon sea salt & aged parmesan shavings, served with garlic herb aioli.', 199.00, 'Starters', 1, 1, 'truffle-fries.webp', 380, '12-15 mins'),
-(2, 'Peach & Whipped Ricotta Bruschetta', 'Toasted artisan sourdough crostini layered with lemon-zested whipped ricotta, caramelized seasonal peaches, raw mountain honey & fresh mint microgreens.', 249.00, 'Starters', 1, 1, 'burrata-bruschetta.webp', 290, '10-12 mins'),
-(3, 'Burrata & Heirloom Peach Salad', 'Creamy Pugliese burrata ball paired with charred peaches, heirloom cherry tomatoes, roasted pine nuts, and aged balsamic glaze.', 349.00, 'Starters', 1, 0, 'burrata-bruschetta.webp', 340, '10 mins'),
-(4, 'Crispy Panko Avocado Bites', 'Golden crisp Hass avocado wedges dusted with smoked paprika and togarashi salt, accompanied by spicy sriracha cilantro dip.', 269.00, 'Starters', 1, 0, 'avocado-tartine.webp', 310, '12-15 mins'),
-
--- Pizza and Pasta
-(5, 'Pink Sauce Pasta', 'Signature penne rigate enrobed in our velvety signature tomato cream rosa sauce, sun-dried cherry tomatoes, fresh sweet basil & dollop of mascarpone.', 299.00, 'Pizza and Pasta', 1, 1, 'pink-sauce-pasta.webp', 520, '15-18 mins'),
-(6, 'Classic Neapolitan Margherita', 'Slow-fermented 48-hour sourdough base, San Marzano tomato reduction, fior di latte mozzarella, fragrant sweet basil & cold-pressed EVOO.', 349.00, 'Pizza and Pasta', 1, 1, 'margherita-pizza.webp', 680, '18-20 mins'),
-(7, 'Quattro Formaggi & Fig Bianca', 'Artisan white pizza glazed with mozzarella, creamy gorgonzola, smoked provolone, fontina, caramelized Turkish figs & hot honey drizzle.', 419.00, 'Pizza and Pasta', 1, 0, 'wild-mushroom-pizza.webp', 740, '18-22 mins'),
-(8, 'Pesto Genovese Penne', 'Bronze-cut rigatoni tossed in stone-ground Genovese basil pesto, roasted pine nuts, slow-roasted baby tomatoes, and grana padano flakes.', 329.00, 'Pizza and Pasta', 1, 0, 'truffle-tagliolini.webp', 490, '15-18 mins'),
-
--- Main Course
-(9, 'Grilled Herb Chicken Steak', 'Tender free-range chicken breast marinated in garden rosemary & thyme, flame-grilled and served over potato mousseline with glazed baby carrots & pepper jus.', 449.00, 'Main Course', 0, 1, 'tuscan-chicken.webp', 580, '20-25 mins'),
-(10, 'Wild Forest Mushroom Risotto', 'Slow-simmered Carnaroli rice with Porcini and Portobello mushrooms, shallot butter, dry white wine reduction, finished with truffle emulsion.', 389.00, 'Main Course', 1, 0, 'saffron-risotto.webp', 460, '18-22 mins'),
-(11, 'Pan-Seared Norwegian Salmon', 'Crispy skin salmon fillet atop sautéed French beans, roasted baby potatoes, and a luscious pink peppercorn citrus beurre blanc.', 699.00, 'Main Course', 0, 1, 'citrus-salmon.webp', 520, '20-25 mins'),
-(12, 'Roasted Mediterranean Veggie Bowl', 'Charred courgettes, bell peppers, Kalamata olives, warm organic quinoa, spiced chickpea falafel, and beetroot tahini dressing.', 359.00, 'Main Course', 1, 0, 'calamari-fritti.webp', 410, '15-18 mins'),
-
--- Desserts
-(13, 'Strawberry Chantilly Cheesecake', 'Silky New York style baked cheesecake on buttery graham crust, topped with fresh Mahabaleshwar strawberry compote & vanilla chantilly.', 249.00, 'Desserts', 1, 1, 'strawberry-cheesecake.webp', 410, 'Instant'),
-(14, 'Tiramisu Paradiso', 'Delicate Savoiardi sponge biscuits steeped in freshly brewed espresso and amaretto essence, layered with whipped mascarpone sabayon and Belgian cocoa.', 289.00, 'Desserts', 1, 1, 'espresso-tiramisu.webp', 440, 'Instant'),
-(15, 'Rose Pistachio Parisian Macarons', 'A delicate trio of crisp French almond shells filled with fragrant Damask rose buttercream and roasted Iranian pistachio ganache.', 199.00, 'Desserts', 1, 0, 'parisian-macarons.webp', 280, 'Instant'),
-(16, 'Warm Peach & Cinnamon Tart', 'Flaky puff pastry tart stuffed with caramelized peaches, almond frangipane, served with artisanal Madagascar vanilla bean gelato.', 259.00, 'Desserts', 1, 0, 'strawberry-cheesecake.webp', 360, '10-12 mins'),
-
--- Beverages
-(17, 'Lotus Biscoff Thick Shake', 'Creamy ice cream blended with authentic Belgian Biscoff spread, crushed spiced cookies, topped with whipped cream and caramel ribbon.', 229.00, 'Beverages', 1, 1, 'lotus-biscoff-shake.webp', 420, '8 mins'),
-(18, 'Classic Velvet Cold Coffee', 'Slow-brewed Arabica single-origin espresso shaken over ice with condensed milk, whole milk, and crowned with silky coffee crema.', 179.00, 'Beverages', 1, 1, 'velvet-cold-coffee.webp', 210, '5 mins'),
-(19, 'Sparkling Peach Hibiscus Cooler', 'Cold-brewed organic Egyptian hibiscus tea infused with white peach purée, fresh mint leaves, sparkling spring water and lemon wheel.', 189.00, 'Beverages', 1, 1, 'peach-hibiscus-cooler.webp', 110, '5 mins'),
-(20, 'Matcha Blossom Cloud Latte', 'Ceremonial grade Uji matcha whisked with oat milk, layered over delicate wild strawberry syrup, served iced with dried rose petals.', 219.00, 'Beverages', 1, 0, 'matcha-cloud-latte.webp', 160, '6 mins');
+INSERT INTO `menu_items` (`id`, `name`, `category`, `description`, `price`, `is_veg`, `is_bestseller`, `image_url`, `net_weight`, `shelf_life`, `dietary_tags`, `calories`, `preparation_time`) VALUES
+(1, 'Black Summer Truffle Sorghum Crisps', 'Artisan Snacks & Crisps', 'Ultra-light, slow-popped whole grain Andean sorghum dusted with wild Italian black summer truffle essence, cracked black pepper, and grey sea salt. Non-GMO, zero palm oil.', 249.00, 1, 1, 'truffle-fries.webp', '150g Pouch', '9 Months', 'Gluten-Free, Non-GMO, Vegan, Zero Palm Oil', 135, '150g Pouch'),
+(2, 'Signature White Peach & Blossom Jam', 'Bean-to-Bar & Sweets', 'Artisanal small-batch fruit preserves simmered with sun-ripened orchard white peaches, organic lemon blossom honey, and natural fruit pectin in copper kettles.', 289.00, 1, 1, 'burrata-bruschetta.webp', '250g Glass Jar', '12 Months', '100% Organic, Preservative-Free, Vegan', 45, '250g Glass Jar'),
+(3, 'Sun-Dried Heirloom Tomato Tapenade', 'Gourmet Sauces & Pantry', 'Rich savory spread crafted from slow-roasted heirloom cherry tomatoes, Kalamata olives, capers, cold-pressed virgin olive oil, and fresh garden thyme.', 329.00, 1, 0, 'burrata-bruschetta.webp', '220g Glass Jar', '12 Months', 'Gluten-Free, Vegan, Non-GMO', 85, '220g Glass Jar'),
+(4, 'Smoked Avocado & Jalapeño Tortilla Chips', 'Artisan Snacks & Crisps', 'Stone-ground organic yellow corn tortilla chips seasoned with freeze-dried Hass avocado powder, smoked red jalapeño, and hand-harvested sea salt.', 219.00, 1, 0, 'avocado-tartine.webp', '140g Foil Bag', '6 Months', 'Gluten-Free, 100% Corn, Vegan', 140, '140g Foil Bag'),
+(5, 'Slow-Simmered Tomato Cream Rosa Sauce', 'Gourmet Sauces & Pantry', 'Our signature pasta sauce simmered for 8 hours with San Marzano tomatoes, sweet Italian basil, slow-cooked shallots, and fresh mascarpone cream.', 299.00, 1, 1, 'pink-sauce-pasta.webp', '380g Glass Jar', '18 Months', 'Vegetarian, Gluten-Free, No Added Sugar', 110, '380g Glass Jar'),
+(6, '48-Hr Slow-Fermented Sourdough Pizza Kit', 'Gourmet Sauces & Pantry', 'Gourmet home pizza kit containing 2 par-baked slow-fermented ancient grain sourdough crusts, San Marzano marinara pouch, and Italian oregano seasoning.', 449.00, 1, 1, 'margherita-pizza.webp', '550g Box', '3 Months', 'Stone-Milled, Ancient Grain, Non-GMO', 380, 'Kit for 2 Pizzas'),
+(7, 'White Truffle & Wild Fig Finishing Glaze', 'Gourmet Sauces & Pantry', 'Aged Modena balsamic vinegar reduction infused with caramelized Turkish mission figs, white Alba truffle extract, and raw acacia honey.', 399.00, 1, 0, 'wild-mushroom-pizza.webp', '250ml Bottle', '24 Months', 'Vegetarian, Gluten-Free, Aged 12 Years', 60, '250ml Bottle'),
+(8, 'Stone-Ground Genovese Basil Pesto', 'Gourmet Sauces & Pantry', 'Authentic small-batch pesto stone-ground in granite mortars with fresh Genovese sweet basil, toasted Mediterranean pine nuts, aged Grana Padano, and EVOO.', 349.00, 1, 0, 'truffle-tagliolini.webp', '200g Glass Jar', '12 Months', 'Vegetarian, Gluten-Free, Keto-Friendly', 165, '200g Glass Jar'),
+(9, 'Rosemary Herb Smoked Chicken Jerky', 'Artisan Snacks & Crisps', 'Free-range lean chicken breast strips slow-smoked over hickory wood chips, marinated in garden rosemary, garlic emulsion, and coarse sea salt. 22g protein per pack.', 349.00, 0, 1, 'tuscan-chicken.webp', '80g Vacuum Pack', '9 Months', 'High Protein, Keto, Gluten-Free', 160, '80g Vacuum Pack'),
+(10, 'Porcini & Portobello Risotto Meal Kit', 'Gourmet Sauces & Pantry', 'Artisanal Italian Carnaroli superfino rice blended with dried forest Porcini and Portobello mushrooms, shallot broth flakes, and saffron threads.', 379.00, 1, 0, 'saffron-risotto.webp', '350g Box', '18 Months', 'Gluten-Free, 100% Italian Rice, Vegan', 240, '350g Box (Serves 4)'),
+(11, 'Wild Smoked Salmon Jerky Crisps', 'Artisan Snacks & Crisps', 'Wild-caught Alaskan salmon cured in brown sugar and sea salt, slowly hot-smoked over applewood and sliced into crisp jerky snacking strips. High in natural Omega-3s.', 499.00, 0, 1, 'citrus-salmon.webp', '75g Foil Pouch', '9 Months', 'High Omega-3, Wild-Caught, Gluten-Free', 150, '75g Foil Pouch'),
+(12, 'Spiced Roasted Chickpea & Seed Crunch', 'Artisan Snacks & Crisps', 'Crunchy slow-roasted organic chickpeas, sprouted pumpkin seeds, and sunflower seeds tossed in smoked paprika, cumin, and sea salt.', 199.00, 1, 0, 'calamari-fritti.webp', '150g Tub', '6 Months', 'High Fiber, Vegan, Gluten-Free', 130, '150g Tub'),
+(13, 'Strawberry Compote & Graham Cheesecake Jar', 'Bean-to-Bar & Sweets', 'Ambient dessert spread featuring Mahabaleshwar strawberry fruit reduction swirled with creamy cultured sweet cheese and buttery crushed biscuit crust.', 279.00, 1, 1, 'strawberry-cheesecake.webp', '250g Glass Jar', '9 Months', 'Vegetarian, Palm-Oil Free', 210, '250g Glass Jar'),
+(14, 'Belgian Cocoa & Espresso Tiramisu Butter', 'Bean-to-Bar & Sweets', 'Velvety gourmet dessert spread made with slow-roasted hazelnuts, Arabica espresso extract, Belgian dark cocoa butter, and sweet mascarpone essence.', 319.00, 1, 1, 'espresso-tiramisu.webp', '250g Glass Jar', '12 Months', 'Vegetarian, Zero Palm Oil', 190, '250g Glass Jar'),
+(15, 'Damask Rose & Pistachio Macaron Box', 'Bean-to-Bar & Sweets', 'Collector gift box of 6 delicate French almond macarons filled with aromatic Kannauj Damask rose buttercream and roasted Iranian pistachio ganache.', 399.00, 1, 0, 'parisian-macarons.webp', '130g Gift Box', '30 Days', 'Gluten-Free, 100% Almond Flour', 280, 'Gift Box (6 Pieces)'),
+(16, 'Caramelized Peach & Cinnamon Fruit Butter', 'Bean-to-Bar & Sweets', 'Slow-cooked Himalayan yellow peaches reduced with Ceylon cinnamon bark, Madagascar bourbon vanilla, and unrefined raw cane jaggery.', 269.00, 1, 0, 'strawberry-cheesecake.webp', '260g Glass Jar', '12 Months', 'Vegan, Gluten-Free, Non-GMO', 65, '260g Glass Jar'),
+(17, 'Belgian Lotus Biscoff Dessert Sauce', 'Bean-to-Bar & Sweets', 'Irresistibly smooth speculoos cookie squeeze sauce crafted from authentic caramelized Belgian biscuits, brown sugar syrup, and warm cinnamon.', 289.00, 1, 1, 'lotus-biscoff-shake.webp', '350g Squeeze Bottle', '12 Months', 'Vegetarian, Ready-to-Drizzle', 180, '350g Squeeze Bottle'),
+(18, 'Velvet Single-Origin Cold Brew Concentrate', 'Craft Beverages & Tonics', '16-hour slow cold-drip extract from shade-grown Chikmagalur Arabica beans. Notes of dark chocolate and toasted almond. Makes 6 glasses.', 299.00, 1, 1, 'velvet-cold-coffee.webp', '500ml Glass Bottle', '6 Months', 'Zero Sugar, 100% Arabica, Vegan', 15, '500ml Glass Bottle'),
+(19, 'Prebiotic White Peach & Hibiscus Soda', 'Craft Beverages & Tonics', 'Sparkling botanical craft tonic with real white peach puree, cold-brewed Egyptian hibiscus flowers, and plant-based chicory root prebiotic fiber. 35 calories.', 149.00, 1, 1, 'peach-hibiscus-cooler.webp', '330ml Can', '12 Months', 'Prebiotic, Zero Refined Sugar, Vegan', 35, '330ml Can'),
+(20, 'Ceremonial Uji Matcha Latte Blend', 'Craft Beverages & Tonics', 'First-harvest stone-ground ceremonial green tea from Uji, Kyoto blended with coconut milk powder and dried wild strawberry crystals in a collectible tin.', 449.00, 1, 0, 'matcha-cloud-latte.webp', '100g Embossed Tin', '12 Months', '100% Japanese Matcha, Vegan, High Antioxidants', 40, '100g Embossed Tin');
 
 -- --------------------------------------------------------
 -- Table: customization_groups

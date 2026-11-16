@@ -166,9 +166,8 @@ export default function ConceptBFoodCard({
             <span className="bg-white px-2 py-0.5 rounded border border-black shadow-[1.5px_1.5px_0px_#000]">
               {item.category}
             </span>
-            <span className="font-mono text-black/70 flex items-center gap-1 font-bold">
-              <Clock className="w-3 h-3 text-stone-500" />
-              {item.preparation_time || "12 MINS"}
+            <span className="font-mono text-black/80 flex items-center gap-1 font-black">
+              <span>📦 {item.net_weight || "150G POUCH"}</span>
             </span>
           </div>
 
@@ -179,13 +178,24 @@ export default function ConceptBFoodCard({
           <p className="text-xs text-stone-700 font-semibold line-clamp-2 leading-relaxed">
             {item.description}
           </p>
+
+          <div className="flex items-center gap-2 pt-1">
+            <span className="text-[9px] font-retro-bold font-black uppercase bg-[#FFE15D] text-black px-2 py-0.5 rounded border border-black shadow-[1px_1px_0px_#000]">
+              SHELF: {item.shelf_life || "9 MONTHS"}
+            </span>
+            {item.dietary_tags && (
+              <span className="text-[9px] font-retro-bold font-bold uppercase text-stone-600">
+                {item.dietary_tags.split(",")[0]}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Chunky Retro Action Footer */}
       <div className="pt-4 mt-4 border-t-2 border-black/15 flex items-center justify-between">
         <div className="text-[11px] font-mono font-black text-stone-600 bg-[#FFE15D]/40 px-2.5 py-0.5 rounded border border-black/20">
-          {item.calories ? `${item.calories} KCAL` : "FRESH PREP"}
+          PACK OPTION
         </div>
 
         <button
@@ -199,12 +209,12 @@ export default function ConceptBFoodCard({
           {justAdded ? (
             <>
               <Check className="w-4 h-4 stroke-[3]" />
-              <span>GRABBED! 🍕</span>
+              <span>GRABBED! 🥨</span>
             </>
           ) : (
             <>
               <Plus className="w-4 h-4 stroke-[3]" />
-              <span>GRAB IT</span>
+              <span>SNACK DROP • PACK</span>
             </>
           )}
         </button>

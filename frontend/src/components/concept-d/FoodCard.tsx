@@ -82,22 +82,20 @@ export default function ConceptDFoodCard({
             <Heart className={`w-3.5 h-3.5 ${isFav ? "fill-current" : ""}`} />
           </button>
 
-          {/* Prep Time Tag */}
-          {item.preparation_time && (
-            <div className="absolute bottom-2.5 left-3 bg-[#1E3F20]/80 text-[#FDFBF7] text-[9px] font-medium px-2 py-0.5 rounded-full flex items-center gap-1 backdrop-blur-xs">
-              <Clock className="w-2.5 h-2.5 text-amber-200" />
-              <span>{item.preparation_time}</span>
-            </div>
-          )}
+          {/* Harvest Net Weight Tag */}
+          <div className="absolute bottom-2.5 left-3 bg-[#1E3F20]/90 text-[#FDFBF7] text-[9.5px] font-sans px-2.5 py-0.5 rounded-full flex items-center gap-1.5 backdrop-blur-xs border border-[#7B8E78]/30">
+            <span>📦 {item.net_weight || "250g Glass Jar"}</span>
+            <span className="text-[#A3B8A0]">• {item.shelf_life || "12 Months"}</span>
+          </div>
         </div>
 
         {/* Story & Ingredients */}
         <div className="p-5 space-y-2">
           <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-[#7B8E78] font-serif">
-            <span>{item.category || "Seasonal Fare"}</span>
+            <span>{item.category || "Pantry Provisions"}</span>
             <span className="flex items-center gap-1 text-[#5E6B4E]">
               <Leaf className="w-2.5 h-2.5" />
-              <span>Wild &amp; Pure</span>
+              <span>{item.dietary_tags ? item.dietary_tags.split(",")[0] : "100% Organic"}</span>
             </span>
           </div>
 
@@ -115,7 +113,7 @@ export default function ConceptDFoodCard({
       <div className="p-5 pt-3 border-t border-[#5E6B4E]/15 flex items-center justify-between gap-3 bg-[#FDFBF7]">
         <div>
           <span className="text-[9px] uppercase font-serif tracking-wider text-[#7B8E78] block">
-            Seasonal Price
+            Single Jar / Pack
           </span>
           <span className="font-serif text-lg font-medium text-[#1E3F20]">
             {api.formatPrice(item.price)}
@@ -127,7 +125,7 @@ export default function ConceptDFoodCard({
           className="bg-[#5E6B4E] hover:bg-[#4E5B3F] text-[#FDFBF7] font-serif text-xs px-4 py-2 rounded-full shadow-sm hover:shadow transition-all flex items-center gap-1.5 active:scale-95"
         >
           <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-          <span>Add to Table</span>
+          <span>Select Harvest Pack</span>
         </button>
       </div>
     </motion.article>

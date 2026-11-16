@@ -72,13 +72,13 @@ export default function ConceptAMenuPage() {
       <section className="pt-12 pb-8 border-b border-rose-100 bg-[#FFF0F3]/40">
         <div className="max-w-7xl mx-auto px-6 text-center space-y-3">
           <span className="px-3 py-1 rounded-full bg-white border border-rose-200 text-[#E07A86] text-xs font-bold uppercase tracking-wider inline-block">
-            🎀 Handcrafted Culinary Menu
+            🎀 Boutique Pantry &amp; Confections Shop
           </span>
           <h1 className="font-coquette-serif font-black text-4xl sm:text-5xl text-[#3D2D2E]">
-            Our Artisanal Carte
+            Artisanal Packaged Pantry
           </h1>
           <p className="text-xs sm:text-sm text-gray-600 max-w-lg mx-auto">
-            From 48-hour slow-fermented pizzas to delicate chantilly pastries, every dish is customized to your exact dining mood.
+            Small-batch fruit preserves, stone-milled biscuits, slow-simmered sauces, and bean-to-bar chocolates in collectible pastel jars.
           </p>
         </div>
       </section>
@@ -94,7 +94,7 @@ export default function ConceptAMenuPage() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search pizzas, shakes, pasta..."
+                placeholder="Search pantry jars, snacks, confections..."
                 className="w-full pl-10 pr-4 py-2.5 rounded-full border border-rose-200 bg-rose-50/40 text-xs focus:outline-none focus:ring-2 focus:ring-[#E07A86]"
               />
             </div>

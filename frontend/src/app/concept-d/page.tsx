@@ -79,7 +79,7 @@ export default function ConceptDHomePage() {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#5E6B4E]/10 text-[#5E6B4E] text-xs tracking-wider uppercase">
               <Leaf className="w-3.5 h-3.5" />
-              <span>Regenerative Farm-to-Table &bull; Est. 2026</span>
+              <span>100% Regenerative Farmland &bull; Est. 2026</span>
             </div>
 
             <motion.h1
@@ -89,11 +89,11 @@ export default function ConceptDHomePage() {
               className="text-4xl sm:text-6xl xl:text-7xl font-normal leading-[1.1] text-[#1E3F20] tracking-tight"
             >
               Grounded by Nature. <br />
-              <span className="italic text-[#C86D51]">Crafted by Patience.</span>
+              <span className="italic text-[#C86D51]">Packed with Patience.</span>
             </motion.h1>
 
             <p className="text-base sm:text-lg text-[#5E6B4E] font-light leading-relaxed max-w-xl">
-              An organic sanctuary celebrating ancient stone-milled grains, cold-pressed olive oils, and hand-foraged botanical herbs harvested fresh each dawn.
+              Certified regenerative organic pantry staples: stone-ground ancient grains, cold-pressed extra virgin olive oils, raw forest honey, and sun-dried botanical teas.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -101,14 +101,14 @@ export default function ConceptDHomePage() {
                 href="/concept-d/menu/"
                 className="bg-[#5E6B4E] hover:bg-[#4E5B3F] text-[#FDFBF7] text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2 font-sans"
               >
-                <span>View Harvest Carte</span>
+                <span>Shop Harvest Pantry</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/concept-d/reservations/"
                 className="bg-transparent hover:bg-[#5E6B4E]/10 text-[#1E3F20] text-xs uppercase tracking-widest px-8 py-4 rounded-full border border-[#5E6B4E]/30 transition-all font-sans"
               >
-                Reserve a Table
+                Wholesale &amp; Farm Share
               </Link>
             </div>
           </div>
@@ -123,15 +123,15 @@ export default function ConceptDHomePage() {
             >
               <img
                 src="/images/restaurant-garden.webp"
-                alt="Peachy Earth Greenhouse Conservatory"
+                alt="Peachy Earth Farmland Conservatory"
                 className="w-full aspect-[4/5] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 text-[#FDFBF7]">
                 <span className="text-[10px] tracking-widest uppercase text-[#A3B8A0]">
-                  Conservatory Dining Room
+                  Single-Estate Farmland Pantry
                 </span>
                 <h3 className="text-xl font-normal">
-                  Dine Among Blooming Citrus &amp; Wild Flora
+                  Sourced Directly From Certified Regenerative Soils
                 </h3>
               </div>
             </motion.div>
@@ -231,13 +231,13 @@ export default function ConceptDHomePage() {
         <div className="bg-white rounded-3xl border border-[#5E6B4E]/25 p-8 sm:p-12 shadow-xl space-y-8">
           <div className="text-center space-y-2">
             <span className="text-xs uppercase tracking-widest text-[#7B8E78] block">
-              Greenhouse Dining
+              Regenerative Soil Provisions
             </span>
             <h2 className="text-3xl sm:text-4xl font-normal text-[#1E3F20]">
-              Reserve Your Botanical Table
+              Wholesale &amp; Community Farm Share
             </h2>
             <p className="text-xs text-[#5E6B4E] max-w-md mx-auto">
-              Enjoy peaceful seating surrounded by heritage fig trees, climbing jasmine, and soft ambient natural light.
+              Supply your organic grocer, natural bakery, zero-waste pantry, or wellness cooperative with pure single-estate harvests.
             </p>
           </div>
 
@@ -245,16 +245,16 @@ export default function ConceptDHomePage() {
             <div className="p-8 bg-[#F2EFE9] rounded-2xl text-center space-y-3">
               <span className="text-4xl">🌿</span>
               <h3 className="text-xl font-medium text-[#1E3F20]">
-                Your Reservation is Confirmed
+                Harvest Inquiry Received
               </h3>
               <p className="text-xs text-[#5E6B4E]">
-                We have registered your party. We look forward to welcoming you to the conservatory.
+                Our farmstead distribution coordinator will forward our organic certification sheets and wholesale harvest lot pricing to your email.
               </p>
               <button
                 onClick={() => setResSuccess(false)}
                 className="mt-2 text-xs uppercase text-[#C86D51] font-sans hover:underline"
               >
-                Reserve Another Table
+                Submit Another Request
               </button>
             </div>
           ) : (
@@ -262,21 +262,21 @@ export default function ConceptDHomePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                    Your Name
+                    Organization / Store Name
                   </label>
                   <input
                     type="text"
                     required
                     value={resForm.name}
                     onChange={(e) => setResForm({ ...resForm, name: e.target.value })}
-                    placeholder="Evelyn Thorne"
+                    placeholder="Verdant Organic Grocers"
                     className="w-full bg-[#FDFBF7] border border-[#5E6B4E]/30 rounded-xl p-3 text-xs focus:border-[#5E6B4E] outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                    Phone Number
+                    Contact Phone Number
                   </label>
                   <input
                     type="tel"
@@ -290,21 +290,21 @@ export default function ConceptDHomePage() {
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                    Email Address
+                    Buyer Email Address
                   </label>
                   <input
                     type="email"
                     required
                     value={resForm.email}
                     onChange={(e) => setResForm({ ...resForm, email: e.target.value })}
-                    placeholder="evelyn@botanical.com"
+                    placeholder="supply@verdantgrocers.com"
                     className="w-full bg-[#FDFBF7] border border-[#5E6B4E]/30 rounded-xl p-3 text-xs focus:border-[#5E6B4E] outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                    Date
+                    Requested Harvest Dispatch Date
                   </label>
                   <input
                     type="date"
@@ -317,41 +317,43 @@ export default function ConceptDHomePage() {
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                    Time
+                    Supply Model
                   </label>
-                  <input
-                    type="time"
-                    required
+                  <select
                     value={resForm.reservation_time}
                     onChange={(e) => setResForm({ ...resForm, reservation_time: e.target.value })}
                     className="w-full bg-[#FDFBF7] border border-[#5E6B4E]/30 rounded-xl p-3 text-xs focus:border-[#5E6B4E] outline-none"
-                  />
+                  >
+                    <option value="One-Time Bulk Order">One-Time Bulk Order</option>
+                    <option value="Monthly Standing Farm Share">Monthly Standing Farm Share</option>
+                    <option value="Quarterly Community Harvest">Quarterly Community Harvest</option>
+                    <option value="Private Label / Co-Packing Lot">Private Label / Co-Packing Lot</option>
+                  </select>
                 </div>
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                    Guests
+                    Initial Case Volume
                   </label>
                   <select
                     value={resForm.guests}
                     onChange={(e) => setResForm({ ...resForm, guests: Number(e.target.value) })}
                     className="w-full bg-[#FDFBF7] border border-[#5E6B4E]/30 rounded-xl p-3 text-xs focus:border-[#5E6B4E] outline-none"
                   >
-                    {[1, 2, 3, 4, 5, 6, 8, 10, 12].map((n) => (
-                      <option key={n} value={n}>
-                        {n} {n === 1 ? "Guest" : "Guests"}
-                      </option>
-                    ))}
+                    <option value={5}>Trial Lot (5 Cases - 120 Jars)</option>
+                    <option value={15}>Store Shelf (15 Cases - 360 Jars)</option>
+                    <option value={30}>Co-Op Pallet (30 Cases - 720 Jars)</option>
+                    <option value={60}>Bulk Master Lot (60+ Cases - 1,440+ Units)</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs uppercase tracking-wider text-[#5E6B4E] mb-1">
-                  Seating Ambiance
+                  Primary Harvest Category
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {["Greenhouse Conservatory", "Courtyard Olive Grove", "Artisan Hearth"].map((area) => (
+                  {["Cold-Pressed Botanical Oils", "Stone-Ground Grains &amp; Honey", "Artisan Preserves &amp; Tea"].map((area) => (
                     <button
                       key={area}
                       type="button"
@@ -362,7 +364,7 @@ export default function ConceptDHomePage() {
                           : "bg-[#FDFBF7] text-[#1E3F20] border-[#5E6B4E]/30 hover:border-[#5E6B4E]"
                       }`}
                     >
-                      {area}
+                      {area.replace("&amp;", "&")}
                     </button>
                   ))}
                 </div>
@@ -371,9 +373,9 @@ export default function ConceptDHomePage() {
               <button
                 type="submit"
                 disabled={resSubmitting}
-                className="w-full bg-[#5E6B4E] hover:bg-[#4E5B3F] text-[#FDFBF7] text-xs font-sans uppercase tracking-widest py-4 rounded-full transition-all"
+                className="w-full bg-[#5E6B4E] hover:bg-[#4E5B3F] text-[#FDFBF7] text-xs font-sans uppercase tracking-widest py-4 rounded-full transition-all shadow-md"
               >
-                {resSubmitting ? "Registering..." : "Confirm Conservatory Table"}
+                {resSubmitting ? "TRANSMITTING INQUIRY..." : "SUBMIT WHOLESALE &amp; FARM SHARE REQUEST &rarr;"}
               </button>
             </form>
           )}

@@ -90,8 +90,8 @@ export default function ConceptFFoodCard({
             />
           </button>
 
-          {/* Veg / Non-Veg Badge */}
-          <div className="absolute bottom-2 left-2">
+          {/* Veg / Non-Veg Badge & Net Weight */}
+          <div className="absolute bottom-2 left-2 flex items-center gap-1.5">
             <span
               className={`px-2 py-0.5 text-[9px] font-black uppercase tracking-wider border-2 border-black ${
                 item.is_veg
@@ -100,6 +100,9 @@ export default function ConceptFFoodCard({
               }`}
             >
               {item.is_veg ? "VEG 🥬" : "NON-VEG 🍗"}
+            </span>
+            <span className="px-2 py-0.5 text-[9px] font-black uppercase bg-black text-[#FFE600] border-2 border-white">
+              {item.net_weight || "250g Jar"}
             </span>
           </div>
         </div>
@@ -128,7 +131,7 @@ export default function ConceptFFoodCard({
           className="w-full py-3 bg-[#D7263D] hover:bg-[#b51f33] text-white font-black uppercase text-xs tracking-wider border-2 border-black shadow-[4px_4px_0px_#000] active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
-          <span>ADD TO COMIC BASKET</span>
+          <span>PROVISION PACK • ADD</span>
         </button>
       </div>
     </motion.article>

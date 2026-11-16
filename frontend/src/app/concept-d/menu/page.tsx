@@ -69,13 +69,13 @@ export default function ConceptDMenuPage() {
       {/* Botanical Menu Banner */}
       <section className="bg-[#F2EFE9] py-16 md:py-20 border-b border-[#5E6B4E]/20 text-center space-y-3">
         <span className="text-[11px] uppercase tracking-widest text-[#7B8E78] block">
-          Seasonal Harvest
+          Regenerative Farmland Harvest
         </span>
         <h1 className="text-4xl sm:text-6xl font-normal text-[#1E3F20] tracking-tight">
-          The Botanical Carte
+          The Harvest Pantry Shop
         </h1>
         <p className="text-xs sm:text-sm text-[#5E6B4E] max-w-lg mx-auto font-light leading-relaxed">
-          Crafted with stone-milled grains, cold-pressed oils, and garden botanicals gathered at first light.
+          Cold-pressed botanical oils, stone-milled ancient flours, raw wildflower honey, and wild-crafted pantry staples.
         </p>
       </section>
 
@@ -88,7 +88,7 @@ export default function ConceptDMenuPage() {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7B8E78]" />
               <input
                 type="text"
-                placeholder="Search herbs, dishes, grains..."
+                placeholder="Search pantry oils, honey, grains, tea..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 bg-[#F2EFE9] rounded-full border border-[#5E6B4E]/20 text-xs text-[#1E3F20] placeholder-[#7B8E78] focus:border-[#5E6B4E] outline-none"
